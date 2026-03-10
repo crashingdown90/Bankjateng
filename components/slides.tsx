@@ -33,7 +33,8 @@ import {
     CalendarCheck,
     FileText,
     Key,
-    XCircle
+    XCircle,
+    Server
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -2223,6 +2224,81 @@ export const slides: Slide[] = [
                                         ))}
                                     </ul>
                                 </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "selling-points",
+        content: (
+            <div className="space-y-12 h-full flex flex-col justify-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-primary-100/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                <div className="text-center space-y-4 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-primary-400 text-[10px] font-bold uppercase tracking-[0.3em] shadow-2xl border border-primary-500/20"
+                    >
+                        Strategic Advantage
+                    </motion.div>
+                    <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tight">
+                        Mengapa Harus <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Platform Kami?</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg font-medium">Nilai tawar tertinggi untuk kemandirian digital desa yang berkelanjutan.</p>
+                </div>
+
+                <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                    {[
+                        {
+                            title: "Kedaulatan Total (Full Ownership)",
+                            desc: "Bukan sistem langganan (SaaS) vendor. Desa memiliki 100% source code dan database. Sekali investasi untuk selamanya tanpa biaya sewa bulanan yang membebani APBDes.",
+                            icon: <ShieldCheck className="w-8 h-8" />,
+                            color: "from-emerald-500/10 to-transparent",
+                            borderColor: "border-emerald-200/50",
+                            accent: "bg-emerald-600"
+                        },
+                        {
+                            title: "Ekosistem Satu Data Terpadu",
+                            desc: "Sinkronisasi otomatis antara layanan administrasi warta, data bantuan sosial (DTKS), dan pelaporan keuangan. Tidak ada lagi input ganda dan data yang tumpang tindih.",
+                            icon: <Zap className="w-8 h-8" />,
+                            color: "from-blue-500/10 to-transparent",
+                            borderColor: "border-blue-200/50",
+                            accent: "bg-blue-600"
+                        },
+                        {
+                            title: "Infrastruktur Mandiri & Hybrid",
+                            desc: "Dapat dijalankan di server lokal desa (Offline-First) maupun Cloud. Menjamin aksesibilitas layanan tetap prima meskipun koneksi internet sedang tidak stabil.",
+                            icon: <Server className="w-8 h-8" />,
+                            color: "from-indigo-500/10 to-transparent",
+                            borderColor: "border-indigo-200/50",
+                            accent: "bg-indigo-600"
+                        },
+                        {
+                            title: "Monetisasi & Profitabilitas Desa",
+                            desc: "Platform dirancang sebagai profit-center. BUMDes dapat mengelola unit usaha marketplace, ride-sharing, dan pembayaran PBB secara digital untuk meningkatkan PADesa.",
+                            icon: <TrendingUp className="w-8 h-8" />,
+                            color: "from-primary-500/10 to-transparent",
+                            borderColor: "border-primary-200/50",
+                            accent: "bg-primary-600"
+                        }
+                    ].map((point, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className={`p-8 rounded-[40px] bg-gradient-to-br ${point.color} border ${point.borderColor} backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 group flex gap-6 items-start`}
+                        >
+                            <div className={`p-4 rounded-2xl ${point.accent} text-white shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                                {point.icon}
+                            </div>
+                            <div className="space-y-3">
+                                <h3 className="text-2xl font-black text-slate-900 leading-tight group-hover:text-primary-600 transition-colors uppercase tracking-tighter">{point.title}</h3>
+                                <p className="text-slate-600 text-sm leading-relaxed font-medium">{point.desc}</p>
                             </div>
                         </motion.div>
                     ))}
