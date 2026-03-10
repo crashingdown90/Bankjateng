@@ -32,11 +32,17 @@ import {
     MapPin,
     CalendarCheck,
     FileText,
-    Key
+    Key,
+    XCircle
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-export const slides = [
+export interface Slide {
+    id: string;
+    content: React.ReactNode;
+}
+
+export const slides: Slide[] = [
     {
         id: "intro",
         content: (
@@ -507,6 +513,165 @@ export const slides = [
         ),
     },
     {
+        id: "workflow",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                        Kedaulatan Data Desa
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Alur Layanan & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">Kepemilikan Sistem</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Seluruh sistem adalah aset desa — data tersimpan lokal, bisa dikustomisasi, dan dikembangkan sesuai visi masing-masing desa.</p>
+                </div>
+
+                {/* Workflow Steps */}
+                <div className="relative pt-8 pb-4 px-4">
+                    <div className="absolute top-[72px] left-10 right-10 h-1 bg-gradient-to-r from-blue-200 via-primary-300 to-emerald-200 hidden md:block rounded-full" />
+                    <div className="grid md:grid-cols-4 gap-6 relative z-10">
+                        {[
+                            { step: "1", title: "Pengajuan Mandiri", desc: "Warga mengajukan surat via Mobile App dari rumah.", icon: <Smartphone className="w-7 h-7 text-blue-500" />, color: "border-blue-100 bg-blue-50" },
+                            { step: "2", title: "Validasi Otomatis", desc: "Data dicocokkan dengan Dukcapil & Database lokal desa.", icon: <Database className="w-7 h-7 text-slate-600" />, color: "border-slate-200 bg-white" },
+                            { step: "3", title: "Verifikasi e-Sign", desc: "Aparatur memeriksa & memberi Tanda Tangan Elektronik (TTE).", icon: <ShieldCheck className="w-7 h-7 text-primary-500" />, color: "border-primary-100 bg-primary-50" },
+                            { step: "4", title: "Selesai Instan", desc: "Surat digital dikirim ke HP warga, tersimpan aman di server desa.", icon: <FileText className="w-7 h-7 text-emerald-500" />, color: "border-emerald-100 bg-emerald-50" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col items-center text-center space-y-3">
+                                <div className={`w-16 h-16 rounded-full border-4 flex items-center justify-center shadow-lg relative ${item.color}`}>
+                                    {item.icon}
+                                    <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold shadow-md border-2 border-white">
+                                        {item.step}
+                                    </div>
+                                </div>
+                                <div className="space-y-1 pt-2">
+                                    <h4 className="font-bold text-slate-900 text-sm">{item.title}</h4>
+                                    <p className="text-[11px] text-slate-500 leading-relaxed">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Ownership Comparison */}
+                <div className="grid md:grid-cols-2 gap-6">
+                    {/* Platform Milik Desa (Ours) */}
+                    <div className="glass p-6 rounded-[28px] border-2 border-emerald-200 bg-gradient-to-b from-emerald-50/50 to-white shadow-lg relative overflow-hidden">
+                        <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 to-emerald-600" />
+                        <div className="flex items-center gap-3 mb-5">
+                            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-sm">
+                                <ShieldCheck className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-900">Platform Milik Desa</h3>
+                                <p className="text-[11px] text-emerald-600 font-semibold uppercase tracking-wider">Sistem Kami ✓</p>
+                            </div>
+                        </div>
+                        <div className="space-y-3">
+                            {[
+                                { text: "Data tersimpan di server lokal desa — aman & berdaulat", icon: "✅" },
+                                { text: "Sistem adalah aset milik desa, bukan sewa/langganan", icon: "✅" },
+                                { text: "Bebas kustomisasi sesuai kebutuhan & visi masing-masing desa", icon: "✅" },
+                                { text: "Bisa dikembangkan mandiri kapan saja tanpa izin vendor", icon: "✅" },
+                                { text: "Tidak ada biaya berulang (no recurring fee)", icon: "✅" },
+                                { text: "Source code menjadi milik pemerintah desa", icon: "✅" }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white border border-emerald-50">
+                                    <span className="text-sm shrink-0">{item.icon}</span>
+                                    <p className="text-sm text-slate-700 font-medium">{item.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Vendor Pihak Ketiga (Others) */}
+                    <div className="glass p-6 rounded-[28px] border border-red-100 bg-gradient-to-b from-red-50/30 to-white shadow-sm relative overflow-hidden">
+                        <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-red-300 to-red-400" />
+                        <div className="flex items-center gap-3 mb-5">
+                            <div className="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center border border-red-100 shadow-sm">
+                                <XCircle className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-900">Vendor Pihak Ketiga</h3>
+                                <p className="text-[11px] text-red-500 font-semibold uppercase tracking-wider">Aplikasi Umum ✗</p>
+                            </div>
+                        </div>
+                        <div className="space-y-3">
+                            {[
+                                { text: "Data disimpan di server pihak ke-3 — rawan & tidak berdaulat", icon: "❌" },
+                                { text: "Sistem hanya disewa, bukan dimiliki desa", icon: "❌" },
+                                { text: "Template kaku, tidak bisa dikustomisasi sesuai kebutuhan", icon: "❌" },
+                                { text: "Ketergantungan penuh pada vendor untuk pengembangan", icon: "❌" },
+                                { text: "Biaya langganan berulang setiap bulan/tahun", icon: "❌" },
+                                { text: "Risiko vendor tutup = data hilang", icon: "❌" }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/50 border border-red-50">
+                                    <span className="text-sm shrink-0">{item.icon}</span>
+                                    <p className="text-sm text-slate-500">{item.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "digital-sovereignty",
+        content: (
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-8">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest">
+                            <Key className="w-3 h-3" /> Filosofi Non-Vendor Base
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight italic">
+                            Kedaulatan & <br />Kepemilikan Desa
+                        </h2>
+                    </div>
+                    <div className="space-y-6">
+                        <p className="text-lg text-slate-600 leading-relaxed">
+                            Aplikasi ini dibangun secara <span className="font-bold text-primary-600 underline decoration-2 underline-offset-4">Custom</span> untuk setiap desa. Desa bukan lagi penyewa, melainkan <span className="font-bold">Pemilik Sah</span> dari sistem ini.
+                        </p>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                <h5 className="font-bold text-slate-900 mb-1">Custom Ownership</h5>
+                                <p className="text-xs text-slate-500">Nama, logo, dan identitas aplikasi sepenuhnya milik desa.</p>
+                            </div>
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                <h5 className="font-bold text-slate-900 mb-1">Private Data</h5>
+                                <p className="text-xs text-slate-500">Data kependudukan bersifat private di server internal desa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative">
+                    <div className="absolute inset-0 bg-primary-100/20 rounded-full blur-3xl animate-pulse" />
+                    <div className="relative glass p-8 rounded-[40px] border border-white shadow-2xl space-y-6">
+                        <div className="flex justify-between items-center pb-4 border-b border-slate-200">
+                            <div className="font-mono text-xs text-slate-500">STATUS: PRIVATE OWNERSHIP</div>
+                            <ShieldCheck className="text-emerald-500 w-6 h-6" />
+                        </div>
+                        <div className="space-y-4">
+                            <div className="h-4 w-3/4 bg-slate-100 rounded-full" />
+                            <div className="h-4 w-full bg-slate-100 rounded-full" />
+                            <div className="h-4 w-2/3 bg-slate-100 rounded-full" />
+                        </div>
+                        <div className="pt-4 border-t border-slate-200">
+                            <div className="p-4 rounded-2xl bg-primary-600 text-slate-900 text-center font-bold">
+                                SISTEM MILIK DESA MANDIRI
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
         id: "features",
         content: (
             <div className="space-y-10 h-full flex flex-col justify-center">
@@ -611,47 +776,6 @@ export const slides = [
         ),
     },
     {
-        id: "workflow",
-        content: (
-            <div className="space-y-12">
-                <div className="text-center space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold tracking-wider uppercase">
-                        <Link className="w-4 h-4" /> Alur Kerja Otomatis
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900">Alur Pengajuan Surat Desa</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Proses birokrasi berbelit kini dipangkas menjadi sistem mandiri yang cepat, transparan, dan terlacak.</p>
-                </div>
-
-                <div className="relative pt-12 pb-8 px-4">
-                    {/* Connecting Line */}
-                    <div className="absolute top-[88px] left-10 right-10 h-1 bg-gradient-to-r from-blue-200 via-primary-300 to-emerald-200 hidden md:block rounded-full" />
-
-                    <div className="grid md:grid-cols-4 gap-8 relative z-10">
-                        {[
-                            { step: "1", title: "Pengajuan Mandiri", desc: "Warga mengajukan surat via Mobile App dari rumah.", icon: <Smartphone className="w-8 h-8 text-blue-500" />, color: "border-blue-100 bg-blue-50" },
-                            { step: "2", title: "Validasi Sistem", desc: "Data dicocokkan dengan Dukcapil & Database Desa otomatis.", icon: <Database className="w-8 h-8 text-slate-600" />, color: "border-slate-200 bg-white" },
-                            { step: "3", title: "Verifikasi e-Sign", desc: "Aparatur memeriksa & memberi Tanda Tangan Elektronik (TTE).", icon: <ShieldCheck className="w-8 h-8 text-primary-500" />, color: "border-primary-100 bg-primary-50" },
-                            { step: "4", title: "Selesai Otomatis", desc: "Surat digital dikirim ke HP warga, cetak jika perlu.", icon: <FileText className="w-8 h-8 text-emerald-500" />, color: "border-emerald-100 bg-emerald-50" }
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col items-center text-center space-y-4">
-                                <div className={`w-20 h-20 rounded-full border-[6px] flex items-center justify-center shadow-lg relative ${item.color}`}>
-                                    {item.icon}
-                                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-slate-900 text-slate-900 flex items-center justify-center font-bold shadow-md border-2 border-white">
-                                        {item.step}
-                                    </div>
-                                </div>
-                                <div className="space-y-2 pt-4">
-                                    <h4 className="font-bold text-slate-900 text-lg">{item.title}</h4>
-                                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        ),
-    },
-    {
         id: "how-it-works",
         content: (
             <div className="space-y-12">
@@ -742,57 +866,6 @@ export const slides = [
                                         <p className="text-xs text-emerald-600/80 leading-relaxed mt-1">Distribusi bansos atau bantuan pertanian berbasis data presisi.</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        ),
-    },
-    {
-        id: "digital-sovereignty",
-        content: (
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
-                    <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest">
-                            <Key className="w-3 h-3" /> Filosofi Non-Vendor Base
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight italic">
-                            Kedaulatan & <br />Kepemilikan Desa
-                        </h2>
-                    </div>
-                    <div className="space-y-6">
-                        <p className="text-lg text-slate-600 leading-relaxed">
-                            Aplikasi ini dibangun secara <span className="font-bold text-primary-600 underline decoration-2 underline-offset-4">Custom</span> untuk setiap desa. Desa bukan lagi penyewa, melainkan <span className="font-bold">Pemilik Sah</span> dari sistem ini.
-                        </p>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                                <h5 className="font-bold text-slate-900 mb-1">Custom Ownership</h5>
-                                <p className="text-xs text-slate-500">Nama, logo, dan identitas aplikasi sepenuhnya milik desa.</p>
-                            </div>
-                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                                <h5 className="font-bold text-slate-900 mb-1">Private Data</h5>
-                                <p className="text-xs text-slate-500">Data kependudukan bersifat private di server internal desa.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="relative">
-                    <div className="absolute inset-0 bg-primary-100/20 rounded-full blur-3xl animate-pulse" />
-                    <div className="relative glass p-8 rounded-[40px] border border-white shadow-2xl space-y-6">
-                        <div className="flex justify-between items-center pb-4 border-b border-slate-200">
-                            <div className="font-mono text-xs text-slate-500">STATUS: PRIVATE OWNERSHIP</div>
-                            <ShieldCheck className="text-emerald-500 w-6 h-6" />
-                        </div>
-                        <div className="space-y-4">
-                            <div className="h-4 w-3/4 bg-slate-100 rounded-full" />
-                            <div className="h-4 w-full bg-slate-100 rounded-full" />
-                            <div className="h-4 w-2/3 bg-slate-100 rounded-full" />
-                        </div>
-                        <div className="pt-4 border-t border-slate-200">
-                            <div className="p-4 rounded-2xl bg-primary-600 text-slate-900 text-center font-bold">
-                                SISTEM MILIK DESA MANDIRI
                             </div>
                         </div>
                     </div>
@@ -895,140 +968,6 @@ export const slides = [
                                 Fitur Administrasi Terlengkap
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        ),
-    },
-    {
-        id: "integration",
-        content: (
-            <div className="space-y-12">
-                <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-display font-bold text-slate-900">Sinergi & Integrasi Data</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto">Menghubungkan data desa dengan ekosistem digital nasional secara real-time.</p>
-                </div>
-                <div className="relative flex justify-center items-center h-64">
-                    <div className="absolute w-full border-t border-dashed border-slate-200" />
-                    <div className="grid grid-cols-3 gap-12 relative z-10 w-full">
-                        <div className="text-center space-y-3">
-                            <div className="w-20 h-20 mx-auto glass rounded-full flex items-center justify-center text-slate-600 font-bold border-2 border-primary-100">DTKS</div>
-                            <p className="text-xs text-slate-500 font-semibold uppercase">Kesejahteraan</p>
-                        </div>
-                        <div className="text-center space-y-3">
-                            <div className="w-28 h-28 mx-auto bg-primary-600 rounded-3xl flex items-center justify-center text-slate-900 font-bold shadow-xl border-4 border-white">SISAD</div>
-                            <p className="text-sm text-primary-700 font-bold uppercase">Open Data Desa</p>
-                        </div>
-                        <div className="text-center space-y-3">
-                            <div className="w-20 h-20 mx-auto glass rounded-full flex items-center justify-center text-slate-600 font-bold border-2 border-emerald-100">SISKEUDES</div>
-                            <p className="text-xs text-slate-500 font-semibold uppercase">Keuangan</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="glass p-6 rounded-2xl border border-slate-200 mt-8">
-                    <div className="flex gap-4 items-center text-slate-600">
-                        <Link className="w-5 h-5 text-primary-600" />
-                        <p className="text-sm">Data tersinkronisasi otomatis dengan <span className="font-bold text-slate-900">Dukcapil</span> untuk validasi NIK yang akurat.</p>
-                    </div>
-                </div>
-            </div>
-        ),
-    },
-    {
-        id: "smart-village",
-        content: (
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-8">
-                    <div className="space-y-2">
-                        <div className="text-primary-600 font-bold text-sm tracking-widest uppercase">Next Generation</div>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">Visi Smart Village</h2>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        {[
-                            { title: "E-Commerce Desa", desc: "Pasar produk unggulan desa.", icon: <ShoppingBag className="w-5 h-5" /> },
-                            { title: "Promo Wisata", desc: "Digitalisasi destinasi lokal.", icon: <MapPin className="w-5 h-5" /> },
-                            { title: "Ojek Desa", desc: "Transportasi warga terintegrasi.", icon: <Smartphone className="w-5 h-5" /> },
-                            { title: "Bursa Keahlian", desc: "Portal lowongan & skill warga.", icon: <Briefcase className="w-5 h-5" /> },
-                            { title: "Koperasi Digital", desc: "Pengelolaan simpan pinjam modern.", icon: <Handshake className="w-5 h-5" /> },
-                            { title: "Smart Farming", desc: "IoT Sensor Tanah & Cuaca.", icon: <Sprout className="w-5 h-5" /> },
-                        ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-100 transition-colors border border-slate-50">
-                                <div className="p-2 rounded-lg bg-primary-50 text-primary-600 shrink-0">{item.icon}</div>
-                                <div>
-                                    <h5 className="font-bold text-slate-900 text-xs">{item.title}</h5>
-                                    <p className="text-[10px] text-slate-500 leading-tight">{item.desc}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="glass rounded-3xl overflow-hidden aspect-square flex flex-col items-center justify-center text-center shadow-xl relative border-8 border-white group">
-                    <img
-                        src="/smart_village_dashboard.png"
-                        alt="Smart Village Command Center"
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-slate-100/80 to-transparent text-slate-900">
-                        <h3 className="text-xl font-bold">Executive Command Center</h3>
-                        <p className="text-primary-200 text-xs mt-1">Real-time monitoring & data analytics.</p>
-                    </div>
-                </div>
-            </div>
-        ),
-    },
-    {
-        id: "local-potential",
-        content: (
-            <div className="space-y-12">
-                <div className="text-center space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold tracking-wider uppercase">
-                        <Sprout className="w-4 h-4" /> Potensi Lokal Terintegrasi
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900">Ketahanan Pangan & Ekosistem UMKM</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Platform yang adaptif untuk segala jenis komoditas unggulan desa, dari pertanian hingga pariwisata.</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                    {/* Ketahanan Pangan */}
-                    <div className="glass p-8 rounded-[32px] border border-slate-200 bg-slate-100 space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2">
-                            <Sprout className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-slate-900">Ketahanan Pangan Digital</h3>
-                        <p className="text-slate-600 text-sm leading-relaxed">Sistem pencatatan digital untuk memantau stok hasil bumi, memetakan lahan produktif, dan memprediksi masa panen secara akurat. Memastikan kemandirian pangan desa terjaga sepanjang tahun tanpa defisit.</p>
-                        <div className="space-y-3 pt-4 border-t border-slate-200">
-                            {[
-                                "Monitoring Stok Panen & Gudang Desa",
-                                "Prediksi Cuaca & Masa Tanam (IoT)",
-                                "Rantai Pasok (Supply Chain) Pertanian"
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-3 items-center text-sm text-slate-600">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                                    <span>{item}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* UMKM & Ekonomi */}
-                    <div className="glass p-8 rounded-[32px] border border-slate-200 bg-slate-100 space-y-6">
-                        <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-2">
-                            <ShoppingBag className="w-8 h-8" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-slate-900">Ekosistem UMKM & Desa Wisata</h3>
-                        <p className="text-slate-600 text-sm leading-relaxed">Memberdayakan produk lokal agar naik kelas. Sistem ini sangat kompatibel dengan model bisnis apapun: baik desa penghasil kopi unggulan, sentra kerajinan, maupun destinasi desa wisata alam.</p>
-                        <div className="space-y-3 pt-4 border-t border-slate-200">
-                            {[
-                                "E-Commerce Desa (Etalase Produk Lokal)",
-                                "Digitalisasi Tiket & Promosi Wisata",
-                                "Koperasi Digital untuk Modal Usaha"
-                            ].map((item, i) => (
-                                <div key={i} className="flex gap-3 items-center text-sm text-slate-600">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                                    <span>{item}</span>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1150,54 +1089,368 @@ export const slides = [
         ),
     },
     {
-        id: "emergency-services",
+        id: "stunting-digital",
         content: (
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-                <div className="relative group">
-                    <div className="absolute -inset-4 bg-red-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="relative glass p-8 rounded-[40px] border border-red-50 shadow-xl overflow-hidden">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="p-4 rounded-2xl bg-red-600 text-slate-900 animate-pulse">
-                                <PhoneCall className="w-8 h-8" />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-slate-900">Layanan Darurat</h3>
-                                <p className="text-sm text-slate-500 font-mono tracking-tighter">CALL CENTER 24 JAM</p>
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-50 border border-pink-100 text-pink-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <ShieldCheck className="w-4 h-4" />
+                        Program Prioritas Nasional
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Pencegahan <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-red-500">Stunting Digital</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Integrasi data Posyandu, ibu hamil, dan balita ke dashboard pimpinan desa untuk early warning gizi buruk.</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="glass p-8 rounded-[32px] border border-pink-100 bg-gradient-to-b from-pink-50/30 to-white shadow-lg relative overflow-hidden">
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-pink-400 to-red-500" />
+                        <h3 className="text-xl font-bold text-slate-900 mb-6">Fitur Monitoring Stunting</h3>
+                        <div className="space-y-3">
+                            {[
+                                { text: "Dashboard tracking pertumbuhan balita per dusun", icon: <LayoutDashboard className="w-5 h-5 text-pink-600" /> },
+                                { text: "Data ibu hamil terintegrasi jadwal Posyandu", icon: <CalendarCheck className="w-5 h-5 text-pink-600" /> },
+                                { text: "Early warning system gizi buruk otomatis", icon: <ShieldCheck className="w-5 h-5 text-red-600" /> },
+                                { text: "Laporan ke Puskesmas & Dinkes otomatis", icon: <FileText className="w-5 h-5 text-pink-600" /> },
+                                { text: "Notifikasi jadwal imunisasi & vitamin ke HP ibu", icon: <Smartphone className="w-5 h-5 text-pink-600" /> }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-pink-50">
+                                    <div className="p-2 rounded-xl bg-pink-50 shrink-0">{item.icon}</div>
+                                    <p className="text-sm text-slate-700 font-medium">{item.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="space-y-6">
+                        <div className="glass p-6 rounded-[28px] border border-slate-200 bg-white shadow-sm">
+                            <h4 className="font-bold text-slate-900 mb-4">Alur Data Stunting</h4>
+                            <div className="space-y-3">
+                                {[
+                                    { step: "1", label: "Kader Posyandu input data timbang via app" },
+                                    { step: "2", label: "Sistem deteksi otomatis anak di bawah garis merah" },
+                                    { step: "3", label: "Alert dikirim ke Bidan Desa & Kades" },
+                                    { step: "4", label: "Intervensi gizi & PMT langsung ditindaklanjuti" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+                                        <div className="w-8 h-8 rounded-lg bg-pink-600 text-white flex items-center justify-center text-xs font-bold">{item.step}</div>
+                                        <p className="text-sm text-slate-700">{item.label}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-3 gap-3">
                             {[
-                                { label: "Ambulans Desa", val: "SIAGA 24/7" },
-                                { label: "Panic Button", val: "RESPONSE < 5 MIN" },
-                                { label: "Aduan Masyarakat", val: "TERHUBUNG KADES" }
+                                { value: "0-59", label: "Bulan Usia", sub: "Target Balita" },
+                                { value: "Real-time", label: "Monitoring", sub: "Per Dusun" },
+                                { value: "Auto", label: "Laporan", sub: "Ke Dinkes" }
                             ].map((item, i) => (
-                                <div key={i} className="flex justify-between p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                                    <span className="text-sm font-bold text-slate-600">{item.label}</span>
-                                    <span className="text-xs font-mono text-red-600 font-black">{item.val}</span>
+                                <div key={i} className="p-3 rounded-2xl bg-pink-50 border border-pink-100 text-center">
+                                    <div className="text-lg font-extrabold text-pink-700">{item.value}</div>
+                                    <div className="text-[10px] font-semibold text-slate-600 uppercase">{item.label}</div>
+                                    <div className="text-[9px] text-slate-500">{item.sub}</div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className="space-y-8">
-                    <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">
-                            <MessageSquare className="w-3 h-3" /> Aspirasi Warga
+            </div>
+        ),
+    },
+    {
+        id: "mbg-digital",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <Sprout className="w-4 h-4" />
+                        Program Unggulan Pemerintah
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Makan Bergizi <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">Gratis (MBG)</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Digitalisasi distribusi dan monitoring program MBG agar transparan, tepat sasaran, dan terukur di setiap desa.</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {[
+                        { title: "Data Penerima", desc: "Integrasi data kependudukan untuk validasi penerima manfaat (anak sekolah & ibu hamil) secara otomatis.", icon: <Users className="w-6 h-6" />, color: "text-blue-600 bg-blue-50 border-blue-100", accent: "from-blue-400 to-blue-600" },
+                        { title: "Distribusi & Logistik", desc: "Tracking distribusi makanan dari dapur pusat ke sekolah/posyandu, tercatat real-time di dashboard.", icon: <TrendingUp className="w-6 h-6" />, color: "text-amber-600 bg-amber-50 border-amber-100", accent: "from-amber-400 to-amber-600" },
+                        { title: "Transparansi Anggaran", desc: "Setiap rupiah tercatat — dari pembelian bahan baku hingga jumlah porsi yang terdistribusi per hari.", icon: <Coins className="w-6 h-6" />, color: "text-emerald-600 bg-emerald-50 border-emerald-100", accent: "from-emerald-400 to-emerald-600" }
+                    ].map((item, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className={`glass p-8 rounded-[32px] border ${item.color.split(' ')[2]} bg-white shadow-lg relative overflow-hidden hover:shadow-xl transition-all`}
+                        >
+                            <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${item.accent}`} />
+                            <div className={`w-14 h-14 rounded-2xl ${item.color.split(' ')[1]} ${item.color.split(' ')[0]} flex items-center justify-center mb-6 ring-4 ring-white shadow-sm`}>
+                                {item.icon}
+                            </div>
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                            <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                        </motion.div>
+                    ))}
+                </div>
+                <div className="glass p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100 flex items-center gap-4">
+                    <Bot className="w-6 h-6 text-amber-600 shrink-0" />
+                    <p className="text-sm text-slate-700"><span className="font-bold">Integrasi Otomatis:</span> Data MBG tersinkron dengan modul Stunting Digital dan Siskeudes — satu input, seluruh laporan terbentuk otomatis.</p>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "blt-digital",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <Coins className="w-4 h-4" />
+                        Jaring Pengaman Sosial
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        BLT Dana Desa <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Digital</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Digitalisasi penyaluran Bantuan Langsung Tunai agar transparan, tepat sasaran, dan bebas dari manipulasi data.</p>
+                </div>
+                <div className="grid md:grid-cols-12 gap-8">
+                    <div className="md:col-span-7 glass p-8 rounded-[32px] border border-slate-200 bg-white shadow-lg">
+                        <h3 className="text-lg font-bold text-slate-900 mb-5">Alur BLT Digital</h3>
+                        <div className="space-y-4">
+                            {[
+                                { step: "1", title: "Verifikasi Penerima", desc: "Data kemiskinan divalidasi silang dengan Dukcapil & DTKS pusat.", color: "bg-blue-600" },
+                                { step: "2", title: "Musyawarah Desa Digital", desc: "Hasil musdes tercatat di sistem, transparan dan bisa diaudit.", color: "bg-primary-600" },
+                                { step: "3", title: "Pencairan via Payment Gateway", desc: "Transfer langsung ke rekening/e-wallet penerima — tanpa perantara.", color: "bg-emerald-600" },
+                                { step: "4", title: "Bukti Terima Digital", desc: "Penerima konfirmasi via app, bukti tersimpan otomatis di Siskeudes.", color: "bg-amber-600" }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                    <div className={`w-10 h-10 rounded-xl ${item.color} text-white flex items-center justify-center text-sm font-bold shrink-0`}>{item.step}</div>
+                                    <div>
+                                        <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                        <p className="text-xs text-slate-500 mt-1">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">Sistem Aduan & Respon Cepat</h2>
                     </div>
-                    <p className="text-lg text-slate-500 leading-relaxed">
-                        Membangun jembatan komunikasi langsung antara warga dan pimpinan desa. Transparan, terukur, dan tuntas.
-                    </p>
-                    <div className="p-6 rounded-3xl bg-primary-50 border border-primary-100 text-slate-900 space-y-4 relative overflow-hidden shadow-sm">
-                        <div className="absolute top-0 right-0 p-4 text-primary-200">
-                            <Zap className="w-16 h-16" />
+                    <div className="md:col-span-5 space-y-5">
+                        <div className="glass p-6 rounded-[28px] border border-emerald-100 bg-emerald-50/30">
+                            <h4 className="font-bold text-slate-900 mb-3">Keunggulan BLT Digital</h4>
+                            <div className="space-y-2">
+                                {["Bebas pungli & manipulasi data", "Audit trail lengkap & real-time", "Integrasi DTKS & Siskeudes", "Notifikasi penerima via SMS/WA", "Laporan SPJ otomatis"].map((text, i) => (
+                                    <div key={i} className="flex items-center gap-2 text-sm text-slate-700">
+                                        <span className="text-emerald-600">✓</span>
+                                        <span>{text}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <p className="text-sm font-mono text-primary-600 font-bold uppercase tracking-widest">Live Feedback Loop</p>
-                        <h4 className="text-xl font-bold">Respon Aduan Maksimal 1x24 Jam</h4>
-                        <div className="flex gap-2">
-                            {[1, 2, 3, 4, 5].map(star => <div key={star} className="w-3 h-3 bg-amber-400 rounded-full" />)}
+                        <div className="grid grid-cols-2 gap-3">
+                            {[
+                                { value: "0%", label: "Pungli" },
+                                { value: "100%", label: "Transparan" },
+                                { value: "Auto", label: "SPJ" },
+                                { value: "Real-time", label: "Tracking" }
+                            ].map((item, i) => (
+                                <div key={i} className="p-3 rounded-2xl bg-white border border-emerald-100 text-center shadow-sm">
+                                    <div className="text-xl font-extrabold text-emerald-700">{item.value}</div>
+                                    <div className="text-[10px] font-semibold text-slate-500 uppercase">{item.label}</div>
+                                </div>
+                            ))}
                         </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "desa-wisata",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <MapPin className="w-4 h-4" />
+                        Ekonomi Kreatif Desa
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Desa Wisata <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-cyan-500">Digital</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Promosi destinasi, booking online, dan ojek desa — seluruh ekosistem wisata terintegrasi dalam satu platform.</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {[
+                        { title: "Portal Promosi Wisata", desc: "Landing page per desa wisata dengan galeri foto, peta lokasi, dan ulasan pengunjung terintegrasi SEO.", icon: <Globe className="w-6 h-6" />, color: "text-teal-600 bg-teal-50 border-teal-100" },
+                        { title: "Booking & Tiket Online", desc: "Pemesanan homestay, paket wisata alam, dan event budaya langsung dari app — pembayaran digital.", icon: <Smartphone className="w-6 h-6" />, color: "text-blue-600 bg-blue-50 border-blue-100" },
+                        { title: "Ride-Sharing Desa", desc: "Ojek desa berbasis GPS untuk antar-jemput wisatawan dari terminal/stasiun ke destinasi wisata.", icon: <MapIcon className="w-6 h-6" />, color: "text-amber-600 bg-amber-50 border-amber-100" },
+                        { title: "Marketplace Oleh-oleh", desc: "Warga desa bisa jual produk kerajinan & kuliner lokal ke wisatawan via e-commerce terintegrasi.", icon: <ShoppingBag className="w-6 h-6" />, color: "text-pink-600 bg-pink-50 border-pink-100" },
+                        { title: "Dashboard Revenue", desc: "Kades bisa monitor pendapatan wisata, jumlah pengunjung, dan rating destinasi secara real-time.", icon: <TrendingUp className="w-6 h-6" />, color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
+                        { title: "Tour Guide Digital", desc: "QR code di setiap titik wisata yang memunculkan narasi sejarah, budaya, dan peta interaktif.", icon: <Bot className="w-6 h-6" />, color: "text-violet-600 bg-violet-50 border-violet-100" }
+                    ].map((item, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.08 }}
+                            className={`p-5 rounded-[24px] border ${item.color.split(' ')[2]} bg-white hover:shadow-lg transition-all group flex gap-4 items-start`}
+                        >
+                            <div className={`p-3 rounded-2xl ${item.color.split(' ')[1]} ${item.color.split(' ')[0]} shrink-0 shadow-sm border border-white group-hover:scale-110 transition-transform`}>
+                                {item.icon}
+                            </div>
+                            <div>
+                                <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                <p className="text-[11px] text-slate-500 leading-relaxed mt-1">{item.desc}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "local-potential",
+        content: (
+            <div className="space-y-12">
+                <div className="text-center space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold tracking-wider uppercase">
+                        <Sprout className="w-4 h-4" /> Potensi Lokal Terintegrasi
+                    </div>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900">Ketahanan Pangan & Ekosistem UMKM</h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Platform yang adaptif untuk segala jenis komoditas unggulan desa, dari pertanian hingga pariwisata.</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Ketahanan Pangan */}
+                    <div className="glass p-8 rounded-[32px] border border-slate-200 bg-slate-100 space-y-6">
+                        <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2">
+                            <Sprout className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-slate-900">Ketahanan Pangan Digital</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed">Sistem pencatatan digital untuk memantau stok hasil bumi, memetakan lahan produktif, dan memprediksi masa panen secara akurat. Memastikan kemandirian pangan desa terjaga sepanjang tahun tanpa defisit.</p>
+                        <div className="space-y-3 pt-4 border-t border-slate-200">
+                            {[
+                                "Monitoring Stok Panen & Gudang Desa",
+                                "Prediksi Cuaca & Masa Tanam (IoT)",
+                                "Rantai Pasok (Supply Chain) Pertanian"
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-3 items-center text-sm text-slate-600">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* UMKM & Ekonomi */}
+                    <div className="glass p-8 rounded-[32px] border border-slate-200 bg-slate-100 space-y-6">
+                        <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-2">
+                            <ShoppingBag className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-slate-900">Ekosistem UMKM & Desa Wisata</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed">Memberdayakan produk lokal agar naik kelas. Sistem ini sangat kompatibel dengan model bisnis apapun: baik desa penghasil kopi unggulan, sentra kerajinan, maupun destinasi desa wisata alam.</p>
+                        <div className="space-y-3 pt-4 border-t border-slate-200">
+                            {[
+                                "E-Commerce Desa (Etalase Produk Lokal)",
+                                "Digitalisasi Tiket & Promosi Wisata",
+                                "Koperasi Digital untuk Modal Usaha"
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-3 items-center text-sm text-slate-600">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                    <span>{item}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "smart-village",
+        content: (
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="space-y-8">
+                    <div className="space-y-2">
+                        <div className="text-primary-600 font-bold text-sm tracking-widest uppercase">Next Generation</div>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">Visi Smart Village</h2>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        {[
+                            { title: "E-Commerce Desa", desc: "Pasar produk unggulan desa.", icon: <ShoppingBag className="w-5 h-5" /> },
+                            { title: "Promo Wisata", desc: "Digitalisasi destinasi lokal.", icon: <MapPin className="w-5 h-5" /> },
+                            { title: "Ojek Desa", desc: "Transportasi warga terintegrasi.", icon: <Smartphone className="w-5 h-5" /> },
+                            { title: "Bursa Keahlian", desc: "Portal lowongan & skill warga.", icon: <Briefcase className="w-5 h-5" /> },
+                            { title: "Koperasi Digital", desc: "Pengelolaan simpan pinjam modern.", icon: <Handshake className="w-5 h-5" /> },
+                            { title: "Smart Farming", desc: "IoT Sensor Tanah & Cuaca.", icon: <Sprout className="w-5 h-5" /> },
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-100 transition-colors border border-slate-50">
+                                <div className="p-2 rounded-lg bg-primary-50 text-primary-600 shrink-0">{item.icon}</div>
+                                <div>
+                                    <h5 className="font-bold text-slate-900 text-xs">{item.title}</h5>
+                                    <p className="text-[10px] text-slate-500 leading-tight">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="glass rounded-3xl overflow-hidden aspect-square flex flex-col items-center justify-center text-center shadow-xl relative border-8 border-white group">
+                    <img
+                        src="/smart_village_dashboard.png"
+                        alt="Smart Village Command Center"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-slate-100/80 to-transparent text-slate-900">
+                        <h3 className="text-xl font-bold">Executive Command Center</h3>
+                        <p className="text-primary-200 text-xs mt-1">Real-time monitoring & data analytics.</p>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "integration",
+        content: (
+            <div className="space-y-12">
+                <div className="text-center space-y-4">
+                    <h2 className="text-4xl font-display font-bold text-slate-900">Sinergi & Integrasi Data</h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto">Menghubungkan data desa dengan ekosistem digital nasional secara real-time.</p>
+                </div>
+                <div className="relative flex justify-center items-center h-64">
+                    <div className="absolute w-full border-t border-dashed border-slate-200" />
+                    <div className="grid grid-cols-3 gap-12 relative z-10 w-full">
+                        <div className="text-center space-y-3">
+                            <div className="w-20 h-20 mx-auto glass rounded-full flex items-center justify-center text-slate-600 font-bold border-2 border-primary-100">DTKS</div>
+                            <p className="text-xs text-slate-500 font-semibold uppercase">Kesejahteraan</p>
+                        </div>
+                        <div className="text-center space-y-3">
+                            <div className="w-28 h-28 mx-auto bg-primary-600 rounded-3xl flex items-center justify-center text-slate-900 font-bold shadow-xl border-4 border-white">SISAD</div>
+                            <p className="text-sm text-primary-700 font-bold uppercase">Open Data Desa</p>
+                        </div>
+                        <div className="text-center space-y-3">
+                            <div className="w-20 h-20 mx-auto glass rounded-full flex items-center justify-center text-slate-600 font-bold border-2 border-emerald-100">SISKEUDES</div>
+                            <p className="text-xs text-slate-500 font-semibold uppercase">Keuangan</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="glass p-6 rounded-2xl border border-slate-200 mt-8">
+                    <div className="flex gap-4 items-center text-slate-600">
+                        <Link className="w-5 h-5 text-primary-600" />
+                        <p className="text-sm">Data tersinkronisasi otomatis dengan <span className="font-bold text-slate-900">Dukcapil</span> untuk validasi NIK yang akurat.</p>
                     </div>
                 </div>
             </div>
@@ -1321,6 +1574,175 @@ export const slides = [
         ),
     },
     {
+        id: "emergency-services",
+        content: (
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="relative group">
+                    <div className="absolute -inset-4 bg-red-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="relative glass p-8 rounded-[40px] border border-red-50 shadow-xl overflow-hidden">
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className="p-4 rounded-2xl bg-red-600 text-slate-900 animate-pulse">
+                                <PhoneCall className="w-8 h-8" />
+                            </div>
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900">Layanan Darurat</h3>
+                                <p className="text-sm text-slate-500 font-mono tracking-tighter">CALL CENTER 24 JAM</p>
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            {[
+                                { label: "Ambulans Desa", val: "SIAGA 24/7" },
+                                { label: "Panic Button", val: "RESPONSE < 5 MIN" },
+                                { label: "Aduan Masyarakat", val: "TERHUBUNG KADES" }
+                            ].map((item, i) => (
+                                <div key={i} className="flex justify-between p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                    <span className="text-sm font-bold text-slate-600">{item.label}</span>
+                                    <span className="text-xs font-mono text-red-600 font-black">{item.val}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="space-y-8">
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-widest">
+                            <MessageSquare className="w-3 h-3" /> Aspirasi Warga
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight">Sistem Aduan & Respon Cepat</h2>
+                    </div>
+                    <p className="text-lg text-slate-500 leading-relaxed">
+                        Membangun jembatan komunikasi langsung antara warga dan pimpinan desa. Transparan, terukur, dan tuntas.
+                    </p>
+                    <div className="p-6 rounded-3xl bg-primary-50 border border-primary-100 text-slate-900 space-y-4 relative overflow-hidden shadow-sm">
+                        <div className="absolute top-0 right-0 p-4 text-primary-200">
+                            <Zap className="w-16 h-16" />
+                        </div>
+                        <p className="text-sm font-mono text-primary-600 font-bold uppercase tracking-widest">Live Feedback Loop</p>
+                        <h4 className="text-xl font-bold">Respon Aduan Maksimal 1x24 Jam</h4>
+                        <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map(star => <div key={star} className="w-3 h-3 bg-amber-400 rounded-full" />)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "satu-data",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <Database className="w-4 h-4" />
+                        Perpres 39/2019
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Satu Data <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">Indonesia</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Platform desa menjadi feeder data ke sistem nasional — memenuhi mandat Perpres 39/2019 tentang Satu Data Indonesia.</p>
+                </div>
+                <div className="glass p-10 rounded-[40px] border border-slate-200 bg-white shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-400 via-blue-500 to-primary-500" />
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="space-y-4 text-center">
+                            <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto ring-4 ring-white shadow-sm border border-indigo-100">
+                                <Database className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900">Data Desa</h3>
+                            <p className="text-sm text-slate-500">Kependudukan, keuangan, aset, layanan — semua berawal dari input level desa.</p>
+                            <div className="space-y-2">
+                                {["Dukcapil Lokal", "Siskeudes", "Layanan Publik"].map((item, i) => (
+                                    <div key={i} className="px-3 py-2 bg-indigo-50 rounded-xl text-xs font-bold text-indigo-700">{item}</div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="space-y-4 text-center relative">
+                            <div className="absolute top-8 -left-4 w-4 border-t-2 border-dashed border-indigo-200 hidden md:block" />
+                            <div className="absolute top-8 -right-4 w-4 border-t-2 border-dashed border-indigo-200 hidden md:block" />
+                            <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto ring-4 ring-white shadow-sm border border-blue-100">
+                                <Network className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900">API Gateway</h3>
+                            <p className="text-sm text-slate-500">Penghubung standar antar sistem — format data terbuka & interoperable.</p>
+                            <div className="space-y-2">
+                                {["REST API", "Data Standar", "Enkripsi E2E"].map((item, i) => (
+                                    <div key={i} className="px-3 py-2 bg-blue-50 rounded-xl text-xs font-bold text-blue-700">{item}</div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="space-y-4 text-center">
+                            <div className="w-16 h-16 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mx-auto ring-4 ring-white shadow-sm border border-primary-100">
+                                <Globe className="w-8 h-8" />
+                            </div>
+                            <h3 className="text-lg font-bold text-slate-900">Sistem Nasional</h3>
+                            <p className="text-sm text-slate-500">Data desa menjadi suplai untuk kebijakan di tingkat kabupaten hingga nasional.</p>
+                            <div className="space-y-2">
+                                {["DTKS Kemensos", "Satu Data Portal", "Dashboard Nasional"].map((item, i) => (
+                                    <div key={i} className="px-3 py-2 bg-primary-50 rounded-xl text-xs font-bold text-primary-700">{item}</div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "sdgs-desa",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <Globe className="w-4 h-4" />
+                        Pembangunan Berkelanjutan
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        SDGs <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">Desa</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Platform otomatis melacak 18 indikator SDGs Desa dari Kemendes PDTT — tanpa input manual.</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {[
+                        { no: "01", title: "Desa Tanpa Kemiskinan", desc: "Tracking data warga miskin, penerima BLT, dan program pemberdayaan.", color: "bg-red-50 text-red-600 border-red-100" },
+                        { no: "02", title: "Desa Tanpa Kelaparan", desc: "Integrasi data stunting, MBG, dan ketahanan pangan per dusun.", color: "bg-amber-50 text-amber-600 border-amber-100" },
+                        { no: "03", title: "Desa Sehat & Sejahtera", desc: "Data Posyandu, imunisasi, dan akses kesehatan warga.", color: "bg-emerald-50 text-emerald-600 border-emerald-100" },
+                        { no: "04", title: "Pendidikan Berkualitas", desc: "Tracking anak putus sekolah, beasiswa, dan fasilitas pendidikan.", color: "bg-blue-50 text-blue-600 border-blue-100" },
+                        { no: "08", title: "Pertumbuhan Ekonomi", desc: "Data BUMDes, UMKM, koperasi, dan pendapatan desa.", color: "bg-violet-50 text-violet-600 border-violet-100" },
+                        { no: "16", title: "Kelembagaan Damai", desc: "Transparansi anggaran, musdes digital, dan akuntabilitas.", color: "bg-slate-50 text-slate-600 border-slate-200" }
+                    ].map((item, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.08 }}
+                            className={`p-5 rounded-[24px] border ${item.color.split(' ')[2]} bg-white hover:shadow-md transition-all flex gap-4 items-start`}
+                        >
+                            <div className={`w-12 h-12 rounded-2xl ${item.color.split(' ')[0]} ${item.color.split(' ')[1]} flex items-center justify-center text-lg font-extrabold shrink-0 shadow-sm`}>
+                                {item.no}
+                            </div>
+                            <div>
+                                <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                <p className="text-[11px] text-slate-500 leading-relaxed mt-1">{item.desc}</p>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+                <div className="glass p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-emerald-50 border border-blue-100 flex items-center gap-4">
+                    <Database className="w-6 h-6 text-blue-600 shrink-0" />
+                    <p className="text-sm text-slate-700"><span className="font-bold">Auto-Tracking:</span> Seluruh 18 indikator SDGs Desa terisi otomatis dari data operasional harian — tanpa perlu input manual atau laporan terpisah.</p>
+                </div>
+            </div>
+        ),
+    },
+    {
         id: "benefits",
         content: (
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -1414,6 +1836,68 @@ export const slides = [
                                 <h4 className="font-bold text-slate-900">Kepala Desa Percontohan</h4>
                                 <p className="text-sm text-slate-500">Testimoni Implementasi Smart Village</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "literasi-digital",
+        content: (
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <GraduationCap className="w-4 h-4" />
+                        Capacity Building
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Pelatihan & <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-purple-500">Literasi Digital</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-lg">Pendampingan intensif untuk aparatur desa dan warga agar adopsi teknologi berjalan lancar dan berkelanjutan.</p>
+                </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                        <h3 className="text-xl font-bold text-slate-900">Program Pelatihan</h3>
+                        {[
+                            { title: "Training Aparatur Desa", desc: "Pelatihan operasional sistem untuk Sekdes, Kaur, dan operator desa (3-5 hari intensif).", icon: <User className="w-5 h-5" />, color: "text-blue-600 bg-blue-50" },
+                            { title: "Pendampingan Kader", desc: "Pelatihan kader Posyandu & PKK untuk input data stunting, MBG, dan layanan sosial.", icon: <Users className="w-5 h-5" />, color: "text-pink-600 bg-pink-50" },
+                            { title: "Sosialisasi Warga", desc: "Workshop penggunaan Mobile App untuk warga — dari pengajuan surat hingga pengaduan.", icon: <Smartphone className="w-5 h-5" />, color: "text-emerald-600 bg-emerald-50" },
+                            { title: "Sertifikasi Digital", desc: "Aparatur mendapat sertifikat kompetensi digital dari lembaga terakreditasi.", icon: <GraduationCap className="w-5 h-5" />, color: "text-amber-600 bg-amber-50" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex gap-4 items-start p-4 rounded-2xl border border-slate-100 bg-white hover:shadow-md transition-all group">
+                                <div className={`p-2.5 rounded-xl ${item.color} shrink-0 shadow-sm border border-white group-hover:scale-110 transition-transform`}>
+                                    {item.icon}
+                                </div>
+                                <div>
+                                    <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                    <p className="text-[11px] text-slate-500 leading-relaxed mt-1">{item.desc}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="glass p-8 rounded-[32px] border border-violet-100 bg-gradient-to-b from-violet-50/30 to-white shadow-lg relative overflow-hidden">
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-violet-400 to-purple-500" />
+                        <h3 className="text-lg font-bold text-slate-900 mb-6">Metode Pendampingan</h3>
+                        <div className="space-y-4">
+                            {[
+                                { phase: "Bulan 1-2", title: "Instalasi & Setup", desc: "Pemasangan sistem, migrasi data, dan konfigurasi awal." },
+                                { phase: "Bulan 3-4", title: "Training Intensif", desc: "Pelatihan hands-on untuk seluruh operator desa." },
+                                { phase: "Bulan 5-6", title: "Pendampingan On-Site", desc: "Tim teknis hadir di desa untuk memastikan adopsi." },
+                                { phase: "Bulan 7-12", title: "Support & Monitoring", desc: "Remote support via helpdesk + evaluasi triwulanan." }
+                            ].map((item, i) => (
+                                <div key={i} className="flex gap-4 items-start p-3 rounded-xl bg-white border border-violet-50">
+                                    <div className="px-2 py-1 rounded-lg bg-violet-100 text-violet-700 text-[10px] font-bold shrink-0 whitespace-nowrap">{item.phase}</div>
+                                    <div>
+                                        <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                        <p className="text-[11px] text-slate-500">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -1521,68 +2005,123 @@ export const slides = [
     {
         id: "consultant-profile",
         content: (
-            <div className="grid md:grid-cols-12 gap-12 items-center">
-                <div className="md:col-span-5 relative group">
-                    <div className="absolute -inset-4 bg-gradient-to-tr from-primary-200 to-indigo-200 rounded-[40px] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border-8 border-white shadow-2xl">
-                        <img
-                            src="/material/Anton Susanto S.Ip.JPG"
-                            alt="Anton Susanto S.Ip"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-slate-100/80 via-slate-100/40 to-transparent">
-                            <h3 className="text-2xl font-bold text-slate-900">Anton Susanto, S.IP</h3>
-                            <p className="text-primary-700 font-medium">Digital Transformation Consultant</p>
-                        </div>
-                    </div>
+            <div className="space-y-10 h-full flex flex-col justify-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                    >
+                        <GraduationCap className="w-4 h-4 text-primary-600" />
+                        Inisiator & Konsultan
+                    </motion.div>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Gagasan & <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">Strategi Desa Digital</span>
+                    </h2>
                 </div>
-                <div className="md:col-span-7 space-y-8">
-                    <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider">
-                            <GraduationCap className="w-3 h-3" /> Kepemimpinan Strategis
+
+                <div className="grid md:grid-cols-12 gap-10 items-stretch">
+                    {/* Left: Photo Card */}
+                    <div className="md:col-span-4 relative group">
+                        <div className="absolute -inset-3 bg-gradient-to-tr from-primary-200 to-blue-200 rounded-[40px] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />
+                        <div className="relative h-full overflow-hidden rounded-[32px] border-[6px] border-white shadow-2xl flex flex-col">
+                            <div className="flex-1 relative overflow-hidden">
+                                <img
+                                    src="/material/Anton Susanto S.Ip.JPG"
+                                    alt="Anton Susanto S.Ip"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                            </div>
+                            <div className="absolute bottom-0 inset-x-0 p-6 text-white">
+                                <h3 className="text-2xl font-extrabold">Anton Susanto, S.IP</h3>
+                                <p className="text-primary-200 font-semibold text-sm">Digital Transformation Consultant</p>
+                                <div className="flex items-center gap-3 mt-3">
+                                    <div className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                        Smart Village Strategist
+                                    </div>
+                                    <div className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold text-white uppercase tracking-wider">
+                                        SPBE Advisor
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h2 className="text-4xl font-display font-bold text-slate-900">Gagasan & Strategi Desa Digital</h2>
                     </div>
 
-                    <div className="grid gap-6">
-                        {[
-                            {
-                                title: "Tata Kelola Pemerintah",
-                                text: "Mendorong modernisasi birokrasi desa berbasis data untuk efisiensi layanan publik yang lebih responsif.",
-                                icon: <ShieldCheck className="w-5 h-5" />
-                            },
-                            {
-                                title: "Layanan Publik Inklusif",
-                                text: "Memastikan aksesibilitas layanan mandiri bagi seluruh lapisan masyarakat tanpa hambatan geografis.",
-                                icon: <User className="w-5 h-5" />
-                            },
-                            {
-                                title: "Keterbukaan Informasi",
-                                text: "Implementasi transparansi digital guna membangun kepercayaan masyarakat terhadap tata kelola desa.",
-                                icon: <Link className="w-5 h-5" />
-                            }
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="flex gap-4 p-5 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
-                            >
-                                <div className="shrink-0 p-3 rounded-2xl bg-slate-100 text-primary-600">
-                                    {item.icon}
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
-                                    <p className="text-sm text-slate-500 leading-relaxed">{item.text}</p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    {/* Right: Content */}
+                    <div className="md:col-span-8 space-y-6">
+                        {/* Expertise Grid */}
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                {
+                                    title: "Tata Kelola Pemerintahan",
+                                    desc: "Modernisasi birokrasi desa berbasis data untuk efisiensi layanan publik yang responsif dan akuntabel.",
+                                    icon: <ShieldCheck className="w-5 h-5" />,
+                                    color: "text-primary-600 bg-primary-50 border-primary-100"
+                                },
+                                {
+                                    title: "Layanan Publik Inklusif",
+                                    desc: "Memastikan aksesibilitas layanan mandiri bagi seluruh lapisan masyarakat tanpa hambatan geografis.",
+                                    icon: <User className="w-5 h-5" />,
+                                    color: "text-blue-600 bg-blue-50 border-blue-100"
+                                },
+                                {
+                                    title: "Keterbukaan Informasi",
+                                    desc: "Implementasi transparansi digital untuk membangun kepercayaan masyarakat terhadap tata kelola desa.",
+                                    icon: <Globe className="w-5 h-5" />,
+                                    color: "text-emerald-600 bg-emerald-50 border-emerald-100"
+                                },
+                                {
+                                    title: "Ekonomi Digital Desa",
+                                    desc: "Pemberdayaan BUMDes, UMKM, dan Koperasi Merah Putih melalui ekosistem marketplace lokal.",
+                                    icon: <TrendingUp className="w-5 h-5" />,
+                                    color: "text-amber-600 bg-amber-50 border-amber-100"
+                                }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className={`p-4 rounded-2xl border ${item.color.split(' ')[2]} bg-white hover:shadow-lg transition-all group flex gap-3 items-start`}
+                                >
+                                    <div className={`p-2.5 rounded-xl ${item.color.split(' ')[1]} ${item.color.split(' ')[0]} shrink-0 shadow-sm border border-white group-hover:scale-110 transition-transform`}>
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
+                                        <p className="text-[11px] text-slate-500 leading-relaxed mt-1">{item.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
 
-                    <div className="p-6 rounded-3xl bg-primary-50 border border-primary-100 italic text-primary-700 relative">
-                        <Quote className="absolute -top-3 -left-3 w-8 h-8 text-primary-200 -z-10" />
-                        "Digitalisasi bukan sekadar teknologi, melainkan sebuah perubahan budaya untuk pelayanan publik yang lebih bermartabat dan transparan."
+                        {/* Quote */}
+                        <div className="glass p-6 rounded-[24px] border border-primary-100 bg-gradient-to-r from-primary-50/50 to-blue-50/50 relative overflow-hidden">
+                            <Quote className="absolute -top-2 -left-2 w-10 h-10 text-primary-200" />
+                            <blockquote className="text-base md:text-lg italic text-slate-700 relative z-10 leading-relaxed pl-6">
+                                "Digitalisasi bukan sekadar soal teknologi — melainkan transformasi budaya pelayanan publik yang lebih bermartabat, transparan, dan berkeadilan bagi seluruh warga desa di Indonesia."
+                            </blockquote>
+                        </div>
+
+                        {/* Contact & Social */}
+                        <div className="grid grid-cols-3 gap-4">
+                            {[
+                                { label: "Kontak", value: "antonsusanto.id", icon: <Globe className="w-4 h-4 text-primary-600" /> },
+                                { label: "Pengalaman", value: "2+ Tahun Konsultasi", icon: <Briefcase className="w-4 h-4 text-blue-600" /> },
+                                { label: "Fokus Area", value: "Smart Village & SPBE", icon: <Cpu className="w-4 h-4 text-emerald-600" /> }
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                    <div className="p-2 rounded-xl bg-white shadow-sm border border-slate-200">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider">{item.label}</div>
+                                        <div className="text-sm font-bold text-slate-900">{item.value}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
