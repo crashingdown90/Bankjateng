@@ -567,110 +567,182 @@ export const slides: Slide[] = [
         id: "digital-sovereignty",
         content: (
             <div className="space-y-12 h-full flex flex-col justify-center">
-                <div className="grid md:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
+                <div className="grid md:grid-cols-12 gap-12 items-center">
+                    <div className="md:col-span-7 space-y-8">
                         <div className="space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-[0.2em]"
+                            >
                                 <Key className="w-3 h-3" /> Filosofi Non-Vendor Base
-                            </div>
-                            <h2 className="text-4xl md:text-5xl font-display font-bold text-slate-900 leading-tight italic">
-                                Kedaulatan & <br />Kepemilikan Desa
+                            </motion.div>
+                            <h2 className="text-5xl md:text-6xl font-display font-extrabold text-slate-900 leading-tight">
+                                Kedaulatan & <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-primary-600 to-emerald-600">
+                                    Kepemilikan Desa
+                                </span>
                             </h2>
                         </div>
                         <div className="space-y-6">
-                            <p className="text-lg text-slate-600 leading-relaxed">
-                                Aplikasi ini dibangun secara <span className="font-bold text-primary-600 underline decoration-2 underline-offset-4">Custom</span> untuk setiap desa. Desa bukan lagi penyewa, melainkan <span className="font-bold">Pemilik Sah</span> dari sistem ini.
+                            <p className="text-xl text-slate-600 leading-relaxed font-medium">
+                                Aplikasi ini dibangun secara <span className="text-primary-600 font-bold border-b-2 border-primary-200">Custom</span> untuk setiap desa. Desa bukan lagi penyewa, melainkan <span className="font-bold text-slate-900 italic">Pemilik Sah</span> dari sistem ini.
                             </p>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                            <div className="grid grid-cols-2 gap-6">
+                                <div className="p-5 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                                    <div className="w-10 h-10 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                                        <Landmark className="w-5 h-5" />
+                                    </div>
                                     <h5 className="font-bold text-slate-900 mb-1">Custom Ownership</h5>
-                                    <p className="text-xs text-slate-500">Nama, logo, dan identitas aplikasi sepenuhnya milik desa.</p>
+                                    <p className="text-[11px] text-slate-500 leading-relaxed">Nama, logo, and identitas aplikasi sepenuhnya milik desa.</p>
                                 </div>
-                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                                <div className="p-5 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow group">
+                                    <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                                        <ShieldCheck className="w-5 h-5" />
+                                    </div>
                                     <h5 className="font-bold text-slate-900 mb-1">Private Data</h5>
-                                    <p className="text-xs text-slate-500">Data kependudukan bersifat private di server internal desa.</p>
+                                    <p className="text-[11px] text-slate-500 leading-relaxed">Data kependudukan bersifat private di server internal desa.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-primary-100/20 rounded-full blur-3xl animate-pulse" />
-                        <div className="relative glass p-8 rounded-[40px] border border-white shadow-2xl space-y-6">
-                            <div className="flex justify-between items-center pb-4 border-b border-slate-200">
-                                <div className="font-mono text-xs text-slate-500">STATUS: PRIVATE OWNERSHIP</div>
-                                <ShieldCheck className="text-emerald-500 w-6 h-6" />
-                            </div>
-                            <div className="space-y-4">
-                                <div className="h-4 w-3/4 bg-slate-100 rounded-full" />
-                                <div className="h-4 w-full bg-slate-100 rounded-full" />
-                                <div className="h-4 w-2/3 bg-slate-100 rounded-full" />
-                            </div>
-                            <div className="pt-4 border-t border-slate-200">
-                                <div className="p-4 rounded-2xl bg-primary-600 text-white text-center font-bold">
-                                    SISTEM MILIK DESA MANDIRI
+
+                    <div className="md:col-span-5 relative">
+                        <div className="absolute -inset-10 bg-gradient-to-br from-primary-200/40 via-blue-100/20 to-emerald-200/40 rounded-full blur-[80px] animate-pulse" />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative glass p-1 rounded-[48px] border border-white/60 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden"
+                        >
+                            <div className="bg-white/80 backdrop-blur-xl p-8 rounded-[44px] space-y-8">
+                                <div className="flex justify-between items-center">
+                                    <div className="space-y-1">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                                            <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-widest">Secure Node</span>
+                                        </div>
+                                        <div className="font-mono text-[10px] text-slate-400">ID: DESA-DIGITAL-VAULT-01</div>
+                                    </div>
+                                    <div className="w-12 h-12 rounded-2xl bg-slate-900 flex items-center justify-center text-white shadow-lg">
+                                        <Database className="w-6 h-6" />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
+                                        <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase">
+                                            <span>Encryption Status</span>
+                                            <span className="text-emerald-600">Active</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                animate={{ width: "100%" }}
+                                                transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                                                className="h-full bg-emerald-500"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div className="p-3 rounded-xl bg-primary-50 border border-primary-100/50 text-center">
+                                            <div className="text-[10px] text-primary-600 font-bold uppercase">Local Server</div>
+                                            <div className="text-sm font-extrabold text-slate-900 mt-1">ON-SITE</div>
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-blue-50 border border-blue-100/50 text-center">
+                                            <div className="text-[10px] text-blue-600 font-bold uppercase">Uptime</div>
+                                            <div className="text-sm font-extrabold text-slate-900 mt-1">99.9%</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-900 rounded-2xl p-4 flex items-center justify-between">
+                                    <span className="text-white text-xs font-bold font-mono">ENCRYPTED_DATA_STORE</span>
+                                    <div className="flex gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary-400" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary-400/50" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-primary-400/20" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
-                {/* Ownership Comparison Table moved from workflow */}
-                <div className="grid md:grid-cols-2 gap-6">
-                    {/* Platform Milik Desa (Ours) */}
-                    <div className="glass p-6 rounded-[28px] border-2 border-emerald-200 bg-gradient-to-b from-emerald-50/50 to-white shadow-lg relative overflow-hidden">
-                        <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 to-emerald-600" />
-                        <div className="flex items-center gap-3 mb-5">
-                            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100 shadow-sm">
-                                <ShieldCheck className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-slate-900">Platform Milik Desa</h3>
-                                <p className="text-[11px] text-emerald-600 font-semibold uppercase tracking-wider">Sistem Kami ✓</p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3">
-                            {[
-                                { text: "Data di server lokal desa", icon: "✅" },
-                                { text: "Sistem milik desa tetap", icon: "✅" },
-                                { text: "Bebas kustomisasi total", icon: "✅" },
-                                { text: "Pengembangan mandiri", icon: "✅" },
-                                { text: "Tanpa biaya berlangganan", icon: "✅" },
-                                { text: "Source code milik desa", icon: "✅" }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-start gap-2 p-2 rounded-xl bg-white border border-emerald-50 text-[11px]">
-                                    <span className="shrink-0">{item.icon}</span>
-                                    <p className="text-slate-700 font-medium">{item.text}</p>
+                {/* Ownership Comparison — Premium Versus Battle UI */}
+                <div className="grid md:grid-cols-2 gap-8 mt-4">
+                    {/* Platform Milik Desa (The Winner) */}
+                    <motion.div
+                        whileHover={{ y: -5 }}
+                        className="relative p-1 rounded-[32px] bg-gradient-to-br from-emerald-500/20 via-primary-500/10 to-transparent border border-emerald-500/30 shadow-xl"
+                    >
+                        <div className="bg-white/95 backdrop-blur-md p-7 rounded-[30px] h-full space-y-6">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-200">
+                                        <ShieldCheck className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-extrabold text-slate-900">Platform Milik Desa</h3>
+                                        <p className="text-[10px] text-emerald-600 font-black uppercase tracking-[0.2em] mt-0.5">Kedaulatan Rakyat Desa ✓</p>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
+                                <div className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase">Champion</div>
+                            </div>
 
-                    {/* Vendor Pihak Ketiga (Others) */}
-                    <div className="glass p-6 rounded-[28px] border border-red-100 bg-gradient-to-b from-red-50/30 to-white shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-red-300 to-red-400" />
-                        <div className="flex items-center gap-3 mb-5">
-                            <div className="w-10 h-10 rounded-xl bg-red-50 text-red-500 flex items-center justify-center border border-red-100 shadow-sm">
-                                <XCircle className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <h3 className="text-lg font-bold text-slate-900">Vendor Pihak Ketiga</h3>
-                                <p className="text-[11px] text-red-500 font-semibold uppercase tracking-wider">Aplikasi Umum ✗</p>
+                            <div className="grid grid-cols-2 gap-3">
+                                {[
+                                    { text: "Server Lokal & Berdaulat", desc: "Data tidak diintip pihak luar" },
+                                    { text: "Aset Inventaris Desa", desc: "Bukan sewa, jadi milik aset" },
+                                    { text: "Bebas Kustomisasi", desc: "Sesuai RPJMDesa Anda" },
+                                    { text: "Pengembangan Mandiri", desc: "Tak tergantung vendor" },
+                                    { text: "Zero Recurring Fee", desc: "Efisiensi APBDes jangka panjang" },
+                                    { text: "Source Code Open", desc: "Dimiliki penuh oleh PemDes" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-3 p-3 rounded-2xl bg-emerald-50/50 border border-emerald-100 hover:bg-emerald-50 transition-colors">
+                                        <div className="w-5 h-5 rounded-full bg-emerald-500 text-white flex shrink-0 items-center justify-center text-[10px]">✓</div>
+                                        <div>
+                                            <p className="text-[11px] font-bold text-slate-900">{item.text}</p>
+                                            <p className="text-[9px] text-slate-500">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-3">
-                            {[
-                                { text: "Data di server pihak ke-3", icon: "❌" },
-                                { text: "Hanya sewa aplikasi", icon: "❌" },
-                                { text: "Template kaku/fixed", icon: "❌" },
-                                { text: "Tergantung vendor", icon: "❌" },
-                                { text: "Biaya langganan rutin", icon: "❌" },
-                                { text: "Vendor tutup = data hilang", icon: "❌" }
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-start gap-2 p-2 rounded-xl bg-white/50 border border-red-50 text-[11px]">
-                                    <span className="shrink-0">{item.icon}</span>
-                                    <p className="text-slate-500">{item.text}</p>
+                    </motion.div>
+
+                    {/* Vendor Pihak Ketiga (The Loser) */}
+                    <div className="relative p-1 rounded-[32px] bg-slate-100 border border-slate-200 shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+                        <div className="bg-white/60 p-7 rounded-[30px] h-full space-y-6">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-2xl bg-slate-200 text-slate-400 flex items-center justify-center">
+                                        <XCircle className="w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-extrabold text-slate-400">Vendor Pihak Ketiga</h3>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-0.5">Sistem Sewa Umum ✗</p>
+                                    </div>
                                 </div>
-                            ))}
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-3 grayscale opacity-60">
+                                {[
+                                    { text: "Data di Cloud Vendor", desc: "Rawan kebocoran & dipantau" },
+                                    { text: "Status Pinjam/Sewa", desc: "Bukan aset resmi desa" },
+                                    { text: "Template Kaku", desc: "Tidak bisa diubah-ubah" },
+                                    { text: "Tergantung Vendor", desc: "Update lama & birokrasi" },
+                                    { text: "Biaya Bulanan", desc: "Beban dana desa rutin" },
+                                    { text: "Risiko Vendor Tutup", desc: "Seluruh data hilang total" }
+                                ].map((item, i) => (
+                                    <div key={i} className="flex gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                                        <div className="w-5 h-5 rounded-full bg-slate-200 text-slate-400 flex shrink-0 items-center justify-center text-[10px]">✗</div>
+                                        <div>
+                                            <p className="text-[11px] font-bold text-slate-500">{item.text}</p>
+                                            <p className="text-[9px] text-slate-400">{item.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
