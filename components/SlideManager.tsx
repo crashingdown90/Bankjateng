@@ -64,7 +64,7 @@ export default function SlideManager() {
     };
 
     return (
-        <main className="relative min-h-screen w-full overflow-x-hidden bg-white text-slate-900 flex flex-col font-sans select-none">
+        <main className="relative min-h-screen w-full overflow-x-hidden bg-white text-slate-900 flex flex-col font-sans">
             {/* Background decoration */}
             <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-100/40 blur-[60px] md:blur-[120px] rounded-full" />
