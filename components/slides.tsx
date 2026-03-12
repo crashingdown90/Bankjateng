@@ -71,6 +71,7 @@ import {
     Users2
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export interface Slide {
     id: string;
@@ -85,15 +86,15 @@ export const slides: Slide[] = [
                 
                 {/* Background Decor */}
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent" />
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-200/50 rounded-full blur-3xl opacity-60 block md:block" />
-                <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-200/40 rounded-full blur-3xl opacity-60 block md:block" />
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-200/50 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
+                <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-200/40 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
 
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto p-8 md:p-12 relative z-10">
                     
                     {/* Left Typography & Content */}
                     <div className="space-y-6">
                         <div className="flex flex-col items-start gap-4 mb-8">
-                            <img src="/Bank_BJB_logo.png" alt="Bank BJB Logo" className="h-16 md:h-20 w-auto" />
+                            <Image src="/Bank_BJB_logo.png" alt="Bank BJB Logo" className="h-16 md:h-20 w-auto" width={200} height={80} priority />
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -164,13 +165,13 @@ export const slides: Slide[] = [
                             {/* Glass Card Stack representing connectivity */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="relative w-4/5 h-4/5">
-                                    <div className="absolute inset-0 bg-white/40 backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl transform rotate-6 scale-95" />
-                                    <div className="absolute inset-0 bg-blue-500/10 backdrop-blur-md border border-white/80 shadow-xl rounded-3xl transform -rotate-3 scale-100 flex items-center justify-center overflow-hidden">
-                                        <img src="/futuristic_village_cover.png" alt="Desa Digital UI" className="w-full h-full object-cover opacity-80 mix-blend-overlay" />
+                                    <div className="absolute inset-0 bg-white/40 backdrop-blur-none md:backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl transform rotate-6 scale-95" />
+                                    <div className="absolute inset-0 bg-blue-500/10 backdrop-blur-none md:backdrop-blur-md border border-white/80 shadow-xl rounded-3xl transform -rotate-3 scale-100 flex items-center justify-center overflow-hidden">
+                                        <Image src="/futuristic_village_cover.png" alt="Desa Digital UI" className="w-full h-full object-cover opacity-80 mix-blend-overlay" width={500} height={500} priority />
                                         
                                         {/* Overlay Content */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent px-6 pb-6 flex flex-col justify-end">
-                                            <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30">
+                                            <div className="w-12 h-12 bg-white/20 backdrop-blur-none md:backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30">
                                                 <Network className="w-6 h-6 text-white" />
                                             </div>
                                             <div className="text-white font-bold text-lg leading-tight">Connected Village Pipeline</div>
@@ -424,7 +425,7 @@ export const slides: Slide[] = [
                         {/* Decorative Background */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-[40px] transform rotate-3 scale-105" />
 
-                        <div className="glass rounded-[32px] p-6 md:p-10 border border-white bg-white/60 backdrop-blur-xl shadow-2xl relative overflow-hidden flex flex-col justify-center h-full min-h-[300px] md:min-h-[400px]">
+                        <div className="glass rounded-[32px] p-6 md:p-10 border border-white bg-white md:bg-white/60 backdrop-blur-none md:backdrop-blur-xl shadow-2xl relative overflow-hidden flex flex-col justify-center h-full min-h-[300px] md:min-h-[400px]">
                             {/* Watermark Icon */}
                             <div className="absolute -top-10 -right-10 text-slate-900 opacity-[0.03] transform rotate-12">
                                 <Landmark className="w-64 h-64" />
@@ -491,7 +492,7 @@ export const slides: Slide[] = [
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: node.delay, type: "spring", stiffness: 100 }}
-                            className={`absolute ${node.pos} w-[140px] md:w-[180px] p-3 md:p-4 rounded-3xl glass backdrop-blur-xl border border-slate-200/80 shadow-xl text-center group hover:scale-105 transition-transform z-20`}
+                            className={`absolute ${node.pos} w-[140px] md:w-[180px] p-3 md:p-4 rounded-3xl glass backdrop-blur-none md:backdrop-blur-xl border border-slate-200/80 shadow-xl text-center group hover:scale-105 transition-transform z-20`}
                         >
                             <div className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl flex items-center justify-center mb-2 shadow-sm ${node.color}`}>
                                 {node.icon}
@@ -509,7 +510,7 @@ export const slides: Slide[] = [
                         className="relative z-30 w-[180px] h-[180px] md:w-[240px] md:h-[240px]"
                     >
                         {/* Core glow */}
-                        <div className="absolute inset-0 bg-blue-400 rounded-full blur-3xl opacity-30 animate-pulse" />
+                        <div className="absolute inset-0 bg-blue-400 rounded-full blur-2xl md:blur-3xl opacity-30 animate-pulse hidden md:block" />
                         
                         <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-blue-800 via-blue-700 to-amber-500 p-[2px] shadow-2xl shadow-blue-900/40">
                             <div className="w-full h-full rounded-[38px] bg-white flex flex-col items-center justify-center p-6 text-center transform transition-transform hover:scale-[1.02]">
@@ -623,14 +624,15 @@ export const slides: Slide[] = [
                         animate={{ opacity: 1, scale: 1 }}
                         className="md:col-span-12 lg:col-span-7 group relative rounded-[40px] overflow-hidden bg-indigo-950 h-[350px] md:h-[500px] shadow-2xl border border-indigo-500/30"
                     >
-                        <img 
+                        <Image 
                             src="/ai_village_evolution.png" 
                             alt="AI Evolution Future" 
                             className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[3s]"
+                            width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-indigo-950 via-indigo-950/40 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-8 md:p-10 space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[10px] font-black tracking-widest uppercase shadow-xl backdrop-blur-md">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[10px] font-black tracking-widest uppercase shadow-xl backdrop-blur-none md:backdrop-blur-md">
                                 <Activity className="w-3.5 h-3.5" /> Cognitive Transformation
                             </div>
                             <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">Orkestrasi AI <br/>Digitalisasi Desa</h3>
@@ -788,7 +790,7 @@ export const slides: Slide[] = [
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="bg-white/80 backdrop-blur-sm rounded-3xl p-1.5 border border-amber-200 shadow-sm relative group hover:shadow-lg transition-all flex flex-col items-center text-center ring-2 ring-amber-100 ring-offset-2"
+                            className="bg-white/80 backdrop-blur-none md:backdrop-blur-sm rounded-3xl p-1.5 border border-amber-200 shadow-sm relative group hover:shadow-lg transition-all flex flex-col items-center text-center ring-2 ring-amber-100 ring-offset-2"
                         >
                             <div className="absolute -top-3 w-6 h-6 rounded-full bg-amber-100 border border-amber-200 flex items-center justify-center text-[10px] font-bold text-amber-600 shadow-sm z-10">3</div>
                             <div className="w-full bg-amber-50 rounded-[22px] p-4 flex flex-col items-center flex-grow">
@@ -827,7 +829,7 @@ export const slides: Slide[] = [
                             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
                             <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl font-bold text-amber-600 shadow-sm z-10" />
                             
-                            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 relative z-10 border border-white/20 group-hover:scale-110 transition-transform">
+                            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-none md:backdrop-blur-md flex items-center justify-center mb-4 relative z-10 border border-white/20 group-hover:scale-110 transition-transform">
                                 <Lock className="w-8 h-8 text-amber-400" />
                             </div>
                             <h4 className="text-lg font-black text-white mb-2 relative z-10">100% Retensi BJB</h4>
@@ -976,25 +978,40 @@ export const slides: Slide[] = [
                     <div className="absolute inset-0 bg-blue-700/5 rounded-[60px] transform rotate-3 scale-105" />
                     <div className="relative glass h-[450px] rounded-[50px] border border-white p-6 md:p-10 overflow-hidden flex flex-col justify-center items-center text-center">
                         <PieChart className="w-48 h-48 text-blue-100 absolute -top-10 -right-10 opacity-20" />
-                        <div className="space-y-6 relative z-10">
-                            <div className="w-24 h-24 rounded-full bg-blue-700 flex items-center justify-center mx-auto shadow-2xl shadow-blue-200">
+                        <div className="space-y-6 relative z-10 w-full">
+                            <motion.div 
+                                initial={{ scale: 0.5, opacity: 0 }}
+                                whileInView={{ scale: 1, opacity: 1 }}
+                                viewport={{ once: true }}
+                                className="w-24 h-24 rounded-full bg-blue-700 flex items-center justify-center mx-auto shadow-2xl shadow-blue-200"
+                            >
                                 <TrendingUp className="w-12 h-12 text-white" />
-                            </div>
+                            </motion.div>
                             <h3 className="text-3xl font-bold text-slate-900">Dominasi Market Share</h3>
-                            <p className="text-slate-500 max-w-xs">Mengamankan posisi Bank BJB sebagai *market leader* keuangan desa sebelum kompetitor perbankan lain masuk lebih dalam.</p>
-                            <div className="pt-6">
-                                <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={{ width: "85%" }}
-                                        transition={{ duration: 1.5, delay: 0.5 }}
-                                        className="h-full bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500"
-                                    />
-                                </div>
-                                <div className="flex justify-between mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                                    <span>Target Market Share</span>
-                                    <span>85% In 2 Years</span>
-                                </div>
+                            <p className="text-slate-500 max-w-xs mx-auto">Satu-satunya solusi perbankan yang terintegrasi langsung ke sistem Tanda Tangan Elektronik dan SIA Desa.</p>
+                            
+                            <div className="pt-6 space-y-4">
+                                {/* Animated Chart Bars */}
+                                {[
+                                    { label: "BJB (Current)", val: "65%", color: "bg-blue-600" },
+                                    { label: "Target (2026)", val: "92%", color: "bg-gradient-to-r from-blue-700 to-amber-500" },
+                                ].map((bar, idx) => (
+                                    <div key={idx} className="space-y-1.5">
+                                        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                            <span>{bar.label}</span>
+                                            <span>{bar.val}</span>
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                            <motion.div
+                                                initial={{ width: 0 }}
+                                                whileInView={{ width: bar.val }}
+                                                viewport={{ once: true }}
+                                                transition={{ duration: 1.5, delay: 0.2 + (idx * 0.2) }}
+                                                className={`h-full ${bar.color}`}
+                                            />
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -1103,27 +1120,38 @@ export const slides: Slide[] = [
                 <div className="grid md:grid-cols-12 gap-8">
                     <div className="md:col-span-8 grid sm:grid-cols-2 gap-6">
                         {[
-                            { title: "Pertumbuhan CASA", value: "Proyeksi Rp 1.5 T", sub: "Dari Saldo Kas Desa & Tabungan Warga", desc: "Mengendapkan dana dari belanja 5.000 Desa (asumsi Rp 300jt/desa/bulan) langsung di Bank BJB.", icon: <Coins className="w-6 h-6" />, color: "text-blue-700", bg: "bg-blue-50" },
-                            { title: "Fee-Based Income", value: "↑ 185%", sub: "Dari Transaksi PPOB & Pajak", desc: "Pendapatan dari setiap pembayaran PBB-P2, Pajak Kendaraan, dan utilitas via portal desa.", icon: <CreditCard className="w-6 h-6" />, color: "text-blue-800", bg: "bg-blue-100/50" },
-                            { title: "Efisiensi Operasional", value: "↓ 40%", sub: "Cost to Serve", desc: "Mengurangi biaya layanan manual melalui otomatisasi sistem digital yang mandiri.", icon: <Zap className="w-6 h-6" />, color: "text-amber-600", bg: "bg-amber-50" },
-                            { title: "LTV Nasabah", value: "↑ 3.5x", sub: "Lifetime Value", desc: "Memperpanjang siklus hubungan nasabah melalui ekosistem yang sulit ditinggalkan.", icon: <TrendingUp className="w-6 h-6" />, color: "text-slate-700", bg: "bg-slate-100" }
+                            { title: "Pertumbuhan CASA", value: "Proyeksi Rp 1.5 T", sub: "Hingga 2026", desc: "Digitalisasi 5.312 desa di Jabar & Banten mengunci likuiditas dana desa eksklusif di ledger Bank BJB.", icon: <Coins className="w-6 h-6" />, color: "text-blue-700", bg: "bg-blue-50", percentage: "85%" },
+                            { title: "Fee-Based Income", value: "↑ 185%", sub: "Transaksi PPOB & PBB", desc: "Monetisasi setiap transaksi pembayaran pajak dan tagihan warga melalui ekosistem BJB Digi.", icon: <CreditCard className="w-6 h-6" />, color: "text-blue-800", bg: "bg-blue-100/50", percentage: "70%" },
+                            { title: "Efisiensi Operasional", value: "↓ 40%", sub: "Cost reduction", desc: "Digitalisasi memangkas biaya distribusi bantuan tunai dan monitoring manual melalui sistem real-time.", icon: <Zap className="w-6 h-6" />, color: "text-amber-600", bg: "bg-amber-50", percentage: "40%" },
+                            { title: "Competitive Moat", value: "Banking Ledger", sub: "Vs Fintech Wallets", desc: "BJB memiliki keunggulan regulasi sebagai pemegang rekening kas desa yang tidak dimiliki Fintech.", icon: <ShieldCheck className="w-6 h-6" />, color: "text-slate-700", bg: "bg-slate-100", percentage: "100%" }
                         ].map((card, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
                                 transition={{ delay: i * 0.1 }}
-                                className="p-6 rounded-[32px] bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all"
+                                className="p-6 rounded-[32px] bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all group"
                             >
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className={`p-3 rounded-2xl ${card.bg} ${card.color}`}>{card.icon}</div>
+                                    <div className={`p-3 rounded-2xl ${card.bg} ${card.color} group-hover:rotate-12 transition-transform`}>{card.icon}</div>
                                     <div>
                                         <div className={`text-2xl font-black ${card.color}`}>{card.value}</div>
                                         <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{card.sub}</div>
                                     </div>
                                 </div>
                                 <h4 className="text-lg font-bold text-slate-900 mb-2">{card.title}</h4>
-                                <p className="text-slate-500 text-xs md:text-sm leading-relaxed">{card.desc}</p>
+                                <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4">{card.desc}</p>
+                                {/* Animated Progress Meter */}
+                                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden mt-auto">
+                                    <motion.div 
+                                        initial={{ width: 0 }}
+                                        whileInView={{ width: card.percentage }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
+                                        className={`h-full ${card.color.replace('text', 'bg')}`}
+                                    />
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -1178,7 +1206,7 @@ export const slides: Slide[] = [
                         The Ultimate Advantage
                     </motion.div>
                     <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tighter">Strategic Dominance <span className="text-blue-700">Bank BJB</span></h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg font-medium">Bukan sekadar kemitraan sesaat, ini adalah skenario penguasaan hegemoni pasar pedesaan secara permanen (*Lock-in Effect*).</p>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg font-medium">Ini bukan sekadar kemitraan, ini adalah penguasaan ekosistem melalui *Banking Moat* yang tidak bisa ditembus oleh kompetitor.</p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-6">
@@ -1260,15 +1288,16 @@ export const slides: Slide[] = [
                         animate={{ opacity: 1, x: 0 }}
                         className="lg:col-span-12 group relative rounded-[40px] overflow-hidden bg-slate-50 border border-slate-200 shadow-2xl h-[250px] md:h-[350px]"
                     >
-                        <img 
+                        <Image 
                             src="/strategic_roadmap.png" 
                             alt="Strategic Roadmap" 
                             className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                            width={1200} height={400} sizes="100vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-slate-900/40" />
                         <div className="absolute inset-0 flex items-center justify-between px-12 pointer-events-none md:flex hidden">
-                            <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Digital Governance</div>
-                            <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Financial Inclusion</div>
+                            <div className="p-4 bg-white/10 backdrop-blur-none md:backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Digital Governance</div>
+                            <div className="p-4 bg-white/10 backdrop-blur-none md:backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Financial Inclusion</div>
                         </div>
                     </motion.div>
 
@@ -1384,10 +1413,11 @@ export const slides: Slide[] = [
                         className="lg:col-span-7 relative"
                     >
                         <div className="relative rounded-[60px] overflow-hidden bg-slate-900 aspect-square md:aspect-video lg:aspect-square shadow-2xl group border border-slate-800">
-                            <img 
+                            <Image 
                                 src="/strategic_synergy.png" 
                                 alt="Strategic Synergy" 
                                 className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]"
+                                width={800} height={800} sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/20" />
                             
@@ -1411,8 +1441,8 @@ export const slides: Slide[] = [
                         </div>
                         
                         {/* Decorative Blur */}
-                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] -z-10" />
-                        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-[100px] -z-10" />
+                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[60px] md:blur-[100px] -z-10 hidden md:block" />
+                        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-[60px] md:blur-[100px] -z-10 hidden md:block" />
                     </motion.div>
                 </div>
             </div>
@@ -1637,6 +1667,73 @@ export const slides: Slide[] = [
         ),
     },
     {
+        id: "impact-story",
+        content: (
+            <div className="space-y-10 min-h-[70vh] py-8 flex flex-col justify-center origin-center">
+                <div className="text-center space-y-4">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-black tracking-widest uppercase shadow-sm"
+                    >
+                        <User className="w-4 h-4" />
+                        A Citizen's Journey
+                    </motion.div>
+                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">Kisah Dampak: <span className="text-emerald-600">Satu Hari di Desa</span></h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg italic">"Dulu kami tertinggal, kini kami terdepan bersama Bank BJB."</p>
+                </div>
+
+                <div className="relative w-full max-w-5xl mx-auto mt-8">
+                    {/* Journey Line (Desktop) */}
+                    <div className="hidden md:block absolute top-[50px] left-[10%] right-[10%] h-0.5 bg-slate-200" />
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        {[
+                            { time: "08:00", active: "Administrasi", title: "Surat Instan", desc: "Warga mengajukan surat via HP, Kades TTD via sistem di manapun. Tanpa antri.", icon: <FileText className="w-6 h-6" /> },
+                            { time: "11:00", active: "Finansial", title: "BLT Langsung", desc: "Notifikasi SMS BJB cair. Uang mendarat di rekening tanpa potongan oknum.", icon: <Coins className="w-6 h-6" /> },
+                            { time: "15:00", active: "Ekonomi", title: "QRIS BUMDes", desc: "Warga belanja di warung desa pakai BJB Digi. Uang berputar di kas desa.", icon: <ShoppingBag className="w-6 h-6" /> },
+                            { time: "19:00", active: "Inklusivitas", title: "Inklusi Digital", desc: "Akses asuransi & perbankan terbuka bagi warga pelosok berkat data valid.", icon: <ShieldCheck className="w-6 h-6" /> }
+                        ].map((step, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: idx * 0.15 }}
+                                className="relative flex flex-col items-center text-center group"
+                            >
+                                <div className="absolute -top-3 px-3 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-black text-emerald-600 shadow-sm z-10">{step.time}</div>
+                                <div className="w-16 h-16 rounded-2xl bg-white border-2 border-emerald-100 flex items-center justify-center mb-6 shadow-lg group-hover:bg-emerald-600 group-hover:text-white transition-all cursor-default relative">
+                                    {step.icon}
+                                    <div className="absolute -bottom-2 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white md:block hidden" />
+                                </div>
+                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{step.active}</div>
+                                <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
+                                <p className="text-xs text-slate-600 leading-relaxed font-medium">{step.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="mt-16 p-8 rounded-[40px] bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8"
+                >
+                    <div className="absolute right-0 top-0 p-12 opacity-10">
+                        <Quote className="w-40 h-40" />
+                    </div>
+                    <div className="w-24 h-24 rounded-full border-4 border-white/20 bg-white/10 backdrop-blur-none md:backdrop-blur-md flex items-center justify-center text-4xl font-black shrink-0">
+                        98%
+                    </div>
+                    <div className="space-y-2 relative z-10">
+                        <h4 className="text-2xl font-bold italic leading-tight">"Digitalisasi ini bukan sekadar aplikasi, tapi martabat baru bagi desa kami."</h4>
+                        <p className="text-emerald-100 text-sm font-medium">— Kepuasan Warga dalam Pilot Project (Survei 2024)</p>
+                    </div>
+                </motion.div>
+            </div>
+        ),
+    },
+    {
         id: "best-practice",
         content: (
             <div className="space-y-12">
@@ -1655,10 +1752,11 @@ export const slides: Slide[] = [
                         animate={{ opacity: 1, scale: 1 }}
                         className="md:col-span-12 lg:col-span-8 group relative rounded-[40px] overflow-hidden bg-slate-900 h-[300px] md:h-[450px] shadow-2xl"
                     >
-                        <img 
+                        <Image 
                             src="/roi_success.png" 
                             alt="ROI Success" 
                             className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-1000"
+                            width={800} height={600} sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-8 md:p-12 space-y-4">
@@ -1773,10 +1871,11 @@ export const slides: Slide[] = [
                         animate={{ opacity: 1, scale: 1 }}
                         className="md:col-span-8 group relative rounded-[40px] overflow-hidden bg-slate-900 aspect-[16/9] md:aspect-auto md:h-[400px] shadow-2xl"
                     >
-                        <img 
+                        <Image 
                             src="/village_digital_banking.png" 
                             alt="Village Digital Banking" 
                             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                            width={800} height={400} sizes="(max-width: 768px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
                         <div className="absolute bottom-0 left-0 p-8 md:p-10 space-y-4">
@@ -1801,10 +1900,11 @@ export const slides: Slide[] = [
                         transition={{ delay: 0.2 }}
                         className="md:col-span-4 group relative rounded-[40px] overflow-hidden bg-emerald-900 h-[240px] md:h-auto shadow-xl"
                     >
-                        <img 
+                        <Image 
                             src="/financial_data_growth.png" 
                             alt="Financial Data" 
                             className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:rotate-3 transition-transform duration-700"
+                            width={400} height={400} sizes="(max-width: 768px) 100vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 to-transparent" />
                         <div className="absolute inset-0 p-6 flex flex-col justify-end gap-2">
@@ -1847,7 +1947,7 @@ export const slides: Slide[] = [
                                 className={`group relative p-6 rounded-[32px] ${item.color} border overflow-hidden shadow-md flex flex-col h-full hover:shadow-xl transition-all`}
                             >
                                 {item.img && (
-                                    <img src={item.img} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt={item.title} />
+                                    <Image src={item.img} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt={item.title} width={400} height={300} />
                                 )}
                                 <div className="relative z-10 w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-4">
                                     {item.icon}
@@ -1873,10 +1973,11 @@ export const slides: Slide[] = [
                     className="relative"
                 >
                     <div className="absolute inset-0 bg-violet-200 blur-3xl opacity-20 rounded-full" />
-                    <img 
+                    <Image 
                         src="/Logo_violet.png" 
                         alt="PT. VIOLET GLOBAL INDONESIA" 
                         className="h-24 md:h-32 w-auto relative z-10 drop-shadow-2xl"
+                        width={200} height={100}
                     />
                 </motion.div>
 
