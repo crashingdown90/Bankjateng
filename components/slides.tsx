@@ -260,7 +260,7 @@ export const slides: Slide[] = [
                             <Scale className="w-8 h-8" />
                         </div>
                         <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">Perda Jateng 11/22</h3>
-                        <div className="text-[11px] font-black text-emerald-600 mb-6 tracking-widest uppercase bg-emerald-50/50 inline-block px-3 py-1.5 rounded-lg border border-emerald-100">BJB Perseroda Mandate</div>
+                        <div className="text-[11px] font-black text-emerald-600 mb-6 tracking-widest uppercase bg-emerald-50/50 inline-block px-3 py-1.5 rounded-lg border border-emerald-100">Bank Jateng Perseroda Mandate</div>
                         <ul className="text-slate-600 text-sm leading-relaxed space-y-4 list-none font-medium">
                             <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />Penyertaan Modal & Peran Bank Jateng sebagai Penggerak Ekonomi.</li>
                             <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />Fokus pada Inovasi Produk Perbankan Digital Desa.</li>
@@ -1626,8 +1626,8 @@ export const slides: Slide[] = [
                     >
                         <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000">
                              <Image 
-                                src="/roi_success.png" 
-                                alt="ROI" 
+                                src="/bank_jateng_roi_success.png" 
+                                alt="ROI Bank Jateng" 
                                 className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000"
                                 width={1200} height={800}
                              />
