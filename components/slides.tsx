@@ -1696,9 +1696,9 @@ export const slides: Slide[] = [
                         className="md:col-span-12 lg:col-span-8 group relative rounded-[50px] overflow-hidden bg-slate-900 h-[400px] shadow-3xl"
                     >
                         <Image 
-                            src="/village_digital_banking.png" 
-                            alt="Banking" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+                            src="/Bank_Jateng_Funding_Cinematic.png" 
+                            alt="Bank Jateng Funding" 
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
                             width={1200} height={800}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent" />
