@@ -137,6 +137,26 @@ export default function SlideManager() {
                 </AnimatePresence>
             </div>
 
+            {/* Top Right: Ngopeni Nglakoni Logo */}
+            <div className="fixed top-8 right-8 md:top-12 md:right-12 z-[110] pointer-events-none">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        initial={{ opacity: 0, x: 30, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                        transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+                        className="p-3 bg-white/40 backdrop-blur-xl rounded-2xl border border-white/40 shadow-2xl"
+                    >
+                        <Image 
+                            src="/Logo Ngopeni Nglakoni.png" 
+                            alt="Ngopeni Nglakoni" 
+                            width={140} 
+                            height={50} 
+                            className="h-8 md:h-12 w-auto object-contain"
+                        />
+                    </motion.div>
+                </AnimatePresence>
+            </div>
+
             {/* Content Area */}
             <div className="flex-grow relative flex items-center justify-center min-h-screen p-6 md:p-12 z-10 w-full pb-32 md:pb-12">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
