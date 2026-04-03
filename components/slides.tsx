@@ -68,7 +68,12 @@ import {
     Trophy,
     Award,
     HeartHandshake,
-    Users2
+    Users2,
+    Rocket,
+    AlertCircle,
+    UserCheck,
+    CheckCircle2,
+    SendHorizonal,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -85,48 +90,54 @@ export const slides: Slide[] = [
             <div className="relative w-full min-h-[400px] md:h-[600px] rounded-[32px] md:rounded-[40px] overflow-hidden flex flex-col justify-center bg-slate-50 border border-slate-200 shadow-sm">
                 
                 {/* Background Decor */}
-                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50 to-transparent" />
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-200/50 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
-                <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-amber-200/40 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-secondary-50 to-transparent" />
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-secondary-200/50 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
+                <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-primary-200/40 rounded-full blur-2xl md:blur-3xl opacity-60 hidden md:block" />
 
                 <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto p-8 md:p-12 relative z-10">
                     
                     {/* Left Typography & Content */}
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                         <div className="flex flex-col items-start gap-4 mb-8">
-                            <Image src="/Bank_BJB_logo.png" alt="Bank BJB Logo" className="h-16 md:h-20 w-auto" width={200} height={80} priority />
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                                transition={{ duration: 1 }}
+                            >
+                                <Image src="/Bank_Jateng_logo.png" alt="Bank Jateng Logo" className="h-16 md:h-20 w-auto" width={200} height={80} priority />
+                            </motion.div>
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 shadow-sm"
+                                transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-50/50 backdrop-blur-md border border-secondary-100 shadow-xl"
                             >
-                                <div className="w-1.5 h-1.5 rounded-full bg-blue-700 animate-pulse" />
-                                <span className="text-[10px] sm:text-xs font-bold text-blue-800 tracking-wider flex items-center gap-1 uppercase">
-                                    Strategic Proposal <span className="mx-1 text-slate-300">•</span> Sinergi BJB
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse-glow" />
+                                <span className="text-[10px] sm:text-xs font-black text-secondary-800 tracking-[0.2em] flex items-center gap-1 uppercase">
+                                    Strategic Proposal <span className="mx-1 text-slate-300">•</span> Sinergi Bank Jateng
                                 </span>
                             </motion.div>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <motion.h1
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1, duration: 0.6 }}
-                                className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-display font-extrabold tracking-tight text-slate-900 leading-[1.1]"
+                                initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
+                                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                                transition={{ delay: 0.2, duration: 0.8, ease: "circOut" }}
+                                className="text-5xl sm:text-6xl lg:text-7xl font-display font-black tracking-tighter text-slate-900 leading-[0.95]"
                             >
                                 Ekosistem <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-blue-700 to-amber-500">
-                                    Desa Digital BJB
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-800 via-primary-500 to-primary-600">
+                                    Desa Digital
                                 </span>
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2, duration: 0.6 }}
-                                className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-lg"
+                                transition={{ delay: 0.4, duration: 0.8 }}
+                                className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed max-w-lg"
                             >
-                                Inisiatif strategis akselerasi inklusi keuangan melalui digitalisasi layanan desa, mendorong pertumbuhan <span className="font-bold text-slate-800">CASA</span> dan <span className="font-bold text-slate-800">Fee-Based Income</span> secara masif.
+                                Akselerasi inklusi keuangan melalui digitalisasi layanan desa, mendorong pertumbuhan <span className="font-black text-slate-900 bg-secondary-50 px-2 rounded">CASA</span> & <span className="font-black text-slate-900 bg-primary-50 px-2 rounded">FBI</span> secara masif.
                             </motion.p>
                         </div>
 
@@ -134,17 +145,17 @@ export const slides: Slide[] = [
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.8 }}
-                            className="pt-8 border-t border-slate-200/80 flex gap-4 md:gap-8 overflow-x-auto pb-4 scrollbar-hide"
+                            transition={{ delay: 0.6, duration: 0.8 }}
+                            className="pt-8 border-t border-slate-200/80 flex gap-6 md:gap-12 overflow-x-auto pb-4 scrollbar-hide"
                         >
                             {[
-                                { val: "Transaksi PPOB", label: "bjb Bungah", textClass: "text-amber-600" },
-                                { val: "Real-time IBC", label: "Siskeudes BJB", textClass: "text-blue-700" },
-                                { val: "Akuisisi Masif", label: "Laku Pandai", textClass: "text-blue-800" }
+                                { val: "Transaksi PPOB", label: "Jateng Pintar", color: "from-primary-500 to-primary-600" },
+                                { val: "Real-time IBC", label: "Siskeudes IBC", color: "from-secondary-700 to-secondary-800" },
+                                { val: "Akuisisi Masif", label: "Laku Pandai", color: "from-slate-800 to-slate-900" }
                             ].map((stat, i) => (
-                                <div key={i} className="shrink-0 min-w-[120px]">
-                                    <div className={`text-base font-black ${stat.textClass} font-display leading-tight`}>{stat.val}</div>
-                                    <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-1">{stat.label}</div>
+                                <div key={i} className="shrink-0 group">
+                                    <div className={`text-xl font-black bg-clip-text text-transparent bg-gradient-to-r ${stat.color} font-display leading-tight group-hover:scale-105 transition-transform`}>{stat.val}</div>
+                                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">{stat.label}</div>
                                 </div>
                             ))}
                         </motion.div>
@@ -153,29 +164,32 @@ export const slides: Slide[] = [
                     {/* Right Visualizer */}
                     <div className="relative hidden md:flex items-center justify-center">
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 1, ease: "easeOut" }}
+                            initial={{ scale: 0.8, opacity: 0, rotate: -5 }}
+                            animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                            transition={{ duration: 1.2, ease: "circOut" }}
                             className="relative w-full aspect-square max-w-md mx-auto"
                         >
                             {/* Decorative Rings */}
-                            <div className="absolute inset-4 rounded-full border border-blue-200/50 animate-[spin_40s_linear_infinite]" />
-                            <div className="absolute inset-8 rounded-full border border-dashed border-slate-300 animate-[spin_30s_linear_infinite_reverse]" />
+                            <div className="absolute inset-4 rounded-full border border-secondary-200/30 animate-[spin_40s_linear_infinite] opacity-50" />
+                            <div className="absolute inset-12 rounded-full border border-dashed border-primary-300/30 animate-[spin_30s_linear_infinite_reverse] opacity-50" />
                             
                             {/* Glass Card Stack representing connectivity */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="relative w-4/5 h-4/5">
-                                    <div className="absolute inset-0 bg-white/40 backdrop-blur-none md:backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl transform rotate-6 scale-95" />
-                                    <div className="absolute inset-0 bg-blue-500/10 backdrop-blur-none md:backdrop-blur-md border border-white/80 shadow-xl rounded-3xl transform -rotate-3 scale-100 flex items-center justify-center overflow-hidden">
-                                        <Image src="/futuristic_village_cover.png" alt="Desa Digital UI" className="w-full h-full object-cover opacity-80 mix-blend-overlay" width={500} height={500} priority />
+                                <div className="relative w-full h-full p-4">
+                                    <div className="absolute inset-8 bg-white/20 backdrop-blur-xl border border-white/40 shadow-2xl rounded-[40px] transform rotate-12 scale-90 translate-x-4 translate-y-4" />
+                                    <div className="absolute inset-0 bg-white/40 backdrop-blur-2xl border border-white/60 shadow-2xl rounded-[48px] overflow-hidden animate-float">
+                                        <Image src="/futuristic_village_cover.png" alt="Desa Digital UI" className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110" width={500} height={500} priority />
                                         
                                         {/* Overlay Content */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent px-6 pb-6 flex flex-col justify-end">
-                                            <div className="w-12 h-12 bg-white/20 backdrop-blur-none md:backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/30">
-                                                <Network className="w-6 h-6 text-white" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent px-8 pb-8 flex flex-col justify-end">
+                                            <div className="w-14 h-14 glass-premium rounded-2xl flex items-center justify-center mb-4 animate-pulse-glow">
+                                                <Network className="w-7 h-7 text-primary-500" />
                                             </div>
-                                            <div className="text-white font-bold text-lg leading-tight">Connected Village Pipeline</div>
-                                            <div className="text-blue-200 text-xs font-medium uppercase tracking-widest mt-1">Live Integration</div>
+                                            <div className="text-white font-black text-2xl leading-tight tracking-tight">Connected Village <br/>System</div>
+                                            <div className="flex items-center gap-2 mt-2">
+                                                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                                                <div className="text-secondary-200 text-xs font-black uppercase tracking-[0.3em]">Live Core Integration</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -195,77 +209,80 @@ export const slides: Slide[] = [
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100/50 backdrop-blur-md border border-slate-200/50 text-slate-700 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm"
                     >
-                        <Landmark className="w-4 h-4 text-blue-700" />
-                        Landasan Hukum Bank BJB
+                        <Landmark className="w-4 h-4 text-primary-500 animate-pulse" />
+                        Regulatory Framework & Governance
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Regulasi & Mandat Digitalisasi</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Kewajiban strategis BJB sebagai tulang punggung ekonomi digital desa.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Mandat & <span className="text-primary-600">Landasan Hukum</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium">Kewajiban strategis Bank Jateng dalam mengakselerasi ekosistem digital desa secara akuntabel.</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 relative z-10">
                     {/* Pillar 1 */}
-                    <div className="glass p-6 md:p-8 rounded-[32px] border border-slate-200 bg-white shadow-lg relative overflow-hidden group hover:shadow-xl transition-all">
-                        <div className="absolute top-0 inset-x-0 h-[6px] bg-gradient-to-r from-blue-600 to-blue-800" />
-                        <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm">
-                            <CreditCard className="w-7 h-7" />
+                    <div className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500">
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-500 to-primary-600" />
+                        <div className="w-16 h-16 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mb-8 ring-8 ring-primary-500/5 shadow-inner">
+                            <CreditCard className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight">SE Kemendagri 2023</h3>
-                        <div className="text-[11px] font-bold text-blue-700 mb-4 tracking-wider uppercase bg-blue-50 inline-block px-2 py-1 rounded">No. 100.3.3.3/2890/BPD</div>
-                        <ul className="text-slate-600 text-sm leading-relaxed space-y-2 list-none">
-                            <li className="flex gap-2 items-start"><span className="text-blue-500 font-bold">•</span>Akselerasi Transaksi Non-Tunai Pemdes.</li>
-                            <li className="flex gap-2 items-start"><span className="text-blue-500 font-bold">•</span>BPD (BJB) sebagai mitra utama.</li>
-                            <li className="flex gap-2 items-start"><span className="text-blue-500 font-bold">•</span>Digitalisasi belanja untuk transparansi.</li>
+                        <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">SE Kemendagri</h3>
+                        <div className="text-[11px] font-black text-primary-600 mb-6 tracking-widest uppercase bg-primary-50/50 inline-block px-3 py-1.5 rounded-lg border border-primary-100">No. 100.3.3.3/2890/BPD</div>
+                        <ul className="text-slate-600 text-sm leading-relaxed space-y-4 list-none font-medium">
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-1.5 shrink-0" />Akselerasi Transaksi Non-Tunai Pemdes secara menyeluruh.</li>
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-1.5 shrink-0" />Penempatan Bank Jateng sebagai **Mitra Utama Strategis**.</li>
                         </ul>
                     </div>
 
                     {/* Pillar 2 */}
-                    <div className="glass p-6 md:p-8 rounded-[32px] border border-blue-100 bg-gradient-to-b from-blue-50/50 to-white shadow-lg relative overflow-hidden group hover:shadow-xl transition-all transform md:-translate-y-4">
-                        <div className="absolute top-0 inset-x-0 h-[6px] bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500" />
-                        <div className="w-14 h-14 rounded-2xl bg-blue-700 text-white flex items-center justify-center mb-6 ring-4 ring-white shadow-sm">
-                            <Database className="w-7 h-7" />
+                    <div className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 transform md:-translate-y-4">
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-secondary-700 to-secondary-800" />
+                        <div className="w-16 h-16 rounded-2xl bg-secondary-900 text-white flex items-center justify-center mb-8 ring-8 ring-secondary-900/5 shadow-2xl">
+                            <Database className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight">Permendagri 20/2018</h3>
-                        <div className="text-[11px] font-bold text-blue-100 mb-4 tracking-wider uppercase bg-blue-800 inline-block px-2 py-1 rounded italic">Siskeudes Integration</div>
-                        <ul className="text-slate-600 text-sm leading-relaxed space-y-2 list-none">
-                            <li className="flex gap-2 items-start"><span className="text-blue-700 font-bold">•</span>Mandat Pengelolaan Keuangan Desa.</li>
-                            <li className="flex gap-2 items-start"><span className="text-blue-700 font-bold">•</span>Wajib terintegrasi sistem perbankan.</li>
-                            <li className="flex gap-2 items-start"><span className="text-blue-700 font-bold">•</span>Sinergi <strong className="text-blue-800">Siskeudes</strong> & CMS BJB.</li>
+                        <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">Permendagri 20/2018</h3>
+                        <div className="text-[11px] font-black text-secondary-600 mb-6 tracking-widest uppercase bg-secondary-50 inline-block px-3 py-1.5 rounded-lg border border-secondary-100">Siskeudes Integration</div>
+                        <ul className="text-slate-600 text-sm leading-relaxed space-y-4 list-none font-medium">
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-secondary-700 mt-1.5 shrink-0" />Kewajiban Tata Kelola Keuangan Desa berbasis sistem.</li>
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-secondary-700 mt-1.5 shrink-0" />Integrasi **CMS Bank Jateng** dengan **Siskeudes IBC**.</li>
                         </ul>
                     </div>
 
                     {/* Pillar 3 */}
-                    <div className="glass p-6 md:p-8 rounded-[32px] border border-slate-200 bg-white shadow-lg relative overflow-hidden group hover:shadow-xl transition-all">
-                        <div className="absolute top-0 inset-x-0 h-[6px] bg-gradient-to-r from-amber-400 to-amber-500" />
-                        <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6 ring-4 ring-white shadow-sm">
-                            <Zap className="w-7 h-7" />
+                    <div className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500">
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500 to-emerald-600" />
+                        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8 ring-8 ring-emerald-500/5 shadow-inner">
+                            <Scale className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight">Arah Kebijakan Gubernur</h3>
-                        <div className="text-[11px] font-bold text-amber-600 mb-4 tracking-wider uppercase bg-amber-50 inline-block px-2 py-1 rounded">Katalisator Ekonomi</div>
-                        <ul className="text-slate-600 text-sm leading-relaxed space-y-2 list-none">
-                            <li className="flex gap-2 items-start"><span className="text-amber-500 font-bold">•</span>Instruksi digitalisasi di pelosok Jabar-Banten.</li>
-                            <li className="flex gap-2 items-start"><span className="text-amber-500 font-bold">•</span>Pemberdayaan inklusi ekosistem desa.</li>
-                            <li className="flex gap-2 items-start"><span className="text-amber-500 font-bold">•</span>BJB sebagai agen transformasi tunggal.</li>
+                        <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">Perda Jateng 11/22</h3>
+                        <div className="text-[11px] font-black text-emerald-600 mb-6 tracking-widest uppercase bg-emerald-50/50 inline-block px-3 py-1.5 rounded-lg border border-emerald-100">BJB Perseroda Mandate</div>
+                        <ul className="text-slate-600 text-sm leading-relaxed space-y-4 list-none font-medium">
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />Penyertaan Modal & Peran Bank Jateng sebagai Penggerak Ekonomi.</li>
+                            <li className="flex gap-3 items-start"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />Fokus pada Inovasi Produk Perbankan Digital Desa.</li>
                         </ul>
                     </div>
                 </div>
                 <div className="pt-8 mt-8 border-t border-slate-200">
                     <div className="flex items-center gap-4 mb-6">
                         <div className="h-px bg-slate-200 flex-1" />
-                        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest px-4">Referensi Regulasi Terkait</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-widest px-4">Referensi Regulasi & Kebijakan Strategis</span>
                         <div className="h-px bg-slate-200 flex-1" />
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
-                            { title: "Permendagri 70/2019", no: "SIPD & Desa Online", desc: "Integrasi Data Nasional", icon: <Globe className="w-5 h-5" /> },
-                            { title: "UU Desa No. 6/2014", no: "Pilar Kedaulatan", desc: "Digitalisasi Pelayanan Publik", icon: <Landmark className="w-5 h-5" /> },
-                            { title: "Inpres No. 3/2003", no: "E-Government", desc: "Mandat Digitalisasi Instansi", icon: <Cpu className="w-5 h-5" /> },
-                            { title: "POJK Inklusi", no: "Laku Pandai", desc: "Layanan Keuangan Tanpa Kantor", icon: <Coins className="w-5 h-5" /> }
+                            { title: "Pergub Jateng 49/2023", no: "Tata Kelola TIK", desc: "Payung Transformasi Digital Jateng", icon: <Globe className="w-5 h-5" /> },
+                            { title: "UU ITE No. 1/2024", no: "Legalitas TTE", desc: "Mandat Tanda Tangan Elektronik", icon: <ShieldCheck className="w-5 h-5" /> },
+                            { title: "PP No. 11/2021", no: "BUMDes & Ekonomi", desc: "Sinergi Ekonomi Digital Desa", icon: <Sprout className="w-5 h-5" /> },
+                            { title: "Pergub Jateng 47/2016", no: "Sistem Informasi Desa", desc: "Pedoman Pengembangan SID", icon: <Database className="w-5 h-5" /> }
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-2 md:gap-3 p-3 md:p-4 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-white hover:shadow-md transition-all group">
-                                <div className="p-2 md:p-2.5 rounded-xl bg-white text-slate-400 group-hover:text-blue-700 border border-slate-200 shadow-sm transition-colors shrink-0">
+                                <div className="p-2 md:p-2.5 rounded-xl bg-white text-slate-400 group-hover:text-primary-600 border border-slate-200 shadow-sm transition-colors shrink-0">
                                     {item.icon}
                                 </div>
                                 <div className="min-w-0">
@@ -286,70 +303,79 @@ export const slides: Slide[] = [
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
                 <div className="text-center space-y-4">
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 text-red-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50/50 backdrop-blur-md border border-amber-100/50 text-amber-900 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm"
                     >
-                        <AlertTriangle className="w-4 h-4" />
+                        <AlertTriangle className="w-4 h-4 text-amber-600 animate-pulse" />
                         The Disconnected Reality
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Problematika Ekosistem Desa</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Tantangan kritis yang menghambat pertumbuhan ekonomi desa dan potensial merugikan pemerintah daerah.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Tantangan & <span className="text-amber-600">Kebocoran Ekonomi</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium">Tantangan kritis yang menghambat pertumbuhan ekonomi desa secara berkelanjutan.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6 relative z-10 mt-8">
+                <div className="grid md:grid-cols-3 gap-8 relative z-10 mt-8">
                     {[
                         {
                             title: "Kebocoran PADesa & PBB",
-                            desc: "Sistem pungutan manual sangat rentan terhadap *fraud* (penggelapan) di tingkat akar rumput. Pajak Bumi Bangunan (PBB-P2) sering mengendap di tangan pengepul tanpa transparansi.",
-                            icon: <AlertOctagon className="w-7 h-7" />,
-                            color: "text-red-600",
-                            bg: "bg-red-50"
+                            desc: "Sistem pungutan manual sangat rentan terhadap *fraud* dan inakurasi data di tingkat akar rumput.",
+                            icon: <AlertOctagon className="w-8 h-8" />,
+                            color: "text-amber-600",
+                            accent: "bg-amber-600"
                         },
                         {
                             title: "Birokrasi Lambat & Boros",
-                            desc: "Pelayanan administrasi masih berbasis kertas. Warga butuh waktu berhari-hari hanya untuk selembar surat karena Kades sedang dinas luar (tidak bisa tanda tangan basah).",
-                            icon: <Hourglass className="w-7 h-7" />,
-                            color: "text-amber-600",
-                            bg: "bg-amber-50"
+                            desc: "Pelayanan administrasi berbasis kertas menghambat efisiensi birokrasi dan waktu pelayanan warga.",
+                            icon: <Hourglass className="w-8 h-8" />,
+                            color: "text-secondary-600",
+                            accent: "bg-secondary-600"
                         },
                         {
                             title: "Distribusi Bansos Inakurat",
-                            desc: "Pendataan warga miskin sporadis menyebabkan Bantuan Langsung Tunai (BLT) sering salah sasaran atau bahkan disunat oleh oknum tertentu secara tunai.",
-                            icon: <FileWarning className="w-7 h-7" />,
+                            desc: "Pendataan sporadis menyebabkan bantuan sosial sering salah sasaran atau terlambat didistribusikan.",
+                            icon: <FileWarning className="w-8 h-8" />,
                             color: "text-slate-700",
-                            bg: "bg-slate-100"
+                            accent: "bg-slate-700"
                         }
                     ].map((item, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.15 }}
-                            className="bg-white p-6 md:p-8 rounded-[32px] border border-slate-200 shadow-md hover:shadow-xl transition-all relative overflow-hidden group"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 shadow-2xl"
                         >
-                            <div className="absolute top-0 inset-x-0 h-1 bg-slate-200 group-hover:bg-red-500 transition-colors" />
-                            <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center mb-6 ring-4 ring-white shadow-sm group-hover:scale-110 transition-transform`}>
+                            <div className={`absolute top-0 inset-x-0 h-1 ${item.accent} opacity-50`} />
+                            <div className="w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center mb-8 ring-8 ring-slate-500/5 group-hover:scale-110 transition-all duration-300">
                                 <div className={`${item.color}`}>{item.icon}</div>
                             </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">{item.title}</h3>
-                            <p className="text-slate-600 text-sm md:text-base leading-relaxed">{item.desc}</p>
+                            <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">{item.title}</h3>
+                            <p className="text-slate-600 text-sm font-medium leading-relaxed">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="mt-10 mx-auto glass max-w-3xl rounded-3xl border border-blue-100 bg-blue-50/50 p-6 flex flex-col md:flex-row items-center gap-6"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-12 mx-auto glass-premium max-w-4xl p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden border border-amber-200/50"
                 >
-                    <div className="w-16 h-16 shrink-0 rounded-full bg-blue-100 flex items-center justify-center border border-blue-200">
-                        <ZoomIn className="w-8 h-8 text-blue-700 animate-pulse" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-[60px] rounded-full" />
+                    <div className="w-20 h-20 shrink-0 rounded-[28px] bg-amber-100 flex items-center justify-center border border-amber-200 shadow-inner">
+                        <ZoomIn className="w-10 h-10 text-primary-600 animate-pulse-glow" />
                     </div>
                     <div>
-                        <h4 className="font-bold text-slate-900 text-lg mb-1">Status Quo Bukanlah Pilihan</h4>
-                        <p className="text-slate-600 text-sm leading-relaxed">Tanpa intervensi platform digital terpusat, Bank BJB kehilangan potensi akuisisi dana murah (CASA) bernilai triliunan rupiah dari jutaan warga desa yang *unbanked*.</p>
+                        <h4 className="font-black text-slate-900 text-2xl mb-2 italic">Status Quo Bukanlah Pilihan</h4>
+                        <p className="text-slate-600 text-lg font-medium leading-relaxed italic">
+                            Tanpa platform terpusat, Bank Jateng kehilangan potensi akuisisi dana murah (CASA) bernilai triliunan rupiah dari jutaan warga desa yang *unbanked*.
+                        </p>
                     </div>
                 </motion.div>
             </div>
@@ -360,90 +386,65 @@ export const slides: Slide[] = [
         content: (
             <div className="min-h-[70vh] py-8 flex flex-col justify-center">
                 <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                    <div className="md:col-span-7 space-y-8 pr-0 md:pr-8">
+                    <div className="md:col-span-7 space-y-8 pr-0 md:pr-8 relative z-10">
                         <div className="space-y-4">
                             <motion.div
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                             >
-                                <Landmark className="w-4 h-4 text-blue-700" />
-                                Visi & Misi Bank BJB
+                                <Rocket className="w-4 h-4 text-primary-400 animate-pulse" />
+                                Strategic Roadmap 2026
                             </motion.div>
-                            <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
-                                Selaras dengan Visi <br className="hidden sm:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-amber-500">Bank Pilihan Utama</span>
-                            </h2>
+                            <motion.h2 
+                                initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
+                                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                                className="text-5xl md:text-8xl font-display font-black text-slate-900 tracking-tighter leading-[0.9]"
+                            >
+                                Vision of <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-800 via-primary-500 to-primary-600">Sovereignty</span>
+                            </motion.h2>
+                            <p className="text-slate-600 text-xl font-medium leading-relaxed italic">Mewujudkan kedaulatan digital melalui orkestrasi teknologi yang inklusif di seluruh penjuru wilayah Jawa Tengah.</p>
                         </div>
 
-                        <div className="space-y-6">
+                        <div className="grid grid-cols-2 gap-6">
                             {[
-                                {
-                                    title: "Mitra Utama Pemerintah Daerah",
-                                    desc: "Sistem ini menjadikan Bank BJB sebagai tulang punggung (backbone) layanan operasional dan finansial seluruh desa di wilayah jangkauan.",
-                                    icon: <ShieldCheck className="w-6 h-6 text-blue-700" />,
-                                    bg: "bg-blue-50",
-                                    border: "border-blue-100"
-                                },
-                                {
-                                    title: "Akselerasi Inklusi Keuangan",
-                                    desc: "Mewujudkan misi peningkatkan inklusi keuangan melalui digitalisasi. Membawa desa masuk ke dalam ekosistem perbankan modern Bank BJB.",
-                                    icon: <TrendingUp className="w-6 h-6 text-amber-600" />,
-                                    bg: "bg-amber-50",
-                                    border: "border-amber-100"
-                                },
-                                {
-                                    title: "Motor Penggerak Ekonomi Daerah",
-                                    desc: "Memastikan investasi teknologi sejalan dengan pemberdayaan UMKM lokal dan optimalisasi Pendapatan Asli Daerah (PAD) serta Pendapatan Asli Desa.",
-                                    icon: <Briefcase className="w-6 h-6 text-blue-700" />,
-                                    bg: "bg-blue-50",
-                                    border: "border-blue-100"
-                                }
+                                { title: "Bank Pilihan Utama", desc: "Menjadi jantung operasional finansial desa.", icon: <ShieldCheck className="text-primary-600" /> },
+                                { title: "Inklusi Keuangan", desc: "Digitalisasi total layanan perbankan di desa.", icon: <TrendingUp className="text-secondary-600" /> },
+                                { title: "Penggerak Ekonomi", desc: "Optimasi PAD desa & pemberdayaan UMKM.", icon: <Briefcase className="text-primary-600" /> },
+                                { title: "Executive Monitor", desc: "Data real-time untuk stakeholder daerah.", icon: <LayoutDashboard className="text-secondary-700" /> }
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.15 }}
-                                    className="flex gap-4 items-start group"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 + i * 0.1 }}
+                                    className="p-6 rounded-[32px] bg-white border border-slate-100 shadow-xl group hover:border-primary-200 transition-colors"
                                 >
-                                    <div className={`p-3 rounded-2xl ${item.bg} border ${item.border} shrink-0 mt-1 shadow-sm group-hover:scale-110 transition-transform`}>
+                                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         {item.icon}
                                     </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-base md:text-lg font-bold text-slate-900">{item.title}</h4>
-                                        <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-                                            {item.desc}
-                                        </p>
-                                    </div>
+                                    <h4 className="text-[13px] font-black text-slate-900 leading-tight mb-1">{item.title}</h4>
+                                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
 
                     <div className="md:col-span-5 relative">
-                        {/* Decorative Background */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-blue-50 rounded-[40px] transform rotate-3 scale-105" />
-
-                        <div className="glass rounded-[32px] p-6 md:p-10 border border-white bg-white md:bg-white/60 backdrop-blur-none md:backdrop-blur-xl shadow-2xl relative overflow-hidden flex flex-col justify-center h-full min-h-[300px] md:min-h-[400px]">
-                            {/* Watermark Icon */}
-                            <div className="absolute -top-10 -right-10 text-slate-900 opacity-[0.03] transform rotate-12">
-                                <Landmark className="w-64 h-64" />
-                            </div>
-
-                            <Quote className="w-12 h-12 text-blue-200 mb-6 relative z-10" />
-
-                            <blockquote className="text-lg md:text-3xl font-light italic text-slate-800 relative z-10 leading-snug">
-                                "Sinergi platform desa digital dengan <span className="font-semibold text-blue-800">Bank BJB</span> mengunci loyalitas nasabah dan <span className="font-semibold text-amber-600">memperluas ekosistem keuangan</span> di tingkat akar rumput."
+                        <div className="absolute -inset-10 bg-primary-500/10 blur-[100px] rounded-full animate-mesh opacity-50" />
+                        <div className="glass-premium p-10 rounded-[48px] shadow-2xl relative overflow-hidden animate-float min-h-[450px] flex flex-col justify-center">
+                            <Quote className="w-16 h-16 text-secondary-100 absolute top-8 left-8 -rotate-12 opacity-50" />
+                            <blockquote className="text-2xl md:text-3xl font-black italic text-slate-800 relative z-10 leading-[1.1] mb-8">
+                                "Sinergi platform desa digital dengan <span className="text-primary-600 underline">Bank Jateng</span> mengunci loyalitas nasabah dan memperluas ekosistem keuangan akar rumput."
                             </blockquote>
-
-                            <div className="mt-8 flex items-center gap-4 relative z-10 pt-6 border-t border-slate-200/50">
-                                <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 font-bold overflow-hidden">
-                                    <Globe className="w-5 h-5" />
+                            <div className="pt-8 border-t border-slate-200 flex items-center gap-4">
+                                <div className="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center text-white border-4 border-white shadow-xl">
+                                    <Landmark className="w-7 h-7" />
                                 </div>
                                 <div>
-                                    <div className="text-sm font-bold text-slate-900">Paradigma Baru</div>
-                                    <div className="text-xs text-slate-500">Kolaborasi BJB & Desa</div>
+                                    <div className="text-sm font-black text-slate-900">Paradigma Baru 2026</div>
+                                    <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest">Kolaborasi Strategis Global</div>
                                 </div>
                             </div>
                         </div>
@@ -455,85 +456,74 @@ export const slides: Slide[] = [
     {
         id: "super-app-ecosystem",
         content: (
-            <div className="space-y-8 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-4 md:space-y-8 min-h-[70vh] py-8 flex flex-col justify-center">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl animate-pulse-glow"
                     >
-                        <Layers className="w-4 h-4" />
-                        The Grand Digital Plan
+                        <Layers className="w-4 h-4 animate-spin-slow" />
+                        Integrated Core Architecture
                     </motion.div>
-                    <h2 className="text-4xl md:text-5xl font-display font-black text-slate-900 tracking-tight">
-                        Ekosistem <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500">Super App Desa</span>
-                    </h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Satu aplikasi "All-in-One" terpadu untuk warga desa, di mana <strong className="text-blue-800">Bank BJB</strong> hadir sebagai jantung penggerak seluruh transaksi keuangan dan ekonomi lokal.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Ekosistem <span className="text-primary-600 italic">Suka Desa</span> V.2.0
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Satu orkestrasi "All-in-One", di mana <strong className="text-primary-600">Bank Jateng</strong> hadir sebagai jantung penggerak seluruh transaksi.</p>
                 </div>
 
-                <div className="relative w-full max-w-5xl mx-auto h-[450px] md:h-[550px] flex items-center justify-center mt-4">
+                <div className="relative w-full max-w-6xl mx-auto h-[400px] md:h-[500px] flex items-center justify-center mt-8">
                     {/* Background Orbit Rings */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full border border-slate-200/60 border-dashed animate-[spin_60s_linear_infinite]" />
-                        <div className="absolute w-[450px] h-[450px] md:w-[650px] md:h-[650px] rounded-full border border-blue-100 animate-[spin_40s_linear_infinite_reverse]" />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full border border-primary-500/10 border-dashed animate-[spin_60s_linear_infinite]" />
+                        <div className="absolute w-[450px] h-[450px] md:w-[600px] md:h-[600px] rounded-full border border-secondary-500/5 animate-[spin_40s_linear_infinite_reverse]" />
                     </div>
 
-                    {/* Surrounding Nodes (The Ecosystem) */}
                     {[
-                        { title: "E-Government", desc: "Surat menyurat, Kependudukan, & TTD Elektronik", icon: <FileText className="w-6 h-6" />, pos: "top-[-5%] md:top-[5%] left-1/2 -translate-x-1/2", delay: 0.2, color: "text-slate-600 bg-white" },
-                        { title: "Desa Wisata & BUMDes", desc: "Ticketing, E-Commerce Lokal, Pemesanan Homestay", icon: <MapPin className="w-6 h-6" />, pos: "top-[20%] right-[-5%] md:right-[5%]", delay: 0.3, color: "text-amber-600 bg-amber-50 border-amber-200" },
-                        { title: "Jaring Pengaman", desc: "Penyaluran BLT, Bantuan Pangan, & Subsidi", icon: <ShieldCheck className="w-6 h-6" />, pos: "bottom-[5%] md:bottom-[15%] right-[5%] md:right-[15%]", delay: 0.4, color: "text-blue-700 bg-blue-50 border-blue-200" },
-                        { title: "PPOB & Pajak", desc: "Pembayaran PBB, Listrik, Air, & Kendaraan Bermotor", icon: <Zap className="w-6 h-6" />, pos: "bottom-[-5%] md:bottom-[5%] left-1/2 -translate-x-1/2", delay: 0.5, color: "text-blue-800 bg-blue-100 border-blue-300" },
-                        { title: "Aduan Publik", desc: "Pelaporan warga, aspirasi, & informasi desa", icon: <MessageSquare className="w-6 h-6" />, pos: "bottom-[5%] md:bottom-[15%] left-[5%] md:left-[15%]", delay: 0.6, color: "text-slate-700 bg-slate-50 border-slate-200" },
-                        { title: "Kesehatan Desa", desc: "Posyandu, Penanganan Stunting, & Jadwal Nakes", icon: <Activity className="w-6 h-6" />, pos: "top-[20%] left-[-5%] md:left-[5%]", delay: 0.7, color: "text-amber-500 bg-white border-slate-200" }
+                        { title: "E-Government", desc: "Digital ID & TTD Elektronik", icon: <FileText />, pos: "top-[-5%] left-1/2 -translate-x-1/2", delay: 0.2, color: "from-slate-800 to-slate-900 text-white" },
+                        { title: "Wisata & UMKM", desc: "Ticketing & E-Commerce", icon: <MapPin />, pos: "top-[20%] right-[-5%] md:right-0", delay: 0.3, color: "from-primary-500 to-primary-600 text-white" },
+                        { title: "Jaring Pengaman", desc: "Distribusi BLT Digital", icon: <ShieldCheck />, pos: "bottom-[5%] right-[5%] md:right-[10%]", delay: 0.4, color: "from-secondary-700 to-secondary-800 text-white" },
+                        { title: "PPOB & Pajak", desc: "Bayar PBB & Multi-Bill", icon: <Zap />, pos: "bottom-[-5%] left-1/2 -translate-x-1/2", delay: 0.5, color: "from-emerald-600 to-emerald-700 text-white" },
+                        { title: "Aduan Publik", desc: "Respon Cepat Warga", icon: <MessageSquare />, pos: "bottom-[5%] left-[5%] md:left-[10%]", delay: 0.6, color: "from-secondary-900 to-slate-900 text-white" },
+                        { title: "Kesehatan", desc: "Posyandu & Stunting", icon: <Activity />, pos: "top-[20%] left-[-5%] md:left-0", delay: 0.7, color: "from-rose-500 to-rose-600 text-white" }
                     ].map((node, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: node.delay, type: "spring", stiffness: 100 }}
-                            className={`absolute ${node.pos} w-[140px] md:w-[180px] p-3 md:p-4 rounded-3xl glass backdrop-blur-none md:backdrop-blur-xl border border-slate-200/80 shadow-xl text-center group hover:scale-105 transition-transform z-20`}
+                            className={`absolute ${node.pos} w-[130px] md:w-[170px] p-4 rounded-[32px] glass-premium shadow-2xl text-center group hover:scale-110 hover:-translate-y-2 transition-all duration-300 z-20`}
                         >
-                            <div className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl flex items-center justify-center mb-2 shadow-sm ${node.color}`}>
+                            <div className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-2xl flex items-center justify-center mb-3 shadow-xl bg-gradient-to-br ${node.color}`}>
                                 {node.icon}
                             </div>
-                            <h4 className="text-[11px] md:text-sm font-bold text-slate-900 leading-tight mb-1">{node.title}</h4>
-                            <p className="text-[9px] md:text-[10px] text-slate-500 leading-tight hidden md:block">{node.desc}</p>
+                            <h4 className="text-[11px] md:text-sm font-black text-slate-800 leading-tight mb-1">{node.title}</h4>
+                            <p className="text-[8px] md:text-[9px] text-slate-500 font-bold uppercase tracking-widest hidden md:block">{node.desc}</p>
                         </motion.div>
                     ))}
 
-                    {/* Central Core (BJB) */}
                     <motion.div
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative z-30 w-[180px] h-[180px] md:w-[240px] md:h-[240px]"
+                        transition={{ duration: 0.8, ease: "circOut" }}
+                        className="relative z-30 w-[200px] h-[200px] md:w-[260px] md:h-[260px]"
                     >
-                        {/* Core glow */}
-                        <div className="absolute inset-0 bg-blue-400 rounded-full blur-2xl md:blur-3xl opacity-30 animate-pulse hidden md:block" />
-                        
-                        <div className="absolute inset-0 rounded-[40px] bg-gradient-to-br from-blue-800 via-blue-700 to-amber-500 p-[2px] shadow-2xl shadow-blue-900/40">
-                            <div className="w-full h-full rounded-[38px] bg-white flex flex-col items-center justify-center p-6 text-center transform transition-transform hover:scale-[1.02]">
-                                <Landmark className="w-12 h-12 md:w-16 md:h-16 text-blue-800 mb-3" />
-                                <h3 className="text-lg md:text-xl font-black text-slate-900 leading-tight">BJB Open API</h3>
-                                <div className="text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-1 mb-2">The Financial Core</div>
-                                <div className="w-full h-px bg-slate-100 my-2" />
-                                <p className="text-[10px] md:text-xs text-slate-500 font-medium">Payment Gateway, QRIS, & CMS Siskeudes</p>
+                        <div className="absolute inset-0 bg-primary-500/20 rounded-full blur-3xl animate-pulse-glow" />
+                        <div className="absolute inset-0 rounded-[48px] bg-gradient-to-br from-secondary-800 via-secondary-900 to-primary-600 p-[2px] shadow-[0_32px_64px_rgba(15,23,42,0.3)]">
+                            <div className="w-full h-full rounded-[46px] bg-white flex flex-col items-center justify-center p-8 text-center animate-mesh">
+                                <div className="w-16 h-16 glass-premium rounded-full flex items-center justify-center mb-4 shadow-inner">
+                                    <Landmark className="w-8 h-8 text-secondary-800" />
+                                </div>
+                                <h3 className="text-xl font-display font-black text-slate-900 leading-tight italic">Bank Jateng <br/>Core Open API</h3>
+                                <div className="text-[9px] font-black text-primary-600 uppercase tracking-[0.3em] mt-2 mb-3">The Financial Heart</div>
                             </div>
                         </div>
                     </motion.div>
                 </div>
-                
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="text-center mt-4 md:mt-0"
-                >
-                    <p className="text-sm md:text-base font-semibold text-slate-600">
-                        *Konsultan Membangun Ekosistemnya <span className="text-blue-700">→</span> BJB Menjadi Mesin Transaksinya
-                    </p>
-                </motion.div>
             </div>
         ),
     },
@@ -541,59 +531,59 @@ export const slides: Slide[] = [
         id: "grand-vision",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-800 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50/50 backdrop-blur-md border border-slate-200/50 text-slate-800 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm"
                     >
-                        <Network className="w-4 h-4" />
+                        <Network className="w-4 h-4 text-secondary-700 animate-pulse" />
                         Pondasi Desa Digital 4.0
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">Kedaulatan & Transformasi Infrastruktur</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Mengubah entitas desa dari "Objek Pembangunan" menjadi <span className="font-semibold text-blue-800">"Subjek Inovasi"</span> melalui penguasaan teknologi mandiri secara end-to-end.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-3xl md:text-6xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Kedaulatan & <span className="text-secondary-800 underline decoration-primary-500 decoration-8">Transformasi Digital</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Mengubah entitas desa dari "Objek Pembangunan" menjadi <span className="text-secondary-800 font-black">"Subjek Inovasi"</span>.</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 relative z-10">
                     {[
                         { 
                             title: "Kedaulatan Data Lokal", 
-                            desc: "Platform berstatus 'Custom Ownership' alias milik desa sepenuhnya, menjamin keamanan data warganegara tingkat desa dari penyalahgunaan pihak ketiga.", 
+                            desc: "Platform 'Custom Ownership' alias milik desa sepenuhnya, menjamin keamanan data warga Jawa Tengah.", 
                             icon: <ShieldCheck className="w-8 h-8" />, 
-                            color: "bg-blue-700", 
-                            lightColor: "bg-blue-50",
-                            border: "border-blue-200"
+                            color: "from-primary-500 to-primary-600"
                         },
                         { 
                             title: "Layanan Publik Mandiri", 
-                            desc: "Sistem Administrasi Desa (SISAD) dengan Tanda Tangan Elektronik tersertifikasi, memangkas proses birokrasi dari berhari-hari menjadi 5 menit.", 
+                            desc: "Sistem Administrasi Desa dengan Tanda Tangan Elektronik terintegrasi CMS Bank Jateng.", 
                             icon: <FileText className="w-8 h-8" />, 
-                            color: "bg-amber-500", 
-                            lightColor: "bg-amber-50",
-                            border: "border-amber-200"
+                            color: "from-secondary-600 to-secondary-700"
                         },
                         { 
                             title: "Big Data & Analitik", 
-                            desc: "Pengambilan kebijakan (kebencanaan, kemiskinan, pupuk) berbasis data lapangan real-time, tidak lagi mengandalkan asumsi buta.", 
+                            desc: "Pengambilan kebijakan berbasis data lapangan real-time untuk efisiensi anggaran desa.", 
                             icon: <Database className="w-8 h-8" />, 
-                            color: "bg-slate-700", 
-                            lightColor: "bg-slate-100",
-                            border: "border-slate-200"
+                            color: "from-secondary-800 to-secondary-950"
                         }
                     ].map((item, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.15 }}
-                            className={`bg-white p-6 md:p-8 rounded-[40px] border ${item.border} shadow-lg shadow-slate-200/50 hover:shadow-2xl transition-all group relative overflow-hidden flex flex-col`}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 shadow-2xl"
                         >
-                            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                            <div className={`w-16 h-16 rounded-2xl ${item.lightColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                <div className={`${item.color} text-white p-3 rounded-xl shadow-md`}>{item.icon}</div>
+                            <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${item.color}`} />
+                            <div className="w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center mb-8 ring-8 ring-slate-500/5 group-hover:rotate-12 transition-transform">
+                                <div className="text-slate-800">{item.icon}</div>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                            <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight italic">{item.title}</h3>
+                            <p className="text-slate-600 text-sm font-medium leading-relaxed">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -604,64 +594,70 @@ export const slides: Slide[] = [
         id: "advanced-tech",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <Cpu className="w-4 h-4" />
-                        Strategic AI & IoT Ecosystem
+                        <Cpu className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Next-Gen Cognitive Infrastructure
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">Evolusi Kecerdasan Buatan di Desa</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Transformasi tata kelola desa melalui kecerdasan kognitif untuk akurasi kebijakan dan keamanan finansial.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Evolusi <span className="text-primary-600 italic">Kecerdasan Buatan</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Transformasi tata kelola desa melalui kognisi digital untuk akurasi kebijakan mutlak.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-4">
                     {/* Hero AI Visual */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="md:col-span-12 lg:col-span-7 group relative rounded-[40px] overflow-hidden bg-indigo-950 h-[350px] md:h-[500px] shadow-2xl border border-indigo-500/30"
+                        className="md:col-span-12 lg:col-span-7 group relative rounded-[48px] overflow-hidden bg-slate-950 h-[400px] md:h-[550px] shadow-2xl border border-white/10 animate-float"
                     >
                         <Image 
                             src="/ai_village_evolution.png" 
                             alt="AI Evolution Future" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[3s]"
-                            width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw"
+                            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-[3s]"
+                            width={1000} height={800} sizes="(max-width: 768px) 100vw, 50vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-indigo-950 via-indigo-950/40 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-8 md:p-10 space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-[10px] font-black tracking-widest uppercase shadow-xl backdrop-blur-none md:backdrop-blur-md">
-                                <Activity className="w-3.5 h-3.5" /> Cognitive Transformation
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-12 space-y-4">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/20 border border-primary-400/30 text-primary-300 text-[10px] font-black tracking-widest uppercase shadow-xl backdrop-blur-md">
+                                <Activity className="w-3.5 h-3.5 animate-pulse" /> Live Analysis Active
                             </div>
-                            <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">Orkestrasi AI <br/>Digitalisasi Desa</h3>
-                            <p className="text-indigo-200 max-w-xl text-sm md:text-base font-medium leading-relaxed">
-                                Integrasi sensor cerdas dan Generative AI untuk mitigasi risiko sosial, kesehatan, dan keamanan finansial secara real-time.
+                            <h3 className="text-4xl md:text-6xl font-black text-white leading-none tracking-tighter italic">Cognitive <br/>Governance</h3>
+                            <p className="text-slate-400 max-w-xl text-lg font-medium leading-relaxed italic">
+                                Integrasi sensor cerdas dan Generative AI untuk mitigasi risiko sosial & kedaulatan data finansial secara otonom.
                             </p>
                         </div>
                     </motion.div>
 
                     {/* Features Grid Right Side */}
-                    <div className="md:col-span-12 lg:col-span-5 grid grid-cols-1 gap-4">
+                    <div className="md:col-span-12 lg:col-span-5 grid grid-cols-1 gap-6">
                         {[
                             { 
-                                title: "DesaBot (Gen-AI Support)", 
-                                desc: "Asisten cerdas 24/7 bagi aparat desa untuk memandu regulasi (Perdes) dan SOP layanan publik berbasis AI.", 
-                                icon: <Bot className="w-5 h-5" />,
-                                color: "bg-indigo-600 text-white"
+                                title: "DesaBot (Gen-AI)", 
+                                desc: "Asisten cerdas 24/7 untuk birokrasi & regulasi hukum desa.", 
+                                icon: <Bot />,
+                                color: "from-primary-500 to-primary-600 text-white"
                             },
                             { 
-                                title: "Fraud Detection (APBDes Guard)", 
-                                desc: "Algoritma pemantauan real-time untuk mendeteksi anomali pada kas desa, menjamin transparansi akuntabilitas.", 
-                                icon: <ShieldAlert className="w-5 h-5 text-indigo-200" />,
-                                color: "bg-slate-900 border border-slate-700 text-white shadow-xl"
+                                title: "Fraud Guard (AI)", 
+                                desc: "Algoritma pemantauan anomali kas desa secara real-time.", 
+                                icon: <ShieldAlert />,
+                                color: "from-secondary-800 to-slate-900 text-white"
                             },
                             { 
-                                title: "AI Precision Mapping", 
-                                desc: "GIS kognitif untuk akurasi data Bansos & Stunting secara presisi, meminimalisir kesalahan target bantuan.", 
-                                icon: <Brain className="w-5 h-5 text-indigo-600" />,
-                                color: "bg-white border border-indigo-100 text-slate-900 shadow-sm"
+                                title: "Precision Mapping", 
+                                desc: "GIS kognitif untuk akurasi bantuan sosial warga Jawa Tengah.", 
+                                icon: <Brain />,
+                                color: "from-emerald-500 to-emerald-600 text-white"
                             }
                         ].map((item, i) => (
                             <motion.div
@@ -669,36 +665,35 @@ export const slides: Slide[] = [
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.1 * i }}
-                                className={`p-5 rounded-[32px] flex items-start gap-4 group hover:-translate-x-2 transition-all duration-300 ${item.color}`}
+                                className="glass-premium p-6 rounded-[32px] flex items-center gap-6 group hover:scale-[1.05] transition-all duration-300 cursor-pointer"
                             >
-                                <div className={`shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform ${item.color.includes('bg-white') ? 'bg-indigo-50' : 'bg-white/20'}`}>
+                                <div className={`shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl bg-gradient-to-br ${item.color} group-hover:rotate-12 transition-transform`}>
                                     {item.icon}
                                 </div>
-                                <div className="space-y-0.5">
-                                    <h4 className="text-base font-bold leading-tight tracking-tight">{item.title}</h4>
-                                    <p className={`text-[10px] md:text-xs leading-relaxed font-medium ${item.color.includes('text-white') ? 'text-indigo-100/70' : 'text-slate-500'}`}>
+                                <div>
+                                    <h4 className="text-xl font-black text-slate-900 italic">{item.title}</h4>
+                                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
                                         {item.desc}
                                     </p>
                                 </div>
                             </motion.div>
                         ))}
                         
-                        {/* IoT Micro Card */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="p-5 rounded-[32px] bg-gradient-to-br from-indigo-50 to-white border border-indigo-100 shadow-sm flex items-center justify-between"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="p-6 rounded-[32px] bg-gradient-to-br from-secondary-900 to-slate-950 text-white border border-white/10 shadow-2xl flex items-center justify-between group overflow-hidden relative"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg">
-                                    <Radio className="w-5 h-5 animate-pulse" />
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/10 blur-[60px] rounded-full" />
+                            <div className="flex items-center gap-6 relative z-10">
+                                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-primary-400 shadow-inner group-hover:scale-110 transition-transform">
+                                    <Radio className="w-6 h-6 animate-pulse" />
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-bold text-slate-900">Smart IoT Mitigation</h4>
-                                    <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-0.5">Early Warning System 4.0</p>
+                                    <h4 className="text-lg font-black italic">Smart IoT Mitigation</h4>
+                                    <p className="text-[9px] font-black uppercase tracking-[0.3em] text-primary-400 mt-1">Status: Active & Syncing</p>
                                 </div>
                             </div>
-                            <Activity className="text-indigo-300 w-6 h-6 opacity-40 shrink-0" />
                         </motion.div>
                     </div>
                 </div>
@@ -714,137 +709,72 @@ export const slides: Slide[] = [
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold uppercase tracking-wider shadow-sm"
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/50 backdrop-blur-md border border-emerald-100/50 text-emerald-800 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm"
                         >
-                            <TrendingUp className="w-3.5 h-3.5" />
-                            Monetisasi Sirkular
+                            <Coins className="w-4 h-4 text-emerald-600 animate-pulse" />
+                            Financial Gravitational Pull
                         </motion.div>
-                        <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">Kemandirian Ekonomi BUMDes</h2>
-                        <p className="text-slate-500 max-w-xl text-base md:text-lg">Ekosistem komersial ultra-mikro yang mengunci perputaran uang tetap berada di dalam kas desa (CASA Bank BJB).</p>
+                        <motion.h2 
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                        >
+                            Ekosistem <br />
+                            <span className="text-emerald-600 italic">Pertumbuhan Ekonomi</span>
+                        </motion.h2>
+                    </div>
+                    <div className="text-right">
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Impact Projection</div>
+                        <div className="text-4xl font-black text-slate-900 leading-none tracking-tighter italic">CASA Expansion</div>
                     </div>
                 </div>
 
-                {/* Central Flowchart Diagram */}
-                <div className="relative w-full max-w-6xl mx-auto rounded-[40px] border border-blue-100 bg-white shadow-xl shadow-blue-900/5 p-6 md:p-10 flex flex-col">
-                    {/* Background Graphic */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-amber-50/30 rounded-[40px] overflow-hidden">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-100/50 rounded-full blur-3xl opacity-50 transform -translate-x-1/2 translate-y-1/2" />
-                    </div>
+                <div className="grid md:grid-cols-4 gap-8 relative z-10">
+                    {[
+                        { title: "Retail CASA", val: "+245%", desc: "Akusisi dana murah melalui Laku Pandai & Jateng Pintar.", color: "from-emerald-500 to-emerald-600" },
+                        { title: "FBI Growth", val: "+180%", desc: "Fee-based income dari transaksi PPOB & retribusi.", color: "from-secondary-700 to-secondary-800" },
+                        { title: "BUMDes Credit", val: "Trillions", desc: "Plafon kredit produktif untuk penggerak ekonomi desa.", color: "from-primary-500 to-primary-600" },
+                        { title: "Gov Funding", val: "100%", desc: "Optimalisasi Siskeudes & dana desa melalui Bank Jateng.", color: "from-slate-800 to-slate-900" }
+                    ].map((stat, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300"
+                        >
+                            <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${stat.color}`} />
+                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">{stat.title}</div>
+                            <div className="text-4xl font-black text-slate-900 mb-2 italic tracking-tighter group-hover:scale-110 transition-transform">{stat.val}</div>
+                            <p className="text-xs text-slate-500 font-medium leading-relaxed">{stat.desc}</p>
+                        </motion.div>
+                    ))}
+                </div>
 
-                    <div className="relative z-10 w-full mb-10">
-                        <div className="inline-flex items-center justify-center w-full gap-4">
-                            <div className="h-px bg-slate-200 flex-grow" />
-                            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest px-4 border border-slate-200 rounded-full bg-white py-1.5">
-                                Arus Transaksi Closed-Loop
-                            </h3>
-                            <div className="h-px bg-slate-200 flex-grow" />
-                        </div>
+                <div className="mt-12 w-full glass-premium rounded-[48px] overflow-hidden p-10 flex flex-col md:flex-row items-center gap-12 border-emerald-100/50">
+                    <div className="w-full md:w-1/2 relative space-y-6">
+                        <div className="text-emerald-600 font-black text-[10px] tracking-[0.4em] uppercase">Connectivity Map</div>
+                        <h3 className="text-3xl md:text-4xl font-display font-black text-slate-900 leading-none italic">Omni-Channel Desa</h3>
+                        <p className="text-slate-600 font-medium leading-relaxed italic">
+                            Menghubungkan warga, pasar, dan perbankan dalam satu jalinan digital yang tak terputus (Seamless Financial Journey).
+                        </p>
                     </div>
-
-                    <div className="grid md:grid-cols-4 gap-4 md:gap-6 relative z-10 flex-grow">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-[60px] left-[10%] right-[10%] h-1 bg-slate-100 rounded-full -z-10 overflow-hidden">
-                            <motion.div 
-                                initial={{ x: "-100%" }}
-                                animate={{ x: "100%" }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                className="w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-50"
+                    <div className="w-full md:w-1/2">
+                        <div className="relative aspect-video glass-premium rounded-[32px] overflow-hidden shadow-2xl animate-float">
+                            <Image 
+                                src="/economic_ecosystem_chart.png" 
+                                alt="Economic Ecosystem" 
+                                className="w-full h-full object-cover opacity-90 transition-transform duration-1000 hover:scale-105"
+                                width={800} height={450} 
                             />
                         </div>
-
-                        {/* Step 1: Sumber Dana */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm relative group hover:shadow-md transition-shadow flex flex-col items-center text-center"
-                        >
-                            <div className="absolute -top-3 w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-500 shadow-sm">1</div>
-                            <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Landmark className="w-8 h-8 text-slate-600" />
-                            </div>
-                            <h4 className="text-base font-bold text-slate-900 mb-2">Dana & Subsidi</h4>
-                            <p className="text-xs text-slate-500 leading-relaxed mb-4">Pemerintah pusat menyalurkan Dana Desa & PKH/BLT ke rekening desa.</p>
-                            <div className="mt-auto px-3 py-1 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-full w-full">Kas Desa (BJB)</div>
-                        </motion.div>
-
-                        {/* Step 2: Distribusi Warga */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm relative group hover:shadow-md transition-shadow flex flex-col items-center text-center"
-                        >
-                            <div className="absolute -top-3 w-6 h-6 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center text-[10px] font-bold text-blue-600 shadow-sm">2</div>
-                            <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                                <Users className="w-8 h-8 text-blue-600" />
-                            </div>
-                            <h4 className="text-base font-bold text-slate-900 mb-2">Penyaluran Warga</h4>
-                            <p className="text-xs text-slate-500 leading-relaxed mb-4">Warga menerima haknya langsung melalui Super App ke dompet digital mereka.</p>
-                            <div className="mt-auto px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full w-full">Rekening Nasabah (BJB)</div>
-                        </motion.div>
-
-                        {/* Step 3: Ekosistem BUMDes (The Pillars) */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                            className="bg-white/80 backdrop-blur-none md:backdrop-blur-sm rounded-3xl p-1.5 border border-amber-200 shadow-sm relative group hover:shadow-lg transition-all flex flex-col items-center text-center ring-2 ring-amber-100 ring-offset-2"
-                        >
-                            <div className="absolute -top-3 w-6 h-6 rounded-full bg-amber-100 border border-amber-200 flex items-center justify-center text-[10px] font-bold text-amber-600 shadow-sm z-10">3</div>
-                            <div className="w-full bg-amber-50 rounded-[22px] p-4 flex flex-col items-center flex-grow">
-                                <Store className="w-10 h-10 text-amber-600 mb-3 group-hover:scale-110 transition-transform" />
-                                <h4 className="text-base font-bold text-slate-900 mb-1">Belanja Ultra-Mikro</h4>
-                                <p className="text-[11px] text-amber-700/80 leading-snug mb-3">Warga membelanjakan saldonya kembali di dalam desa.</p>
-                                
-                                <div className="grid grid-cols-2 gap-2 w-full mt-auto">
-                                    <div className="bg-white p-2 rounded-xl border border-amber-100 flex flex-col items-center justify-center shadow-sm">
-                                        <ShoppingBag className="w-4 h-4 text-amber-600 mb-1" />
-                                        <span className="text-[9px] font-bold text-slate-700">Marketplace</span>
-                                    </div>
-                                    <div className="bg-white p-2 rounded-xl border border-amber-100 flex flex-col items-center justify-center shadow-sm">
-                                        <Briefcase className="w-4 h-4 text-blue-600 mb-1" />
-                                        <span className="text-[9px] font-bold text-slate-700">Koperasi</span>
-                                    </div>
-                                    <div className="bg-white p-2 rounded-xl border border-amber-100 flex flex-col items-center justify-center shadow-sm">
-                                        <MapPin className="w-4 h-4 text-slate-600 mb-1" />
-                                        <span className="text-[9px] font-bold text-slate-700">Ojek Desa</span>
-                                    </div>
-                                    <div className="bg-white p-2 rounded-xl border border-amber-100 flex flex-col items-center justify-center shadow-sm">
-                                        <Network className="w-4 h-4 text-blue-800 mb-1" />
-                                        <span className="text-[9px] font-bold text-slate-700">PPOB / Laku Pandai</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Step 4: The BJB Lock-In */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-gradient-to-b from-blue-800 to-slate-900 rounded-3xl p-6 border border-blue-700 shadow-xl relative group hover:-translate-y-1 transition-transform flex flex-col items-center text-center overflow-hidden"
-                        >
-                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl font-bold text-amber-600 shadow-sm z-10" />
-                            
-                            <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-none md:backdrop-blur-md flex items-center justify-center mb-4 relative z-10 border border-white/20 group-hover:scale-110 transition-transform">
-                                <Lock className="w-8 h-8 text-amber-400" />
-                            </div>
-                            <h4 className="text-lg font-black text-white mb-2 relative z-10">100% Retensi BJB</h4>
-                            <p className="text-xs text-blue-200 leading-relaxed mb-4 relative z-10">Uang hasil belanja BUMDes mengendap kembali sebagai <span className="text-amber-300 font-bold">CASA Bank BJB</span>, memicu *Fee-Based Income* masif.</p>
-                            <div className="mt-auto px-3 py-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-900 text-[10px] font-black tracking-widest uppercase rounded-full w-full relative z-10 shadow-lg">
-                                Ultimate Lock-In
-                            </div>
-                        </motion.div>
                     </div>
                 </div>
             </div>
         ),
     },
     {
-        id: "bjb-programs",
+        id: "jateng-programs",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
                 <div className="text-center space-y-4">
@@ -856,16 +786,16 @@ export const slides: Slide[] = [
                         <Zap className="w-4 h-4 text-amber-600" />
                         Sinergi Program Unggulan
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Integrasi Lintas Platform BJB</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Mengorkestrasi inisiatif unggulan Bank BJB dalam satu platform desa super app yang komprehensif.</p>
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Integrasi Lintas Platform Bank Jateng</h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Mengorkestrasi inisiatif unggulan Bank Jateng dalam satu platform desa super app yang komprehensif.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     {[
-                        { title: "bjb Bungah", subtitle: "Bumdes Ngahiji", desc: "Digitalisasi pembayaran PBB-P2 dan pajak kendaraan via BUMDes, mendongkrak fee-based income BJB.", icon: <Coins className="w-8 h-8" />, color: "from-blue-500/10 to-transparent", borderColor: "border-blue-200", accent: "text-blue-700" },
-                        { title: "Siskeudes IBC", subtitle: "Internet Banking Corp", desc: "Integrasi real-time keuangan desa dengan sistem BJB. Meningkatkan transaparansi dan volume transaksi giro desa.", icon: <Database className="w-8 h-8" />, color: "from-slate-500/10 to-transparent", borderColor: "border-slate-200", accent: "text-slate-700" },
-                        { title: "PESAT UMKM", subtitle: "Pemberdayaan Ekonomi", desc: "Memfasilitasi UMKM desa masuk e-commerce terintegrasi QRIS BJB, membuka jalur kredit mikro bagi pelaku usaha lokal.", icon: <ShoppingBag className="w-8 h-8" />, color: "from-amber-500/10 to-transparent", borderColor: "border-amber-200", accent: "text-amber-600" },
-                        { title: "bjb BiSA!", subtitle: "Laku Pandai", desc: "Menjadikan aplikasi desa sebagai pintu percepatan program 1 BUMDes 1 Agen, mengakuisisi ribuan nasabah baru massal.", icon: <Network className="w-8 h-8" />, color: "from-blue-800/10 to-transparent", borderColor: "border-blue-300", accent: "text-blue-800" }
+                        { title: "Jateng Pintar", subtitle: "Bumdes Ngahiji", desc: "Digitalisasi pembayaran PBB-P2 dan pajak kendaraan via BUMDes, mendongkrak fee-based income Bank Jateng.", icon: <Coins className="w-8 h-8" />, color: "from-secondary-500/10 to-transparent", borderColor: "border-secondary-200", accent: "text-secondary-700" },
+                        { title: "Siskeudes IBC", subtitle: "Internet Banking Corp", desc: "Integrasi real-time keuangan desa dengan sistem Bank Jateng. Meningkatkan transaparansi dan volume transaksi giro desa.", icon: <Database className="w-8 h-8" />, color: "from-slate-500/10 to-transparent", borderColor: "border-slate-200", accent: "text-slate-700" },
+                        { title: "PESAT UMKM", subtitle: "Pemberdayaan Ekonomi", desc: "Memfasilitasi UMKM desa masuk e-commerce terintegrasi QRIS Bank Jateng, membuka jalur kredit mikro bagi pelaku usaha lokal.", icon: <ShoppingBag className="w-8 h-8" />, color: "from-primary-500/10 to-transparent", borderColor: "border-primary-200", accent: "text-primary-600" },
+                        { title: "Bank Jateng Bisa", subtitle: "Laku Pandai", desc: "Menjadikan aplikasi desa sebagai pintu percepatan program 1 BUMDes 1 Agen, mengakuisisi ribuan nasabah baru massal.", icon: <Network className="w-8 h-8" />, color: "from-secondary-800/10 to-transparent", borderColor: "border-secondary-300", accent: "text-secondary-800" }
                     ].map((prog, i) => (
                         <motion.div
                             key={i}
@@ -896,37 +826,43 @@ export const slides: Slide[] = [
         id: "value-proposition",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-700 text-white text-[10px] font-black uppercase tracking-widest shadow-lg"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl"
                     >
-                        <Target className="w-3.5 h-3.5" />
-                        Strategic Value Proposition
+                        <Target className="w-3.5 h-3.5 text-primary-400" />
+                        Strategic Value Core
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">3 Pilar Utama Keuntungan BJB</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Mengapa kolaborasi ini adalah prioritas mutlak bagi pertumbuhan bisnis Bank BJB.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Pilar Utama <span className="text-primary-600 underline decoration-slate-900 decoration-8 underline-offset-8">Keuntungan</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Mengapa orkestrasi ini adalah keharusan mutlak bagi kedaulatan bisnis Bank Jateng.</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-8 relative z-10">
                     {[
-                        { title: "Customer Lock-in", desc: "Mengunci loyalitas seluruh perangkat desa & warga melalui ekosistem transaksi harian yang terintegrasi penuh dengan rekening BJB.", icon: <ShieldCheck className="w-8 h-8" />, color: "bg-blue-700", lightColor: "bg-blue-50" },
-                        { title: "Massive Acquisition", desc: "Akuisisi nasabah baru secara otomatis & massal melalui digitalisasi layanan kependudukan dan bantuan sosial desa.", icon: <Users className="w-8 h-8" />, color: "bg-amber-500", lightColor: "bg-amber-50" },
-                        { title: "Revenue Stream", desc: "Menciptakan aliran Fee-Based Income baru dari setiap transaksi PBB, PPOB, dan aktivitas ekonomi BUMDes di platform.", icon: <HandCoins className="w-8 h-8" />, color: "bg-slate-700", lightColor: "bg-slate-100" }
+                        { title: "Customer Lock-in", desc: "Mengunci loyalitas perangkat desa & warga melalui ekosistem transaksi harian yang terintegrasi.", icon: <ShieldCheck />, color: "from-secondary-800 to-slate-950" },
+                        { title: "Massive Acquisition", desc: "Akuisisi nasabah baru secara otomatis & massal melalui digitalisasi bansos & kependudukan.", icon: <Users />, color: "from-primary-500 to-primary-600" },
+                        { title: "Revenue Stream", desc: "Fee-Based Income masif dari setiap transaksi PPOB & aktivitas ekonomi BUMDes di platform.", icon: <Coins />, color: "from-slate-700 to-slate-900" }
                     ].map((item, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="bg-white p-6 md:p-8 rounded-[40px] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl transition-all group"
+                            className="glass-premium p-10 rounded-[48px] relative overflow-hidden group hover:scale-[1.05] transition-all duration-500 shadow-2xl border-white/20"
                         >
-                            <div className={`w-16 h-16 rounded-2xl ${item.lightColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                <div className={`${item.color} text-white p-3 rounded-xl`}>{item.icon}</div>
+                            <div className={`w-20 h-20 rounded-[24px] bg-gradient-to-br ${item.color} flex items-center justify-center mb-8 shadow-2xl group-hover:rotate-12 transition-transform ring-8 ring-slate-500/5`}>
+                                <div className="text-white scale-125">{item.icon}</div>
                             </div>
-                            <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm md:text-base">{item.desc}</p>
+                            <h3 className="text-3xl font-black text-slate-900 mb-4 leading-tight italic tracking-tighter">{item.title}</h3>
+                            <p className="text-slate-600 leading-relaxed text-sm font-medium italic">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -937,71 +873,81 @@ export const slides: Slide[] = [
         id: "market-opportunity",
         content: (
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 min-h-[70vh] py-8 items-center">
-                <div className="space-y-8">
+                <div className="space-y-8 relative z-10">
                     <div className="space-y-4">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold uppercase tracking-wider"
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl"
                         >
-                            <Globe className="w-3.5 h-3.5" />
-                            The Blue Ocean Market
+                            <Globe className="w-4 h-4 text-primary-400 animate-spin-slow" />
+                            Market Expansion Potential
                         </motion.div>
-                        <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 leading-tight">Potensi Skala <br className="hidden lg:block"/><span className="text-blue-700 italic">Jabar & Banten</span></h2>
-                        <p className="text-lg text-slate-600 leading-relaxed">Wilayah *home base* Bank BJB menyimpan potensi ekonomi digital pedesaan yang belum tergarap maksimal.</p>
+                        <motion.h2 
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-5xl md:text-8xl font-display font-black text-slate-900 tracking-tighter leading-[0.9]"
+                        >
+                            Blue Ocean <br />
+                            <span className="text-primary-600 italic">Jawa Tengah</span>
+                        </motion.h2>
+                        <p className="text-xl text-slate-600 leading-relaxed font-medium italic">Eksploitasi potensi ekonomi digital pedesaan yang belum terjamah di basis wilayah utama Bank Jateng.</p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-6">
                         {[
-                            { label: "Total Desa", value: "5.312+", sub: "Desa di Jabar", icon: <MapPin className="w-5 h-5 text-blue-700" /> },
-                            { label: "Populasi Desa", value: "35jt+", sub: "Potensi Nasabah", icon: <Users className="w-5 h-5 text-amber-600" /> },
-                            { label: "Dana Desa", value: "RP 6T+", sub: "Per Tahun", icon: <Coins className="w-5 h-5 text-slate-600" /> },
-                            { label: "UMKM Desa", value: "1.2jt+", sub: "Potensi Kredit Mikro", icon: <Briefcase className="w-5 h-5 text-blue-800" /> }
+                            { label: "Total Desa", value: "7.810", sub: "Titik Penetrasi", icon: <MapPin className="text-primary-600" /> },
+                            { label: "Populasi", value: "35jt+", sub: "Massive Base", icon: <Users className="text-secondary-600" /> },
+                            { label: "Village Fund", value: "RP 6T+", sub: "Annual Flow", icon: <Coins className="text-emerald-600" /> },
+                            { label: "SME Ecosystem", value: "1.2jt+", sub: "Credit Potential", icon: <Briefcase className="text-slate-700" /> }
                         ].map((stat, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
                                 transition={{ delay: 0.3 + (i * 0.1) }}
-                                className="p-5 rounded-3xl bg-slate-50 border border-slate-100"
+                                className="glass-premium p-6 rounded-[32px] border-white/20 shadow-xl group hover:scale-[1.05] transition-all"
                             >
-                                <div className="mb-3">{stat.icon}</div>
-                                <div className="text-2xl font-black text-slate-900 tracking-tighter">{stat.value}</div>
-                                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide">{stat.label}</div>
-                                <div className="text-[10px] text-slate-400 mt-1">{stat.sub}</div>
+                                <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform shadow-inner">
+                                    {stat.icon}
+                                </div>
+                                <div className="text-3xl font-black text-slate-900 tracking-tighter italic">{stat.value}</div>
+                                <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-1">{stat.label}</div>
+                                <div className="text-[9px] text-primary-600 font-black mt-0.5">{stat.sub}</div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
 
                 <div className="relative">
-                    <div className="absolute inset-0 bg-blue-700/5 rounded-[60px] transform rotate-3 scale-105" />
-                    <div className="relative glass h-[450px] rounded-[50px] border border-white p-6 md:p-10 overflow-hidden flex flex-col justify-center items-center text-center">
-                        <PieChart className="w-48 h-48 text-blue-100 absolute -top-10 -right-10 opacity-20" />
-                        <div className="space-y-6 relative z-10 w-full">
+                    <div className="absolute -inset-10 bg-primary-500/10 blur-[100px] rounded-full animate-mesh opacity-50" />
+                    <div className="relative glass-premium min-h-[500px] rounded-[60px] border-white/20 shadow-2xl p-12 flex flex-col justify-center animate-float">
+                        <PieChart className="w-48 h-48 text-primary-500 absolute -top-10 -right-10 opacity-20 animate-spin-slow" />
+                        <div className="space-y-8 relative z-10 w-full">
                             <motion.div 
                                 initial={{ scale: 0.5, opacity: 0 }}
                                 whileInView={{ scale: 1, opacity: 1 }}
                                 viewport={{ once: true }}
-                                className="w-24 h-24 rounded-full bg-blue-700 flex items-center justify-center mx-auto shadow-2xl shadow-blue-200"
+                                className="w-24 h-24 rounded-full bg-slate-950 flex items-center justify-center mx-auto shadow-2xl border-4 border-white"
                             >
-                                <TrendingUp className="w-12 h-12 text-white" />
+                                <TrendingUp className="w-10 h-10 text-primary-400" />
                             </motion.div>
-                            <h3 className="text-3xl font-bold text-slate-900">Dominasi Market Share</h3>
-                            <p className="text-slate-500 max-w-xs mx-auto">Satu-satunya solusi perbankan yang terintegrasi langsung ke sistem Tanda Tangan Elektronik dan SIA Desa.</p>
+                            <div className="text-center">
+                                <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic">Market Dominance</h3>
+                                <p className="text-slate-500 max-w-xs mx-auto text-sm font-medium mt-2">Satu-satunya solusi yang terintegrasi secara legal dengan TTE & SIA Desa.</p>
+                            </div>
                             
-                            <div className="pt-6 space-y-4">
-                                {/* Animated Chart Bars */}
+                            <div className="pt-8 space-y-6">
                                 {[
-                                    { label: "BJB (Current)", val: "65%", color: "bg-blue-600" },
-                                    { label: "Target (2026)", val: "92%", color: "bg-gradient-to-r from-blue-700 to-amber-500" },
+                                    { label: "Bank Jateng (Current)", val: "65%", color: "bg-slate-300" },
+                                    { label: "Target Projection (2026)", val: "92%", color: "bg-gradient-to-r from-primary-500 to-secondary-700 shadow-lg shadow-primary-500/50" },
                                 ].map((bar, idx) => (
-                                    <div key={idx} className="space-y-1.5">
-                                        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                    <div key={idx} className="space-y-2">
+                                        <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">
                                             <span>{bar.label}</span>
-                                            <span>{bar.val}</span>
+                                            <span className="text-slate-900">{bar.val}</span>
                                         </div>
-                                        <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
+                                        <div className="h-3 w-full bg-slate-100/50 rounded-full overflow-hidden border border-slate-200">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 whileInView={{ width: bar.val }}
@@ -1020,74 +966,76 @@ export const slides: Slide[] = [
         ),
     },
     {
-        id: "bjb-killer-features",
+        id: "jateng-killer-features",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.3em] uppercase shadow-2xl"
                     >
-                        <Zap className="w-4 h-4" />
-                        Exclusive Banking Edge
+                        <Zap className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Executive Strategic Dominance
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">Supercharged BJB Integration</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Empat pilar "Killer Features" yang menjadikan Bank BJB sebagai satu-satunya poros perputaran uang (CASA) dan gaya hidup warga desa.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Fitur <span className="text-primary-600 italic text-shadow-glow">Diferensiasi Eksklusif</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Teknologi premium yang mengunci ekosistem pedesaan Jawa Tengah secara mutlak.</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6 relative z-10 pt-4">
+                <div className="grid md:grid-cols-2 gap-8 relative z-10 pt-4">
                     {[
                         {
-                            title: "Data-Driven KUR (Credit Scoring)",
-                            badge: "Mitigasi NPL 0%",
-                            desc: "AI menganalisa riwayat bayar PBB, utilitas, dan daya beli warga di Super App untuk melahirkan *Alternative Credit Score*. BJB bisa *Pre-Approve* KUR tanpa ragu berkat data valid, melesatkan kredit UMKM pelosok secara aman.",
-                            icon: <BarChart className="w-7 h-7 text-white" />,
-                            colorBg: "bg-blue-700",
-                            glowColor: "group-hover:shadow-blue-200"
+                            title: "Data-Driven KUR Scoring",
+                            badge: "NPL Prevention 0.0%",
+                            desc: "AI-Scoring berbasis riwayat bayar PBB & utilitas warga untuk Pre-Approve kredit produktif secara masif.",
+                            icon: <BarChart3 className="w-8 h-8 text-white" />,
+                            color: "from-secondary-800 to-slate-950"
                         },
                         {
-                            title: "Payroll Ekosistem Pemerintahan",
-                            badge: "250K+ Nasabah Baru Terkunci",
-                            desc: "Sistem otomatis yang mewajibkan Penghasilan Tetap (Siltap) Kades, Perangkat Desa, RT/RW, Linmas, hingga insentif Guru Ngaji terdistribusi eksklusif melalui jaringan rekening Payroll Bank BJB secara serentak.",
-                            icon: <HandCoins className="w-7 h-7 text-white" />,
-                            colorBg: "bg-amber-500",
-                            glowColor: "group-hover:shadow-amber-200"
+                            title: "Payroll Ecosystem Lock-in",
+                            badge: "250K+ Monthly Recurrent",
+                            desc: "Otomatisasi Payroll Siltap Perangkat Desa & Insentif Guru Ngaji serentak via Ledger Bank Jateng.",
+                            icon: <HandCoins className="w-8 h-8 text-white" />,
+                            color: "from-primary-500 to-primary-600"
                         },
                         {
-                            title: "Co-Branding Smart Card Terpadu",
-                            badge: "BJB DigiCash Expansion",
-                            desc: "Kartu Pelayanan Masyarakat (Smart ID Desa) dicetak terintegrasi dengan teknologi *e-Money* (BJB TapCash/Digicash). Bisa langsung digunakan warga untuk naik angkutan, tol, belanja, dan menerima BLT digital.",
-                            icon: <CreditCard className="w-7 h-7 text-white" />,
-                            colorBg: "bg-slate-800",
-                            glowColor: "group-hover:shadow-slate-200"
+                            title: "Smart ID Multi-Utility",
+                            badge: "Omni-Channel Card",
+                            desc: "Kartu Pelayanan Desa terintegrasi e-Money Bank Jateng untuk akses bansos, transportasi, & transaksi.",
+                            icon: <CreditCard className="w-8 h-8 text-white" />,
+                            color: "from-slate-800 to-slate-900"
                         },
                         {
-                            title: "Gamifikasi CSR 'Desa BJB Juara'",
-                            badge: "Zero CAC Marketing",
-                            desc: "Hentikan bakar uang promosi mandek! Sistem kompetisi antar desa: Desa dengan transaksi tertinggi di ujung tahun diganjar _Reward_ CSR BJB (E-Ambulance/WiFi). Kades akan sukarela memaksa warganya bertransaksi via BJB.",
-                            icon: <Trophy className="w-7 h-7 text-white" />,
-                            colorBg: "bg-emerald-600",
-                            glowColor: "group-hover:shadow-emerald-200"
+                            title: "Gamifikasi CSR Berbasis Laba",
+                            badge: "High Growth Reward",
+                            desc: "Sistem kompetisi antar desa dengan reward CSR produktif bagi desa dengan omzet transaksi tertinggi.",
+                            icon: <Trophy className="w-8 h-8 text-white" />,
+                            color: "from-emerald-500 to-emerald-600"
                         }
-                    ].map((feature, idx) => (
+                    ].map((feature, i) => (
                         <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ delay: 0.1 * idx, type: "spring", stiffness: 100 }}
-                            className={`p-6 md:p-8 rounded-[32px] bg-white border border-slate-200 shadow-lg hover:-translate-y-2 transition-transform duration-300 group cursor-default ${feature.glowColor}`}
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-10 rounded-[48px] relative overflow-hidden group hover:scale-[1.02] transition-all duration-500 shadow-2xl border-white/20"
                         >
-                            <div className="flex flex-col sm:flex-row gap-5 md:gap-6 items-start">
-                                <div className={`shrink-0 w-16 h-16 rounded-2xl ${feature.colorBg} flex items-center justify-center shadow-lg group-hover:rotate-6 transition-transform`}>
+                            <div className="flex flex-col md:flex-row gap-8 items-start relative z-10">
+                                <div className={`shrink-0 w-20 h-20 rounded-[24px] bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-2xl group-hover:rotate-12 transition-transform ring-8 ring-slate-500/5`}>
                                     {feature.icon}
                                 </div>
-                                <div>
-                                    <div className="inline-block px-2.5 py-1 rounded bg-slate-100 text-slate-600 text-[10px] font-bold tracking-wider uppercase mb-2">
+                                <div className="space-y-4">
+                                    <div className="inline-block px-3 py-1 rounded bg-slate-900 text-primary-400 text-[10px] font-black tracking-widest uppercase">
                                         {feature.badge}
                                     </div>
-                                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 leading-tight">{feature.title}</h3>
-                                    <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+                                    <h3 className="text-3xl font-black text-slate-900 italic tracking-tighter leading-none">{feature.title}</h3>
+                                    <p className="text-slate-600 text-[13px] font-medium leading-relaxed italic">
                                         {feature.desc}
                                     </p>
                                 </div>
@@ -1102,162 +1050,117 @@ export const slides: Slide[] = [
         id: "roi-analysis",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
                     <div className="space-y-4">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold uppercase tracking-wider"
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50/50 backdrop-blur-md border border-emerald-100/50 text-emerald-800 text-[10px] font-black tracking-[0.2em] uppercase shadow-sm"
                         >
-                            <BarChart3 className="w-3.5 h-3.5" />
-                            Financial Impact Analysis
+                            <BarChart3 className="w-4 h-4 text-emerald-600 animate-pulse" />
+                            Financial Impact Projection
                         </motion.div>
-                        <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">Proyeksi ROI untuk BJB</h2>
-                        <p className="text-slate-500 max-w-xl text-base md:text-lg">Analisis peningkatan profitabilitas melalui digitalisasi ekosistem desa.</p>
+                        <motion.h2 
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                        >
+                            Proyeksi <span className="text-emerald-600 italic text-shadow-glow">Nilai Ekonomi</span>
+                        </motion.h2>
+                    </div>
+                    <div className="text-right">
+                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">Total Target Value</div>
+                        <div className="text-4xl font-black text-slate-900 leading-none tracking-tighter italic">Rp 1.5 Trillion+</div>
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-12 gap-8">
-                    <div className="md:col-span-8 grid sm:grid-cols-2 gap-6">
-                        {[
-                            { title: "Pertumbuhan CASA", value: "Proyeksi Rp 1.5 T", sub: "Hingga 2026", desc: "Digitalisasi 5.312 desa di Jabar & Banten mengunci likuiditas dana desa eksklusif di ledger Bank BJB.", icon: <Coins className="w-6 h-6" />, color: "text-blue-700", bg: "bg-blue-50", percentage: "85%" },
-                            { title: "Fee-Based Income", value: "↑ 185%", sub: "Transaksi PPOB & PBB", desc: "Monetisasi setiap transaksi pembayaran pajak dan tagihan warga melalui ekosistem BJB Digi.", icon: <CreditCard className="w-6 h-6" />, color: "text-blue-800", bg: "bg-blue-100/50", percentage: "70%" },
-                            { title: "Efisiensi Operasional", value: "↓ 40%", sub: "Cost reduction", desc: "Digitalisasi memangkas biaya distribusi bantuan tunai dan monitoring manual melalui sistem real-time.", icon: <Zap className="w-6 h-6" />, color: "text-amber-600", bg: "bg-amber-50", percentage: "40%" },
-                            { title: "Competitive Moat", value: "Banking Ledger", sub: "Vs Fintech Wallets", desc: "BJB memiliki keunggulan regulasi sebagai pemegang rekening kas desa yang tidak dimiliki Fintech.", icon: <ShieldCheck className="w-6 h-6" />, color: "text-slate-700", bg: "bg-slate-100", percentage: "100%" }
-                        ].map((card, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="p-6 rounded-[32px] bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all group"
-                            >
-                                <div className="flex items-center gap-4 mb-4">
-                                    <div className={`p-3 rounded-2xl ${card.bg} ${card.color} group-hover:rotate-12 transition-transform`}>{card.icon}</div>
-                                    <div>
-                                        <div className={`text-2xl font-black ${card.color}`}>{card.value}</div>
-                                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{card.sub}</div>
-                                    </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                    {[
+                        { title: "CASA Growth", value: "Rp 1.5 T", desc: "Digitalisasi 7.809 desa mengunci likuiditas dana desa eksklusif di Bank Jateng.", icon: <Coins />, color: "from-primary-500 to-primary-600", pct: "85%" },
+                        { title: "FBI Scaling", value: "↑ 185%", desc: "Monetisasi transaksi PBB & PPOB secara otomatis di seluruh ekosistem.", icon: <CreditCard />, color: "from-secondary-700 to-secondary-900", pct: "70%" },
+                        { title: "OPEX Efficiency", value: "↓ 40%", desc: "Pemangkasan biaya distribusi bansos tunai melalui sistem biometrik.", icon: <Zap />, color: "from-emerald-500 to-emerald-600", pct: "40%" },
+                        { title: "Strategic Moat", value: "100%", desc: "Kedaulatan ledger perbankan yang tidak bisa ditembus oleh kompetitor fintech.", icon: <ShieldCheck />, color: "from-slate-800 to-slate-950", pct: "100%" }
+                    ].map((card, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.02] transition-all"
+                        >
+                            <div className="flex items-center gap-4 mb-6 relative z-10">
+                                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform`}>
+                                    {card.icon}
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-2">{card.title}</h4>
-                                <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-4">{card.desc}</p>
-                                {/* Animated Progress Meter */}
-                                <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden mt-auto">
-                                    <motion.div 
+                                <div className="text-2xl font-black text-slate-900 tracking-tighter italic">{card.value}</div>
+                            </div>
+                            <h3 className="text-xl font-black text-slate-900 mb-2 leading-none italic relative z-10">{card.title}</h3>
+                            <p className="text-slate-500 text-[12px] font-medium leading-relaxed italic mb-6 relative z-10">{card.desc}</p>
+                            
+                            <div className="space-y-1.5 mt-auto relative z-10">
+                                <div className="flex justify-between text-[9px] font-black uppercase tracking-widest text-slate-400">
+                                    <span>Projection</span>
+                                    <span className="text-slate-900">{card.pct}</span>
+                                </div>
+                                <div className="h-1.5 w-full bg-slate-100/50 rounded-full overflow-hidden border border-slate-100">
+                                    <motion.div
                                         initial={{ width: 0 }}
-                                        whileInView={{ width: card.percentage }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 1, delay: 0.5 + (i * 0.1) }}
-                                        className={`h-full ${card.color.replace('text', 'bg')}`}
+                                        whileInView={{ width: card.pct }}
+                                        transition={{ duration: 1.5, delay: 0.5 + (i * 0.1) }}
+                                        className={`h-full bg-gradient-to-r ${card.color}`}
                                     />
                                 </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div className="md:col-span-4 bg-slate-900 rounded-[40px] p-6 md:p-8 text-white flex flex-col justify-between relative overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 p-8 opacity-10">
-                            <BarChart className="w-32 h-32" />
-                        </div>
-                        <div className="relative z-10 space-y-6">
-                            <h3 className="text-2xl font-bold leading-tight italic">"Digitalisasi desa adalah investasi dengan resiko rendah namun berdampak tinggi (High Impact, Low Risk)."</h3>
-                            <div className="space-y-4 pt-6">
-                                <div className="flex justify-between text-xs uppercase tracking-widest text-slate-400 font-bold">
-                                    <span>Financial Health Score</span>
-                                    <span>Excellent</span>
-                                </div>
-                                <div className="grid grid-cols-5 gap-1">
-                                    {[1, 2, 3, 4, 5].map(b => <div key={b} className={`h-2 rounded-full ${b <= 4 ? 'bg-blue-500' : 'bg-slate-700'}`} />)}
-                                </div>
                             </div>
-                            <div className="mt-4 p-4 rounded-2xl bg-white/5 border border-white/10">
-                                <div className="flex items-center gap-2 mb-2">
-                                    <Leaf className="w-4 h-4 text-emerald-400" />
-                                    <span className="text-sm font-bold text-white tracking-widest uppercase">ESG Boost Framework</span>
-                                </div>
-                                <ul className="text-xs text-slate-300 space-y-1 list-disc pl-4">
-                                    <li><strong className="text-white">E</strong>nvironmental: Paperless Office</li>
-                                    <li><strong className="text-white">S</strong>ocial: Inklusi Keuangan Warga</li>
-                                    <li><strong className="text-white">G</strong>overnance: Transparansi PBB & DD</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="pt-8 border-t border-white/10 mt-6">
-                            <div className="text-3xl font-black text-blue-400 tracking-tighter">SUSTAINABLE</div>
-                            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">Growth Model 2025 - 2030</div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         ),
     },
     {
-        id: "bjb-strategic-dominance",
+        id: "jateng-strategic-dominance",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-900 border border-blue-800 text-blue-100 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase shadow-lg shadow-blue-900/40"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <Lock className="w-4 h-4 text-amber-400" />
-                        The Ultimate Advantage
+                        <Lock className="w-4 h-4 text-primary-400 animate-pulse" />
+                        The Absolute Competitive Moat
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tighter">Strategic Dominance <span className="text-blue-700">Bank BJB</span></h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg font-medium">Ini bukan sekadar kemitraan, ini adalah penguasaan ekosistem melalui *Banking Moat* yang tidak bisa ditembus oleh kompetitor.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Strategic <span className="text-primary-600 italic">Dominance</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Bukan sekadar kemitraan, melainkan penguasaan ekosistem melalui kedaulatan data & regulasi.</p>
                 </div>
 
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pt-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10 pt-6">
                     {[
-                        {
-                            title: "Zero-Cost Acquisition",
-                            subtitle: "CAC Rp 0",
-                            desc: "Mengakuisisi puluhan ribu nasabah baru tanpa anggaran marketing tebal dan tanpa perlu repot membuka kantor cabang fisik di desa-desa pelosok.",
-                            icon: <Target className="w-8 h-8 text-blue-700" />,
-                            bg: "bg-blue-50 border-blue-200"
-                        },
-                        {
-                            title: "Monopoli Big Data",
-                            subtitle: "Data Intelijen Warga",
-                            desc: "BJB akan menguasai tambang data terbesar di Jabar: Profil belanja, kapasitas utang, hingga siklus panen warga sebagai aset penawaran asuransi dan kredit terarah.",
-                            icon: <Database className="w-8 h-8 text-amber-600" />,
-                            bg: "bg-amber-50 border-amber-200"
-                        },
-                        {
-                            title: "Infinite Loop FBI",
-                            subtitle: "Fee-Based Income",
-                            desc: "Mengubah miliaran rupiah peredaran PBB, pajak kendaraan, dan e-commerce BUMDes menjadi aliran _Fee Based Income_ berulang dari dalam ekosistem eksklusif BJB.",
-                            icon: <Coins className="w-8 h-8 text-emerald-600" />,
-                            bg: "bg-emerald-50 border-emerald-200"
-                        },
-                        {
-                            title: "The Defensive Moat",
-                            subtitle: "Benteng Kompetisi",
-                            desc: "Sistem pemerintahan desa yang terintegrasi secara teknis (API) dengan Bank BJB akan otomatis menendang keluar dan memblokir Bank Himbara maupun *Fintech* lainnya masuk ke area ini.",
-                            icon: <ShieldCheck className="w-8 h-8 text-slate-700" />,
-                            bg: "bg-slate-50 border-slate-300"
-                        }
-                    ].map((perks, idx) => (
+                        { title: "Zero-Cost Acquisition", sub: "CAC Rp 0", desc: "Akuisisi nasabah massal tanpa biaya marketing & pembukaan cabang fisik.", icon: <Target />, color: "from-primary-500 to-primary-600" },
+                        { title: "Monopoli Big Data", sub: "Aset Intelijen", desc: "Menguasai data profil belanja & kapasitas utang warga sebagai aset penawaran kredit.", icon: <Database />, color: "from-secondary-700 to-secondary-900" },
+                        { title: "Infinite Loop FBI", sub: "Fee-based Income", desc: "Mengubah peredaran pajak & e-commerce desa menjadi aliran revenue berulang.", icon: <Coins />, color: "from-emerald-500 to-emerald-600" },
+                        { title: "The Defensive Moat", sub: "Benteng Regulasi", desc: "Integrasi API sistem desa otomatis memblokir Bank Umum lain & Fintech.", icon: <ShieldCheck />, color: "from-slate-800 to-slate-950" }
+                    ].map((item, i) => (
                         <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: idx * 0.15, duration: 0.6 }}
-                            className={`p-6 rounded-[32px] ${perks.bg} border relative overflow-hidden group hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 flex flex-col h-full`}
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300"
                         >
-                            <div className="absolute -right-4 -top-4 w-32 h-32 bg-white rounded-full blur-2xl opacity-50 group-hover:scale-150 transition-transform duration-500" />
-                            <div className="relative z-10 w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform">
-                                {perks.icon}
+                            <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${item.color} opacity-80`} />
+                            <div className="w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform ring-8 ring-slate-500/5">
+                                <div className="text-slate-900">{item.icon}</div>
                             </div>
-                            <div className="relative z-10 font-bold text-[11px] uppercase tracking-widest text-slate-500 mb-2">
-                                {perks.subtitle}
-                            </div>
-                            <h3 className="relative z-10 text-xl font-black text-slate-900 mb-3 leading-tight">{perks.title}</h3>
-                            <p className="relative z-10 text-sm text-slate-600 font-medium leading-relaxed mt-auto">
-                                {perks.desc}
-                            </p>
+                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">{item.sub}</div>
+                            <h3 className="text-xl font-black text-slate-900 mb-4 leading-tight italic tracking-tighter">{item.title}</h3>
+                            <p className="text-slate-600 text-[12px] font-medium leading-relaxed italic">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -1267,92 +1170,50 @@ export const slides: Slide[] = [
     {
         id: "integration-roadmap",
         content: (
-            <div className="space-y-8 md:space-y-12 min-h-[70vh] py-6 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-black tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <Route className="w-4 h-4" />
-                        Akselerasi Transformasi Digital
+                        <Network className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Strategic Execution Roadmap
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">Executive Implementation Roadmap</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-sm md:text-lg font-medium">Orkestrasi integrasi sistem yang terukur untuk menjamin keberlanjutan ekosistem perbankan desa.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Timeline <span className="text-primary-600 italic text-shadow-glow">Transformasi Digital</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Orkestrasi teknis dan regulasi yang terukur untuk menjamin keberlanjutan ekosistem.</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-6">
-                    {/* Visual Roadmap Illustration */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="lg:col-span-12 group relative rounded-[40px] overflow-hidden bg-slate-50 border border-slate-200 shadow-2xl h-[250px] md:h-[350px]"
-                    >
-                        <Image 
-                            src="/strategic_roadmap.png" 
-                            alt="Strategic Roadmap" 
-                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                            width={1200} height={400} sizes="100vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-slate-900/40" />
-                        <div className="absolute inset-0 flex items-center justify-between px-12 pointer-events-none md:flex hidden">
-                            <div className="p-4 bg-white/10 backdrop-blur-none md:backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Digital Governance</div>
-                            <div className="p-4 bg-white/10 backdrop-blur-none md:backdrop-blur-md rounded-2xl border border-white/20 text-white text-[10px] font-bold uppercase tracking-widest">Financial Inclusion</div>
-                        </div>
-                    </motion.div>
-
-                    {/* Roadmap Phases Grid */}
-                    <div className="lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="relative pt-12 relative z-10 w-full max-w-6xl mx-auto">
+                    <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-100 -translate-y-1/2 hidden lg:block" />
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { 
-                                phase: "Fase 01", 
-                                title: "Harmonisasi & Integrasi", 
-                                period: "Bulan 1-2",
-                                desc: "Penyelarasan API antara CMS BJB dan Portal Desa serta formalisasi regulasi piloting.", 
-                                color: "border-blue-200 bg-blue-50/50",
-                                icon: <Link className="w-5 h-5 text-blue-700" />
-                            },
-                            { 
-                                phase: "Fase 02", 
-                                title: "Akselerasi Piloting", 
-                                period: "Bulan 3-4",
-                                desc: "Onboarding 100 desa perdana, pelatihan perangkat desa, dan aktivasi fungsionalitas perbankan.", 
-                                color: "border-emerald-200 bg-emerald-50/50",
-                                icon: <Smartphone className="w-5 h-5 text-emerald-700" />
-                            },
-                            { 
-                                phase: "Fase 03", 
-                                title: "Ekspansi Ekosistem", 
-                                period: "Bulan 5-9",
-                                desc: "Rollout masif seluruh wilayah, integrasi QRIS BUMDes, dan aktivasi bjbBISA.", 
-                                color: "border-amber-200 bg-amber-50/50",
-                                icon: <LayoutGrid className="w-5 h-5 text-amber-700" />
-                            },
-                            { 
-                                phase: "Fase 04", 
-                                title: "Optimasi Big Data", 
-                                period: "Bulan 10+",
-                                desc: "Implementasi AI Credit Scoring berbasis histori transaksi untuk penyaluran KUR yang presisi.", 
-                                color: "border-slate-200 bg-slate-50/50",
-                                icon: <Cpu className="w-5 h-5 text-slate-700" />
-                            }
+                            { phase: "Fase 01", title: "Integrasi CMS", desc: "Penyelarasan API Bank Jateng & Portal Desa.", period: "Month 1-2", icon: <Link />, color: "from-secondary-500 to-secondary-600" },
+                            { phase: "Fase 02", title: "Pilot Scaling", desc: "Aktivasi 100 desa perdana & training perangkat.", period: "Month 3-4", icon: <Rocket />, color: "from-emerald-500 to-emerald-600" },
+                            { phase: "Fase 03", title: "Full Rollout", desc: "Ekspansi ke 7.809 desa se-Jawa Tengah.", period: "Month 5-9", icon: <Globe />, color: "from-primary-500 to-primary-600" },
+                            { phase: "Fase 04", title: "CASA Dominance", desc: "Stabilisasi ekosistem & optimalisasi revenue.", period: "Month 10+", icon: <TrendingUp />, color: "from-slate-800 to-slate-950" }
                         ].map((step, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1 * i }}
-                                className={`p-6 rounded-[32px] border ${step.color} shadow-sm group hover:shadow-xl transition-all duration-300`}
+                                transition={{ delay: i * 0.15 }}
+                                className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.05] transition-all duration-500 shadow-2xl border-white/20"
                             >
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{step.phase}</div>
-                                    <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
-                                        {step.icon}
-                                    </div>
+                                <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${step.color} opacity-80`} />
+                                <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-2">{step.phase}</div>
+                                <h3 className="text-2xl font-black text-slate-900 mb-1 italic tracking-tighter leading-none">{step.title}</h3>
+                                <div className="text-[10px] font-black text-slate-400 mb-6 uppercase tracking-[0.3em] font-display">{step.period}</div>
+                                <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform shadow-xl ring-8 ring-slate-500/5">
+                                    <div className="text-slate-900">{step.icon}</div>
                                 </div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{step.title}</h4>
-                                <div className="text-[9px] font-bold text-slate-500 italic mb-3">{step.period}</div>
-                                <p className="text-xs text-slate-600 leading-relaxed font-medium">{step.desc}</p>
+                                <p className="text-slate-600 text-[12px] font-medium leading-relaxed italic">{step.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -1364,86 +1225,74 @@ export const slides: Slide[] = [
         id: "partnership-model",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
-                    {/* Left Side: Strategic Narrative */}
-                    <div className="lg:col-span-5 space-y-8">
-                        <div className="space-y-4">
+                <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+                    <div className="lg:col-span-6 space-y-10">
+                        <div className="space-y-6">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-800 text-[11px] font-black uppercase tracking-wider shadow-sm"
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                             >
-                                <Users2 className="w-3.5 h-3.5" />
-                                Strategic Partnership Model
+                                <Users2 className="w-4 h-4 text-primary-400 animate-bounce" />
+                                Tri-Pillar Strategic Synergy
                             </motion.div>
-                            <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 leading-[1.1]">Sinergi Tiga Pilar <br/><span className="text-blue-700 italic">Membangun Negeri</span></h2>
-                            <p className="text-lg text-slate-600 leading-relaxed font-medium">Orkestrasi kolaboratif untuk menjamin keberlanjutan ekosistem digitalisasi dan kemandirian fiskal desa.</p>
+                            <motion.h2 
+                                initial={{ opacity: 0, x: -50 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="text-5xl md:text-8xl font-display font-black text-slate-900 tracking-tighter leading-[0.9] italic"
+                            >
+                                Sinergi <br/><span className="text-primary-600">Tiga Pilar</span>
+                            </motion.h2>
+                            <p className="text-xl text-slate-500 leading-relaxed font-medium italic border-l-4 border-primary-500 pl-6">Orkestrasi kolaboratif demi kedaulatan digital dan kemandirian fiskal desa Jawa Tengah.</p>
                         </div>
 
-                        <div className="space-y-3">
+                        <div className="grid gap-4">
                             {[
-                                { role: "Regulator", entity: "Pemerintah Daerah", desc: "Digital Policy & Regulatory Harmony", icon: <ShieldCheck className="w-5 h-5 text-slate-400" />, color: "border-slate-200" },
-                                { role: "Financial Backbone", entity: "Bank BJB", desc: "Financial Core & Infrastructure", icon: <Landmark className="w-5 h-5 text-blue-700" />, color: "border-blue-200 bg-blue-50/50" },
-                                { role: "Technology Partner", entity: "Mitra Teknologi", desc: "Innovation & Solution Operator", icon: <Cpu className="w-5 h-5 text-amber-600" />, color: "border-amber-100" }
+                                { role: "Regulator", entity: "Pemerintah Daerah", icon: <ShieldCheck />, color: "from-slate-800 to-slate-950" },
+                                { role: "Fin Backbone", entity: "Bank Jateng", icon: <Landmark />, color: "from-secondary-700 to-secondary-900" },
+                                { role: "Innovation", entity: "Tech Partner", icon: <Cpu />, color: "from-primary-500 to-primary-600" }
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, x: -20 }}
+                                    initial={{ opacity: 0, x: -30 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2 + (i * 0.1) }}
-                                    className={`flex items-center gap-4 p-4 rounded-2xl border ${item.color} shadow-sm group hover:scale-[1.02] transition-transform`}
+                                    transition={{ delay: 0.3 + (i * 0.1) }}
+                                    className="glass-premium p-6 rounded-[32px] flex items-center gap-6 group hover:scale-[1.02] transition-all"
                                 >
-                                    <div className="shrink-0 w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
+                                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform`}>
                                         {item.icon}
                                     </div>
                                     <div>
-                                        <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">{item.role}</div>
-                                        <div className="text-base font-bold text-slate-900">{item.entity}</div>
-                                        <div className="text-[10px] font-bold text-blue-600/70 italic uppercase tracking-tight">{item.desc}</div>
+                                        <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest leading-none mb-1">{item.role}</div>
+                                        <div className="text-2xl font-black text-slate-900 italic tracking-tighter leading-none">{item.entity}</div>
                                     </div>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right Side: Synergy Visual Hero */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="lg:col-span-7 relative"
-                    >
-                        <div className="relative rounded-[60px] overflow-hidden bg-slate-900 aspect-square md:aspect-video lg:aspect-square shadow-2xl group border border-slate-800">
-                            <Image 
-                                src="/strategic_synergy.png" 
-                                alt="Strategic Synergy" 
-                                className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2s]"
-                                width={800} height={800} sizes="(max-width: 1024px) 100vw, 50vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/20" />
-                            
-                            {/* Floating Labels */}
-                            <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between pointer-events-none">
-                                <div className="flex justify-between items-start">
-                                    <div className="px-5 py-2 glass rounded-full border border-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-2xl">Policy</div>
-                                    <div className="px-5 py-2 glass rounded-full border border-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-2xl">Integrity</div>
-                                </div>
-                                <div className="flex justify-center">
-                                    <div className="px-6 md:px-8 py-3 md:py-4 glass-dark rounded-[24px] md:rounded-[30px] border border-blue-400/30 text-center">
-                                        <div className="text-blue-300 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] mb-1">Unified Goal</div>
-                                        <div className="text-white text-xl md:text-2xl font-black italic">DIGITAL SOVEREIGNTY</div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-end">
-                                    <div className="px-5 py-2 glass rounded-full border border-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-2xl">Capital</div>
-                                    <div className="px-5 py-2 glass rounded-full border border-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-2xl">Tech</div>
+                    <div className="lg:col-span-6 relative flex justify-center">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative w-full aspect-square max-w-lg"
+                        >
+                            <div className="absolute inset-0 bg-primary-500/10 rounded-full blur-[120px] animate-pulse" />
+                            <div className="relative z-10 w-full h-full glass-premium rounded-[60px] overflow-hidden border-white/20 shadow-2xl p-4">
+                                <Image 
+                                    src="/strategic_synergy.png" 
+                                    alt="Strategic Synergy" 
+                                    className="w-full h-full object-cover rounded-[50px] opacity-90 group-hover:scale-110 transition-transform duration-[3s]"
+                                    width={800} height={800}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+                                <div className="absolute bottom-10 inset-x-10 p-6 glass rounded-3xl border border-white/20 text-center">
+                                    <div className="text-white text-[10px] font-black tracking-[0.4em] uppercase mb-1">Impact Consensus</div>
+                                    <div className="text-white text-2xl font-black italic tracking-tighter">Digital Sovereignty</div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        {/* Decorative Blur */}
-                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[60px] md:blur-[100px] -z-10 hidden md:block" />
-                        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/10 rounded-full blur-[60px] md:blur-[100px] -z-10 hidden md:block" />
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         ),
@@ -1452,166 +1301,171 @@ export const slides: Slide[] = [
         id: "compliance",
         content: (
             <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-slate-700 text-white text-xs font-bold tracking-widest uppercase shadow-xl"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <ShieldCheck className="w-4 h-4 text-amber-400" />
-                        Governance & Compliance
+                        <ShieldCheck className="w-4 h-4 text-amber-400 animate-pulse" />
+                        Governance & Regulatory Compliance
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">Tata Kelola & Kepatuhan</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Menjamin kepastian hukum dan keamanan data bagi Bank BJB dan Pemerintah Desa.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Tata Kelola & <span className="text-primary-600 italic">Kepatuhan</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Mitigasi risiko dan kepastian hukum yang rigid untuk keamanan ekosistem perbankan.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     {[
-                        { 
-                            title: "Smart Village alignment", 
-                            entity: "Kemendes PDTT", 
-                            desc: "Sesuai Permendesa No. 2/2024 tentang akselerasi Desa Cerdas Nasional.", 
-                            icon: <Globe className="w-6 h-6" />, 
-                            borderColor: "border-blue-100",
-                            iconColor: "text-blue-700"
-                        },
-                        { 
-                            title: "ISO & Anti-Ransomware", 
-                            entity: "Cybersecurity", 
-                            desc: "Infrastruktur berlapis dengan perlindungan Enkripsi 256-bit dan Data Center Tier 3.", 
-                            icon: <ShieldAlert className="w-6 h-6" />, 
-                            borderColor: "border-blue-200",
-                            iconColor: "text-blue-800"
-                        },
-                        { 
-                            title: "UU PDP Compliance", 
-                            entity: "Data Privacy", 
-                            desc: "Proteksi penuh data NIK dan KTP warga dari insiden kebocoran pihak ketiga.", 
-                            icon: <Lock className="w-6 h-6" />, 
-                            borderColor: "border-amber-100",
-                            iconColor: "text-amber-600"
-                        },
-                        { 
-                            title: "Siskeudes Integration", 
-                            entity: "Kemendagri", 
-                            desc: "Modul transaksi sesuai standar Laporan Keuangan Permendagri 20/2018.", 
-                            icon: <Database className="w-6 h-6" />, 
-                            borderColor: "border-slate-200",
-                            iconColor: "text-slate-900"
-                        }
+                        { title: "Smart Village", entity: "KEMENDESA", desc: "Alignment dengan Permendesa No. 2/2024.", icon: <Globe />, color: "from-slate-800 to-slate-950" },
+                        { title: "ISO 27001", entity: "CYBERSECURITY", desc: "Infrastruktur berlapis & Anti-Ransomware.", icon: <ShieldAlert />, color: "from-secondary-700 to-secondary-900" },
+                        { title: "UU PDP", entity: "DATA PRIVACY", desc: "Proteksi NIK & Data Warga sesuai UU PDP.", icon: <Lock />, color: "from-primary-500 to-primary-600" },
+                        { title: "Siskeudes", entity: "KEMENDAGRI", desc: "Sesuai standar Permendagri No. 20/2018.", icon: <Database />, color: "from-slate-700 to-slate-900" }
                     ].map((item, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            className={`p-6 rounded-[32px] border ${item.borderColor} bg-white shadow-lg hover:shadow-xl transition-all group`}
+                            transition={{ delay: i * 0.15 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:-translate-y-2 transition-all duration-300 shadow-2xl border-white/20"
                         >
-                            <div className={`${item.iconColor} mb-4 group-hover:scale-110 transition-transform`}>{item.icon}</div>
-                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{item.entity}</div>
-                            <h4 className="text-base font-bold text-slate-900 mb-2 leading-tight">{item.title}</h4>
-                            <p className="text-[11px] text-slate-500 leading-relaxed">{item.desc}</p>
+                            <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform shadow-xl ring-8 ring-slate-500/5">
+                                <div className="text-slate-900">{item.icon}</div>
+                            </div>
+                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-1">{item.entity}</div>
+                            <h3 className="text-xl font-black text-slate-900 mb-2 italic tracking-tighter leading-tight">{item.title}</h3>
+                            <p className="text-slate-600 text-[12px] font-medium leading-relaxed italic">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
 
-                <div className="bg-slate-50 border border-slate-200 p-6 md:p-8 rounded-[40px] flex md:flex-row flex-col items-center gap-6 justify-between">
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
-                            <Scale className="w-6 h-6" />
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-slate-950 p-8 md:p-10 rounded-[50px] flex md:flex-row flex-col items-center gap-8 justify-between shadow-3xl relative overflow-hidden group"
+                >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="flex items-center gap-8 relative z-10">
+                        <div className="w-20 h-20 rounded-[30px] bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-primary-400 shadow-2xl group-hover:rotate-6 transition-transform ring-12 ring-white/5">
+                            <Scale className="w-10 h-10" />
                         </div>
                         <div>
-                            <h4 className="text-lg font-bold text-slate-900">Legal Safeguard (PKS/MoU)</h4>
-                            <p className="text-xs text-slate-500">Dukungan payung hukum melalui kerja sama resmi dengan Pemerintah Kabupaten sebagai dasar operasional Bank BJB.</p>
+                            <h4 className="text-2xl font-black text-white italic tracking-tighter mb-1">Legal Safeguard <span className="text-primary-400">(PKS/MoU)</span></h4>
+                            <p className="text-slate-400 text-sm md:text-base font-medium max-w-xl">Dukungan payung hukum rigid melalui Perjanjian Kerja Sama resmi dengan Pemerintah Kabupaten sebagai pondasi operasional yang aman dan terukur.</p>
                         </div>
                     </div>
-                    <div className="flex -space-x-3">
-                        {[1, 2, 3].map(i => (
-                            <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center overflow-hidden">
-                                <div className="w-full h-full bg-slate-300 animate-pulse" />
+                    <div className="flex -space-x-4 relative z-10">
+                        {[1, 2, 3, 4].map(i => (
+                            <div key={i} className="w-14 h-14 rounded-2xl border-4 border-slate-950 bg-slate-800 flex items-center justify-center overflow-hidden shadow-2xl group-hover:scale-110 transition-transform cursor-pointer">
+                                <div className="w-full h-full bg-slate-700 animate-pulse" />
                             </div>
                         ))}
-                        <div className="w-10 h-10 rounded-full border-2 border-white bg-blue-700 flex items-center justify-center text-[10px] font-bold text-white z-10">
-                            +BJB
-                        </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         ),
     },
-
     {
         id: "blt-digital",
         content: (
-            <div className="space-y-10 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <Coins className="w-4 h-4" />
-                        Jaring Pengaman Sosial via BJB
+                        <Coins className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Social Safety Net Digitalization
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
-                        BLT Dana Desa <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500">Digital</span>
-                    </h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">Digitalisasi penyaluran Bantuan Langsung Tunai agar transparan, tepat sasaran, dan 100% menggunakan infrastruktur <span className="font-bold text-blue-800">Bank BJB</span>.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        BLT Dana Desa <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-900 via-primary-600 to-secondary-500">Digital</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Transformasi penyaluran bantuan yang transparan, akuntabel, dan 100% cashless.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                    <div className="md:col-span-7 glass p-6 md:p-8 rounded-[32px] border border-blue-100 bg-white shadow-lg">
-                        <h3 className="text-lg font-bold text-slate-900 mb-5 text-blue-900">Alur Pencairan BLT via BJB</h3>
-                        <div className="space-y-4">
+
+                <div className="grid lg:grid-cols-12 gap-8 items-stretch relative z-10">
+                    <div className="lg:col-span-8 glass-premium p-10 rounded-[50px] border-white/20 shadow-3xl overflow-hidden relative group">
+                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <ShieldCheck className="w-40 h-40" />
+                        </div>
+                        <h3 className="text-2xl font-black text-slate-900 mb-8 italic tracking-tighter border-l-4 border-primary-500 pl-6 uppercase">Tactical Disbursement Flow</h3>
+                        <div className="grid md:grid-cols-2 gap-4">
                             {[
-                                { step: "1", title: "Verifikasi Penerima via Dukcapil", desc: "Data kemiskinan divalidasi silang dengan Dukcapil & DTKS pusat.", color: "bg-blue-700" },
-                                { step: "2", title: "Musyawarah Desa Terpusat", desc: "Hasil musdes tercatat di sistem, transparan dan bisa diaudit secara real-time.", color: "bg-blue-800" },
-                                { step: "3", title: "Pencairan BJB Payment Gateway", desc: "Transfer langsung ke rekening BJB penerima via fasilitas Payroll BJB.", color: "bg-amber-500" },
-                                { step: "4", title: "Auto-Reporting Siskeudes", desc: "Bukti mutasi BJB tersimpan otomatis di Siskeudes sebagai SPJ Sah.", color: "bg-slate-700" }
+                                { step: "01", title: "Verify", desc: "Data KPM divalidasi silang dengan DTKS pusat.", icon: <UserCheck />, color: "bg-slate-900" },
+                                { step: "02", title: "Approve", desc: "Musdes terpusat dan tercatat secara digital.", icon: <CheckCircle2 />, color: "bg-secondary-800" },
+                                { step: "03", title: "Disburse", desc: "Direct transfer via Bank Jateng Gateway.", icon: <SendHorizonal />, color: "bg-primary-600" },
+                                { step: "04", title: "Report", desc: "Auto-reporting dan sinkronisasi Siskeudes.", icon: <Database />, color: "bg-emerald-600" }
                             ].map((item, i) => (
-                                <div key={i} className="flex items-start gap-4 p-4 rounded-2xl bg-blue-50/50 border border-blue-50 hover:bg-white hover:shadow-md transition-all">
-                                    <div className={`w-10 h-10 rounded-xl ${item.color} text-white flex items-center justify-center text-sm font-bold shrink-0 shadow-sm`}>{item.step}</div>
-                                    <div>
-                                        <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
-                                        <p className="text-xs text-slate-600 mt-1">{item.desc}</p>
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 + (i * 0.1) }}
+                                    className="p-6 rounded-[32px] bg-slate-50 border border-slate-100 flex items-start gap-4 group/item hover:bg-white hover:shadow-xl transition-all"
+                                >
+                                    <div className={`w-12 h-12 rounded-2xl ${item.color} text-white flex items-center justify-center shadow-lg group-hover/item:rotate-12 transition-transform shrink-0`}>
+                                        {item.icon}
                                     </div>
-                                </div>
+                                    <div>
+                                        <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-1">Step {item.step}</div>
+                                        <h4 className="text-lg font-black text-slate-900 leading-none mb-1">{item.title}</h4>
+                                        <p className="text-[12px] text-slate-500 font-medium leading-tight">{item.desc}</p>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
-                    <div className="md:col-span-5 space-y-5">
-                        <div className="glass p-6 rounded-[28px] border border-blue-200 bg-gradient-to-br from-blue-50/80 to-amber-50/30">
-                            <div className="flex items-center gap-3 mb-4">
-                                <Landmark className="text-blue-700 w-6 h-6" />
-                                <h4 className="font-bold text-slate-900">Keunggulan Integrasi BJB</h4>
-                            </div>
-                            <div className="space-y-3">
+
+                    <div className="lg:col-span-4 space-y-6">
+                        <motion.div 
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="glass-premium p-8 rounded-[40px] border-secondary-500/10 shadow-2xl bg-gradient-to-br from-secondary-50 to-primary-50 relative pointer-events-none"
+                        >
+                            <div className="absolute top-0 right-0 p-4 opacity-5"><Landmark className="w-20 h-20" /></div>
+                            <h4 className="text-xl font-black text-secondary-900 italic tracking-tighter mb-6 flex items-center gap-2">
+                                <Zap className="w-5 h-5 text-primary-600 animate-pulse" />
+                                Winning Multiplier
+                            </h4>
+                            <div className="space-y-4">
                                 {[
-                                    "Rekening BJB untuk 100% Penerima BLT",
-                                    "Bebas pungli & potongan liar",
-                                    "Mutasi tercatat langsung di Siskeudes",
-                                    "Mengunci likuiditas Dana Desa di BJB",
-                                    "SMS Banking BJB Notification"
+                                    "100% CASA Expansion",
+                                    "Zero Illegal Surcharge",
+                                    "Auto-Audit Readiness",
+                                    "Real-time Notification"
                                 ].map((text, i) => (
-                                    <div key={i} className="flex items-center gap-2 text-sm text-slate-700 font-medium">
-                                        <div className="w-5 h-5 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
-                                            <span className="text-amber-600 text-xs">✓</span>
-                                        </div>
+                                    <div key={i} className="flex items-center gap-3 text-sm text-slate-700 font-bold bg-white/50 p-2 rounded-xl border border-white">
+                                        <div className="w-6 h-6 rounded-lg bg-emerald-500 flex items-center justify-center shrink-0 shadow-lg rotate-3"><span className="text-white text-[10px]">✓</span></div>
                                         <span>{text}</span>
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3">
+                        </motion.div>
+
+                        <div className="grid grid-cols-2 gap-4">
                             {[
-                                { value: "100%", label: "CASA BJB" },
-                                { value: "0", label: "Kebocoran Dana" },
-                                { value: "Auto", label: "Mutasi SPJ" },
-                                { value: "Real-time", label: "Pencairan" }
+                                { value: "100%", label: "Bankability" },
+                                { value: "0", label: "Leakage" }
                             ].map((item, i) => (
-                                <div key={i} className="p-3 rounded-2xl bg-white border border-blue-100 text-center shadow-sm">
-                                    <div className="text-xl font-extrabold text-blue-700">{item.value}</div>
-                                    <div className="text-[10px] font-bold text-amber-600 uppercase tracking-wider">{item.label}</div>
-                                </div>
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="p-6 rounded-[32px] glass-premium text-center border-primary-500/10 shadow-xl"
+                                >
+                                    <div className="text-3xl font-black text-secondary-900 tracking-tighter leading-none mb-1">{item.value}</div>
+                                    <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest">{item.label}</div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
@@ -1622,44 +1476,48 @@ export const slides: Slide[] = [
     {
         id: "desa-wisata",
         content: (
-            <div className="space-y-10 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <MapPin className="w-4 h-4" />
-                        Ekonomi Kreatif Desa Terpadu
+                        <MapPin className="w-4 h-4 text-primary-400 animate-bounce" />
+                        Integrated Creative Economy
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
-                        Desa Wisata <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-blue-600 to-amber-500">Terintegrasi BJB QRIS</span>
-                    </h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Digitalisasi seluruh ekosistem wisata desa, dimana **semua transaksi** difasilitasi oleh Bank BJB melalui QRIS dan Payment Gateway.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Desa Wisata <span className="text-primary-600 italic tracking-tighter">Integrated</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Ekosistem wisata mandiri yang 100% cashless dengan QRIS & Payment Gateway Bank Jateng.</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 font-medium">
                     {[
-                        { title: "Portal Promosi & Tiket BJB", desc: "Pemesanan tiket masuk dan event budaya terintegrasi channel pembayaran BJB untuk tracking PADesa real-time.", icon: <Globe className="w-6 h-6" />, color: "text-blue-700 bg-blue-50 border-blue-100" },
-                        { title: "BUMDes E-Wallet Ready", desc: "Wisatawan dapat menggunakan e-wallet (BJB Digi) untuk seluruh transaksi di kawasan desa wisata.", icon: <Smartphone className="w-6 h-6" />, color: "text-amber-600 bg-amber-50 border-amber-100" },
-                        { title: "Homestay Booking System", desc: "Pemesanan penginapan desa dibayar via Virtual Account BJB, dana langsung masuk ke kas BUMDes.", icon: <MapIcon className="w-6 h-6" />, color: "text-blue-800 bg-blue-50 border-blue-100" },
-                        { title: "1 Warung 1 QRIS BJB", desc: "Mewajibkan seluruh UMKM / warung / kios oleh-oleh di kawasan wisata menggunakan QRIS Bank BJB.", icon: <ShoppingBag className="w-6 h-6" />, color: "text-blue-800 bg-blue-100/50 border-blue-200" },
-                        { title: "Dashboard Revenue Wisata", desc: "Kades & Pengurus BUMDes monitor cuan wisata live. Pendapatan diendapkan di simpanan BJB.", icon: <TrendingUp className="w-6 h-6" />, color: "text-amber-700 bg-amber-50 border-amber-100" },
-                        { title: "Ride-Sharing Lokal", desc: "Sistem ojek desa bayar mantap pakai QRIS BJB, membesarkan inklusi keuangan tukang ojek wisata.", icon: <Bot className="w-6 h-6" />, color: "text-slate-700 bg-slate-50 border-slate-200" }
+                        { title: "Portal Promosi & Tiketing", entity: "DIGITAL TICKETING", desc: "Sistem booking online terintegrasi Virtual Account Bank Jateng.", icon: <Globe />, color: "from-slate-800 to-slate-950" },
+                        { title: "BUMDes E-Wallet Ready", entity: "CASHLESS PAYMENT", desc: "Mewajibkan seluruh UMKM menggunakan QRIS Bank Jateng.", icon: <Smartphone />, color: "from-secondary-700 to-secondary-900" },
+                        { title: "Homestay Booking System", entity: "ACCOMMODATION", desc: "Manajemen penginapan desa dengan split settlement otomatis.", icon: <MapIcon />, color: "from-primary-500 to-primary-600" },
+                        { title: "1 Warung 1 QRIS", entity: "INCLUSIVE ECONOMY", desc: "Digitalisasi pedagang kecil untuk tracking PADesa real-time.", icon: <ShoppingBag />, color: "from-slate-700 to-slate-900" },
+                        { title: "Dashboard Revenue Wisata", entity: "FINANCIAL DASHBOARD", desc: "Monitor cuan wisata live. Pendapatan diendapkan di Bank Jateng.", icon: <TrendingUp />, color: "from-secondary-600 to-secondary-800" },
+                        { title: "Ride-Sharing Lokal", entity: "MOBILITY TECH", desc: "Sistem ojek desa bayar mantap pakai QRIS Bank Jateng.", icon: <Bot />, color: "from-primary-400 to-primary-600" }
                     ].map((item, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 15 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.08 }}
-                            className={`p-5 rounded-[24px] border ${item.color.split(' ')[2]} bg-white hover:shadow-lg transition-all group flex gap-4 items-start`}
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-premium p-8 rounded-[40px] relative overflow-hidden group hover:scale-[1.03] transition-all duration-300 shadow-2xl border-white/20"
                         >
-                            <div className={`p-3 rounded-2xl ${item.color.split(' ')[1]} ${item.color.split(' ')[0]} shrink-0 shadow-sm border border-white group-hover:scale-110 transition-transform`}>
-                                {item.icon}
+                            <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform shadow-xl ring-8 ring-slate-500/5">
+                                <div className="text-slate-900">{item.icon}</div>
                             </div>
-                            <div>
-                                <h4 className="text-sm font-bold text-slate-900">{item.title}</h4>
-                                <p className="text-[11px] text-slate-600 leading-relaxed mt-1 font-medium">{item.desc}</p>
-                            </div>
+                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-[0.2em] mb-1">{item.entity}</div>
+                            <h3 className="text-xl font-black text-slate-900 mb-2 italic tracking-tighter leading-tight">{item.title}</h3>
+                            <p className="text-slate-600 text-[12px] font-medium leading-relaxed italic">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -1669,65 +1527,69 @@ export const slides: Slide[] = [
     {
         id: "impact-story",
         content: (
-            <div className="space-y-10 min-h-[70vh] py-8 flex flex-col justify-center origin-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-black tracking-widest uppercase shadow-sm"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <User className="w-4 h-4" />
-                        A Citizen's Journey
+                        <User className="w-4 h-4 text-emerald-400 animate-pulse" />
+                        Strategic Citizen Impact
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">Kisah Dampak: <span className="text-emerald-600">Satu Hari di Desa</span></h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg italic">"Dulu kami tertinggal, kini kami terdepan bersama Bank BJB."</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Kisah Dampak: <span className="text-emerald-600 italic">Satu Hari di Desa</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Bagaimana digitalisasi Bank Jateng membentuk realitas baru bagi warga Jawa Tengah.</p>
                 </div>
 
-                <div className="relative w-full max-w-5xl mx-auto mt-8">
-                    {/* Journey Line (Desktop) */}
-                    <div className="hidden md:block absolute top-[50px] left-[10%] right-[10%] h-0.5 bg-slate-200" />
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="relative w-full max-w-6xl mx-auto mt-12 z-10">
+                    <div className="hidden lg:block absolute top-[64px] left-0 right-0 h-1 bg-gradient-to-r from-transparent via-emerald-200 to-transparent" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { time: "08:00", active: "Administrasi", title: "Surat Instan", desc: "Warga mengajukan surat via HP, Kades TTD via sistem di manapun. Tanpa antri.", icon: <FileText className="w-6 h-6" /> },
-                            { time: "11:00", active: "Finansial", title: "BLT Langsung", desc: "Notifikasi SMS BJB cair. Uang mendarat di rekening tanpa potongan oknum.", icon: <Coins className="w-6 h-6" /> },
-                            { time: "15:00", active: "Ekonomi", title: "QRIS BUMDes", desc: "Warga belanja di warung desa pakai BJB Digi. Uang berputar di kas desa.", icon: <ShoppingBag className="w-6 h-6" /> },
-                            { time: "19:00", active: "Inklusivitas", title: "Inklusi Digital", desc: "Akses asuransi & perbankan terbuka bagi warga pelosok berkat data valid.", icon: <ShieldCheck className="w-6 h-6" /> }
+                            { time: "08:00", active: "ADMINISTRASI", title: "Surat Instan", desc: "Digital signature Kades menjamin layanan 24/7.", icon: <FileText />, color: "from-slate-800 to-slate-950" },
+                            { time: "11:00", active: "FINANSIAL", title: "BLT Non-Tunai", desc: "Cair real-time ke rekening Bank Jateng warga.", icon: <Coins />, color: "from-emerald-600 to-emerald-800" },
+                            { time: "15:00", active: "EKONOMI", title: "Cuan QRIS", desc: "Warung desa terima pembayaran digital Bank Jateng.", icon: <ShoppingBag />, color: "from-secondary-700 to-secondary-900" },
+                            { time: "19:00", active: "INKLUSI", title: "Akses Modal", desc: "Data transaksi jadi dasar kredit KUR Bank Jateng.", icon: <ShieldCheck />, color: "from-slate-700 to-slate-900" }
                         ].map((step, idx) => (
                             <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.15 }}
                                 className="relative flex flex-col items-center text-center group"
                             >
-                                <div className="absolute -top-3 px-3 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-black text-emerald-600 shadow-sm z-10">{step.time}</div>
-                                <div className="w-16 h-16 rounded-2xl bg-white border-2 border-emerald-100 flex items-center justify-center mb-6 shadow-lg group-hover:bg-emerald-600 group-hover:text-white transition-all cursor-default relative">
+                                <div className="w-16 h-16 rounded-[24px] bg-white border-2 border-emerald-100 flex items-center justify-center mb-6 shadow-2xl group-hover:bg-emerald-600 group-hover:text-white transition-all cursor-pointer relative z-10 ring-8 ring-emerald-50">
                                     {step.icon}
-                                    <div className="absolute -bottom-2 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white md:block hidden" />
+                                    <div className="absolute -top-3 px-3 py-1 bg-slate-900 text-white rounded-full text-[9px] font-black tracking-widest">{step.time}</div>
                                 </div>
-                                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{step.active}</div>
-                                <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
-                                <p className="text-xs text-slate-600 leading-relaxed font-medium">{step.desc}</p>
+                                <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest mb-1">{step.active}</div>
+                                <h4 className="text-xl font-black text-slate-900 mb-2 italic tracking-tighter">{step.title}</h4>
+                                <p className="text-[12px] text-slate-500 leading-relaxed font-medium italic">{step.desc}</p>
                             </motion.div>
                         ))}
                     </div>
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    className="mt-16 p-8 rounded-[40px] bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="mt-16 glass-premium p-10 rounded-[60px] border-emerald-500/10 shadow-3xl relative overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 flex flex-col md:flex-row items-center gap-10"
                 >
-                    <div className="absolute right-0 top-0 p-12 opacity-10">
-                        <Quote className="w-40 h-40" />
+                    <div className="absolute top-0 right-0 p-12 opacity-5"><TrendingUp className="w-40 h-40" /></div>
+                    <div className="w-24 h-24 rounded-[32px] bg-emerald-600 flex items-center justify-center text-white shadow-2xl shrink-0 rotate-3 group-hover:rotate-0 transition-transform">
+                        <Users className="w-12 h-12" />
                     </div>
-                    <div className="w-24 h-24 rounded-full border-4 border-white/20 bg-white/10 backdrop-blur-none md:backdrop-blur-md flex items-center justify-center text-4xl font-black shrink-0">
+                    <div className="flex-1 text-center md:text-left">
+                        <h4 className="text-3xl font-black text-slate-900 italic tracking-tighter mb-2">Digital Inclusivity Score: <span className="text-emerald-600">Executive Consensus</span></h4>
+                        <p className="text-slate-600 text-base md:text-lg font-medium leading-relaxed">Pencapaian indeks desa digital yang mengonversi 'Citizen Benefit' menjadi LOYALITAS nasabah Bank Jateng dalam ekosistem perbankan yang tertutup (Closed Loop).</p>
+                    </div>
+                    <div className="w-24 h-24 rounded-full border-4 border-emerald-600 bg-white/20 backdrop-blur-md flex items-center justify-center text-emerald-900 text-2xl font-black shrink-0">
                         98%
-                    </div>
-                    <div className="space-y-2 relative z-10">
-                        <h4 className="text-2xl font-bold italic leading-tight">"Digitalisasi ini bukan sekadar aplikasi, tapi martabat baru bagi desa kami."</h4>
-                        <p className="text-emerald-100 text-sm font-medium">— Kepuasan Warga dalam Pilot Project (Survei 2024)</p>
                     </div>
                 </motion.div>
             </div>
@@ -1736,113 +1598,70 @@ export const slides: Slide[] = [
     {
         id: "best-practice",
         content: (
-            <div className="space-y-12">
-                <div className="text-center space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-800 text-sm font-semibold tracking-wider uppercase">
-                        <TrendingUp className="w-4 h-4" /> Bukti Nyata
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 leading-tight">Best Practice & ROI</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg">Dampak kuantitatif dan kualitatif setelah 6 bulan implementasi sistem digitalisasi desa secara menyeluruh.</p>
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="text-center space-y-4 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
+                    >
+                        <Zap className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Operational Alpha & ROI
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Success <span className="text-primary-600 italic tracking-tighter">Consensus</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Dampak kuantitatif nyata dalam 6 bulan pertama implementasi ekosistem digital Bank Jateng.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
-                    {/* Hero Impact Image */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="md:col-span-12 lg:col-span-8 group relative rounded-[40px] overflow-hidden bg-slate-900 h-[300px] md:h-[450px] shadow-2xl"
-                    >
-                        <Image 
-                            src="/roi_success.png" 
-                            alt="ROI Success" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-1000"
-                            width={800} height={600} sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-8 md:p-12 space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-[10px] font-black tracking-widest uppercase">
-                                <TrendingUp className="w-3.5 h-3.5" /> Bukti Nyata & ROI
-                            </div>
-                            <h3 className="text-3xl md:text-5xl font-black text-white leading-tight">Implementasi <br/>Fase I Berhasil</h3>
-                            <p className="text-slate-300 max-w-xl text-sm md:text-lg font-medium">
-                                Transformasi digital bukan sekadar wacana. Pilot project membuktikan efisiensi operasional masif dan lonjakan pendapatan asli desa yang terukur.
-                            </p>
-                        </div>
-                    </motion.div>
-
-                    {/* Efficiency Stats Card */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="md:col-span-6 lg:col-span-4 p-6 md:p-8 rounded-[40px] bg-blue-600 text-white shadow-xl flex flex-col justify-between"
+                        className="md:col-span-12 lg:col-span-7 glass-premium p-10 rounded-[50px] border-white/20 shadow-3xl overflow-hidden relative group h-[450px]"
                     >
-                        <div className="space-y-6">
-                            <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
-                                <Trash2 className="w-6 h-6 text-white" />
-                            </div>
-                            <div>
-                                <h4 className="text-4xl font-black mb-1">80%</h4>
-                                <p className="text-sm font-bold opacity-80 uppercase tracking-tighter">Efisiensi Biaya Operasional</p>
-                            </div>
-                            <p className="text-sm text-blue-100 font-medium">Penghematan signifikan pada pengadaan kertas (Paperless) dan logistik kurir antar dinas.</p>
+                        <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-1000">
+                             <Image 
+                                src="/roi_success.png" 
+                                alt="ROI" 
+                                className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000"
+                                width={1200} height={800}
+                             />
                         </div>
-                        <div className="mt-8 pt-6 border-t border-white/20 flex items-center justify-between">
-                            <span className="text-[10px] font-black tracking-widest uppercase opacity-60">Verified Stats</span>
-                            <Zap className="w-4 h-4" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-10 space-y-4">
+                            <h3 className="text-4xl md:text-5xl font-black text-white leading-tight italic tracking-tighter uppercase">Pilot Phase <br/><span className="text-primary-400 font-medium">Validated</span></h3>
+                            <p className="text-slate-300 max-w-md text-sm md:text-lg font-medium leading-relaxed italic">Transformasi melampaui wacana. 100% efisiensi operasional dan lonjakan CASA terbukti secara empiris.</p>
                         </div>
                     </motion.div>
 
-                    {/* Service Speed Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="md:col-span-6 lg:col-span-4 p-6 md:p-8 rounded-[40px] bg-white border border-slate-100 shadow-lg flex flex-col gap-4"
-                    >
-                        <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600">
-                            <Clock className="w-6 h-6" />
-                        </div>
-                        <h4 className="text-2xl font-bold text-slate-900">7x Lipat</h4>
-                        <p className="text-sm text-slate-500 font-medium leading-relaxed">
-                            Akselerasi layanan administrasi desa. Dari 2 hari kerja menjadi <span className="font-bold text-slate-900">kurang dari 5 menit</span> via Tanda Tangan Elektronik.
-                        </p>
-                        <div className="mt-auto flex items-center gap-2">
-                            <div className="h-1.5 flex-grow bg-slate-100 rounded-full overflow-hidden">
-                                <div className="h-full w-[90%] bg-amber-400 rounded-full" />
-                            </div>
-                            <span className="text-[10px] font-bold text-slate-400">90% Faster</span>
-                        </div>
-                    </motion.div>
+                    <div className="md:col-span-12 lg:col-span-5 grid grid-cols-1 gap-6">
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="glass-premium p-8 rounded-[40px] border-secondary-500/10 shadow-2xl bg-secondary-900 text-white relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform"><Trash2 className="w-32 h-32" /></div>
+                            <div className="text-[10px] font-black text-primary-400 uppercase tracking-widest mb-2">Cost Efficiency Alpha</div>
+                            <h4 className="text-6xl font-black italic tracking-tighter mb-2 italic">80%</h4>
+                            <p className="text-slate-300 text-base font-medium leading-tight italic">Pengurangan biaya operasional logistik melalui sistem paperless integrasi Siskeudes.</p>
+                        </motion.div>
 
-                    {/* Testimonial Card */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4 }}
-                        className="md:col-span-12 lg:col-span-8 p-8 md:p-10 rounded-[40px] bg-slate-50 border border-slate-200/50 shadow-inner relative overflow-hidden"
-                    >
-                        <Quote className="absolute -top-4 -right-4 w-40 h-40 text-slate-200/50 pointer-events-none" />
-                        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                            <div className="flex-grow space-y-4">
-                                <p className="text-lg md:text-xl text-slate-700 italic font-medium leading-relaxed">
-                                    "Digitalisasi ini menutup celah kebocoran PBB dan mengubah wajah ekonomi desa kami. Kini kami menjadi rujukan pelaporan tercepat se-Kecamatan."
-                                </p>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold uppercase tracking-tighter">KD</div>
-                                    <div>
-                                        <div className="font-bold text-slate-900">H. Tatang Rustandi</div>
-                                        <div className="text-xs text-slate-500 font-medium tracking-tight">Kepala Desa Percontohan Digital</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="w-full md:w-px h-px md:h-24 bg-slate-200" />
-                            <div className="flex flex-col items-center md:items-start shrink-0">
-                                <div className="text-emerald-600 text-3xl font-black italic">+35%</div>
-                                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">PADesa Growth</div>
-                            </div>
-                        </div>
-                    </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="glass-premium p-8 rounded-[40px] border-primary-500/10 shadow-2xl bg-white relative overflow-hidden group"
+                        >
+                            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:-rotate-12 transition-transform"><Clock className="w-32 h-32" /></div>
+                            <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">Service Acceleration</div>
+                            <h4 className="text-6xl font-black italic tracking-tighter text-slate-900 mb-2 italic">7x <span className="text-2xl">Lipat</span></h4>
+                            <p className="text-slate-500 text-base font-medium leading-tight italic">Dari 2 hari kerja menjadi real-time via Tanda Tangan Elektronik terintegrasi BSrE.</p>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         ),
@@ -1850,111 +1669,69 @@ export const slides: Slide[] = [
     {
         id: "funding-model",
         content: (
-            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center">
-                <div className="text-center space-y-4">
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="text-center space-y-4 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-100 text-amber-700 text-xs font-black tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
                     >
-                        <Handshake className="w-4 h-4" />
-                        Strategic Investment Proposal
+                        <Handshake className="w-4 h-4 text-primary-400 animate-pulse" />
+                        Strategic Capital & Synergy
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight">Skema Pembiayaan & Akselerasi</h2>
-                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-lg font-medium">Model investasi _Multi-Stakeholder_ yang dirancang khusus untuk profitabilitas perbankan tinggi dengan mitigasi risiko pemerintah.</p>
+                    <motion.h2 
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight"
+                    >
+                        Funding <span className="text-primary-600 italic tracking-tighter">Architecture</span>
+                    </motion.h2>
+                    <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Model investasi Multi-Stakeholder untuk akselerasi ekosistem Bank Jateng.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-4">
-                    {/* Hero Card with Image */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="md:col-span-8 group relative rounded-[40px] overflow-hidden bg-slate-900 aspect-[16/9] md:aspect-auto md:h-[400px] shadow-2xl"
+                        className="md:col-span-12 lg:col-span-8 group relative rounded-[50px] overflow-hidden bg-slate-900 h-[400px] shadow-3xl"
                     >
                         <Image 
                             src="/village_digital_banking.png" 
-                            alt="Village Digital Banking" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
-                            width={800} height={400} sizes="(max-width: 768px) 100vw, 50vw"
+                            alt="Banking" 
+                            className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+                            width={1200} height={800}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 p-8 md:p-10 space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-[10px] font-bold tracking-widest uppercase">
-                                <Landmark className="w-3.5 h-3.5" /> Core Investment
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent" />
+                        <div className="absolute bottom-0 left-0 p-10 space-y-4 text-left">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/20 border border-primary-400/30 text-primary-300 text-[10px] font-black tracking-widest uppercase">
+                                <Landmark className="w-3.5 h-3.5" /> BUMDes Linkage
                             </div>
-                            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">BUMDes Credit <br/>Linkage Model</h3>
-                            <p className="text-slate-300 max-w-lg text-sm md:text-base font-medium">
-                                Penyaluran kredit produktif (Capex) untuk infrastruktur teknologi desa. Mengubah desa menjadi aset aktif Bank BJB dengan risiko terukur.
-                            </p>
-                            <div className="pt-4 flex items-center gap-4">
-                                <span className="text-xs font-black text-blue-400 tracking-tighter uppercase">PORTFOLIO EXPANSION</span>
-                                <div className="h-px flex-grow bg-white/20" />
-                            </div>
+                            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight italic tracking-tighter uppercase">Credit Linkage <br/><span className="text-primary-400 font-medium">Validated</span></h3>
+                            <p className="text-slate-300 max-w-lg text-sm md:text-base font-medium leading-relaxed italic">Penyaluran kredit produktif untuk infrastruktur teknologi desa. Mengubah desa menjadi aset aktif Bank Jateng.</p>
                         </div>
                     </motion.div>
 
-                    {/* Right Upper: Revenue Card */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="md:col-span-4 group relative rounded-[40px] overflow-hidden bg-emerald-900 h-[240px] md:h-auto shadow-xl"
-                    >
-                        <Image 
-                            src="/financial_data_growth.png" 
-                            alt="Financial Data" 
-                            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:rotate-3 transition-transform duration-700"
-                            width={400} height={400} sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/90 to-transparent" />
-                        <div className="absolute inset-0 p-6 flex flex-col justify-end gap-2">
-                            <h4 className="text-xl font-bold text-white">Shared-Revenue</h4>
-                            <p className="text-xs text-emerald-100/80 leading-relaxed font-medium">Bagi hasil otomatis dari setiap Rupiah biaya admin transaksi (FBI).</p>
-                            <div className="mt-2 text-[10px] font-black text-emerald-300 uppercase tracking-widest">High Profit Yield</div>
-                        </div>
-                    </motion.div>
-
-                    {/* Bottom Row - 3 Cards */}
-                    <div className="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="md:col-span-12 lg:col-span-4 space-y-6">
                         {[
-                            {
-                                title: "CSR Acceleration",
-                                desc: "Opsi pendanaan grant awal untuk fase piloting 100 desa pertama.",
-                                icon: <HeartHandshake className="w-6 h-6 text-rose-600" />,
-                                color: "bg-rose-50 border-rose-100",
-                                img: "/csr_impact_village.png"
-                            },
-                            {
-                                title: "Risk Mitigation",
-                                desc: "Mitigasi resiko fiskal melalui jaminan dana pendamping Pemprov.",
-                                icon: <ShieldCheck className="w-6 h-6 text-amber-600" />,
-                                color: "bg-amber-50 border-amber-100",
-                                label: "Provincial Support"
-                            },
-                            {
-                                title: "Auto-Repayment",
-                                desc: "Pengembalian modal otomatis dipotong langsung dari arus kas transaksi.",
-                                icon: <Zap className="w-6 h-6 text-slate-700" />,
-                                color: "bg-slate-50 border-slate-200",
-                                label: "Secured Recoupment"
-                            }
-                        ].map((item, idx) => (
+                            { title: "Revenue Sharing", value: "30/70", desc: "Profit sharing antara BUMDes & Bank Jateng.", icon: <TrendingUp /> },
+                            { title: "Risk Mitigation", value: "SLA 99%", desc: "Jaminan uptime sistem digitalisasi.", icon: <ShieldCheck /> },
+                            { title: "CASA Growth", value: "100%", desc: "Seluruh gaji perangkat desa via Bank Jateng.", icon: <Coins /> }
+                        ].map((item, i) => (
                             <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 + (idx * 0.1) }}
-                                className={`group relative p-6 rounded-[32px] ${item.color} border overflow-hidden shadow-md flex flex-col h-full hover:shadow-xl transition-all`}
+                                key={i}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="glass-premium p-6 rounded-[32px] border-white/20 shadow-xl flex items-center gap-5 group hover:bg-slate-900 hover:text-white transition-all"
                             >
-                                {item.img && (
-                                    <Image src={item.img} className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity" alt={item.title} width={400} height={300} />
-                                )}
-                                <div className="relative z-10 w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-4">
+                                <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900 shadow-lg group-hover:rotate-12 transition-transform shrink-0">
                                     {item.icon}
                                 </div>
-                                <h4 className="relative z-10 font-bold text-slate-900 mb-2">{item.title}</h4>
-                                <p className="relative z-10 text-xs text-slate-600 leading-relaxed font-medium mb-4 flex-grow">{item.desc}</p>
-                                {item.label && <div className="relative z-10 text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">{item.label}</div>}
+                                <div>
+                                    <h4 className="text-sm font-black text-primary-600 uppercase tracking-widest mb-1 italic tracking-tighter">{item.title}</h4>
+                                    <div className="text-2xl font-black italic tracking-tighter leading-none">{item.value}</div>
+                                    <p className="text-[10px] text-slate-500 font-medium leading-tight group-hover:text-slate-400 italic">{item.desc}</p>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -1963,88 +1740,398 @@ export const slides: Slide[] = [
         ),
     },
     {
+        id: "suka-desa-dashboard",
+        content: (
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div className="space-y-8">
+                        <div className="space-y-4">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
+                            >
+                                <LayoutDashboard className="w-4 h-4 text-primary-400 animate-pulse" />
+                                Unified Command Center
+                            </motion.div>
+                            <h2 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight italic">
+                                Suka Desa <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 via-secondary-700 to-primary-900">Dashboard</span>
+                            </h2>
+                            <p className="text-slate-500 text-base md:text-xl font-medium max-w-xl italic">
+                                Orchestrating village governance dengan monitoring real-time arus kas, statistik warga, dan integrasi Siskeudes.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {[
+                                { title: "IBC Integration", desc: "Sinkronisasi otomatis saldo Bank Jateng." },
+                                { title: "Data Agregator", desc: "Single source of truth kependudukan." },
+                                { title: "Analytics Hub", desc: "Visualisasi PADesa & PBB sektor desa." },
+                                { title: "Executive Alert", desc: "Sistem deteksi anomali anggaran." }
+                            ].map((item, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4 + (i * 0.1) }}
+                                    className="p-5 rounded-[28px] glass-premium border-white hover:bg-white hover:shadow-xl transition-all group"
+                                >
+                                    <div className="font-black text-slate-900 text-lg tracking-tighter mb-1 group-hover:text-primary-600 transition-colors italic">{item.title}</div>
+                                    <div className="text-[12px] text-slate-500 font-medium leading-tight italic">{item.desc}</div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 2 }}
+                        className="relative group"
+                    >
+                        <div className="absolute -inset-10 bg-gradient-to-tr from-primary-500/20 via-secondary-500/10 to-transparent blur-[100px] group-hover:opacity-100 transition-opacity" />
+                        <div className="glass-premium p-4 rounded-[50px] border-white/40 shadow-3xl bg-white/30 backdrop-blur-3xl overflow-hidden relative z-10">
+                            <Image 
+                                src="/smart_village_dashboard.png" 
+                                alt="Suka Desa Dashboard" 
+                                className="w-full h-auto object-cover rounded-[36px] shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700"
+                                width={800} height={500}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent pointer-events-none" />
+                        </div>
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-600 rounded-[30px] flex items-center justify-center text-white shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                            <Zap className="w-12 h-12" />
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "suka-desa-mobile",
+        content: (
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        className="order-2 lg:order-1 flex justify-center relative"
+                    >
+                         <div className="absolute -inset-20 bg-secondary-500/10 blur-[120px] rounded-full animate-pulse" />
+                         <div className="relative z-10 w-full max-w-[320px]">
+                            <div className="glass-premium p-3 rounded-[60px] border-white/30 shadow-3xl bg-slate-900 relative ring-12 ring-slate-900/5">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-900 rounded-b-3xl z-20" />
+                                <div className="rounded-[40px] overflow-hidden border-4 border-slate-800 shadow-inner">
+                                    <Image 
+                                        src="/citizen_app_mockup_1773145276670.png" 
+                                        alt="Suka Desa Mobile" 
+                                        className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
+                                        width={300} height={600}
+                                    />
+                                </div>
+                            </div>
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 3, repeat: Infinity }}
+                                className="absolute -right-8 top-1/4 glass-premium p-4 rounded-2xl shadow-2xl border-white z-20 bg-white"
+                            >
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-white"><CheckCircle2 className="w-5 h-5" /></div>
+                                    <div className="text-[10px] font-black text-slate-900 uppercase">Payment Success</div>
+                                </div>
+                            </motion.div>
+                         </div>
+                    </motion.div>
+                    <div className="space-y-8 order-1 lg:order-2">
+                        <div className="space-y-4">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
+                            >
+                                <Smartphone className="w-4 h-4 text-primary-400" />
+                                Citizen Core Experience
+                            </motion.div>
+                            <h2 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight italic">
+                                Platform Desa <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-800 to-secondary-600">Dalam Genggaman</span>
+                            </h2>
+                            <p className="text-slate-500 text-base md:text-xl font-medium max-w-xl italic">
+                                Memindahkan balai desa ke dalam saku warga. Layanan administrasi dan perbankan Bank Jateng terintegrasi 100%.
+                            </p>
+                        </div>
+                        <div className="space-y-4">
+                            {[
+                                { icon: <ShieldCheck className="w-6 h-6" />, title: "Biometric Digital ID", desc: "Login biometrik dengan verifikasi identitas resmi." },
+                                { icon: <CreditCard className="w-6 h-6" />, title: "Bank Jateng Wallet", desc: "Ekosistem pembayaran PPOB, PBB, & Transfer." },
+                                { icon: <Zap className="w-6 h-6" />, title: "One-Click Services", desc: "Request surat keterangan tanpa antre via TTE." }
+                            ].map((item, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.5 + (i * 0.1) }}
+                                    className="flex gap-5 items-start p-6 rounded-[32px] glass-premium border-white hover:bg-white hover:shadow-2xl transition-all group"
+                                >
+                                    <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-primary-600 shadow-xl group-hover:rotate-6 transition-transform shrink-0">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <div className="font-black text-slate-900 text-lg tracking-tighter mb-1 italic">{item.title}</div>
+                                        <div className="text-[12px] text-slate-500 font-medium leading-tight italic">{item.desc}</div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ),
+    },
+    {
+        id: "data-privacy",
+        content: (
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="text-center space-y-6 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
+                    >
+                        <Lock className="w-4 h-4 text-emerald-400 animate-pulse" />
+                        Data Sovereignity & Compliance
+                    </motion.div>
+                    <h2 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight italic">
+                        Cyber Security <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-900">Fortress</span>
+                    </h2>
+                    <p className="text-slate-500 max-w-3xl mx-auto text-base md:text-xl font-medium leading-relaxed italic">
+                        Kepatuhan penuh UU PDP No. 27/2022. Menjamin kedaulatan data warga melalui enkripsi perbankan dan infrastruktur lokal aman.
+                    </p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6 relative z-10">
+                    {[
+                        { title: "Military Encryption", desc: "Data kependudukan & finansial dienkripsi sesuai standar ISO 27001.", icon: <ShieldCheck className="w-10 h-10" /> },
+                        { title: "Local Sovereignty", desc: "Data tersimpan di Jateng Government Cloud untuk kontrol akses penuh.", icon: <Database className="w-10 h-10" /> },
+                        { title: "Permanent Audit Trail", desc: "Setiap akses tercatat permanen di ledger audit perbankan yang aman.", icon: <Activity className="w-10 h-10" /> }
+                    ].map((item, i) => (
+                        <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 + (i * 0.1) }}
+                            className="p-8 rounded-[40px] glass-premium border-white hover:bg-slate-900 hover:text-white group transition-all shadow-xl"
+                        >
+                            <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform">{item.icon}</div>
+                            <h4 className="text-xl font-black italic tracking-tighter mb-2 italic tracking-tighter uppercase">{item.title}</h4>
+                            <p className="text-[12px] text-slate-500 font-medium leading-relaxed group-hover:text-slate-400 italic">{item.desc}</p>
+                        </motion.div>
+                    ))}
+                </div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
+            </div>
+        )
+    },
+    {
+        id: "training-support",
+        content: (
+            <div className="space-y-10 md:space-y-12 min-h-[70vh] py-8 flex flex-col justify-center relative">
+                <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                    <div className="space-y-8">
+                        <div className="space-y-4">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black tracking-[0.2em] uppercase shadow-2xl"
+                            >
+                                <Users2 className="w-4 h-4 text-primary-400" />
+                                Human Capital & Adoption
+                            </motion.div>
+                            <h2 className="text-4xl md:text-7xl font-display font-black text-slate-900 tracking-tighter leading-tight italic">
+                                Strategic <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-900">Transformation</span>
+                            </h2>
+                            <p className="text-slate-500 text-base md:text-xl font-medium max-w-xl italic">
+                                Mencetak **Duta Desa Digital** di setiap wilayah melalui pendampingan berkelanjutan untuk memastikan keberhasilan adopsi teknologi.
+                            </p>
+                        </div>
+                        <div className="space-y-4">
+                            {[
+                                "Bimbingan Teknis (Bim Tek) Perangkat Desa Komprehensif.",
+                                "Layanan Support 24/7 Troubleshooting Operasional.",
+                                "Edukasi Literasi Keuangan & Digital Masyarakat Desa.",
+                                "Monitoring Evaluasi Rutin (3 Bulanan) & Pelaporan."
+                            ].map((text, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 + (i * 0.1) }}
+                                    className="flex gap-4 items-center font-black text-slate-900 text-sm italic tracking-tighter group cursor-default"
+                                >
+                                    <div className="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center text-[10px] group-hover:scale-110 transition-transform shadow-lg">{i+1}</div>
+                                    <span className="group-hover:text-primary-600 transition-colors uppercase">{text}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="glass-premium p-10 rounded-[50px] bg-gradient-to-br from-primary-900/5 to-secondary-900/5 border-white shadow-3xl relative overflow-hidden group"
+                    >
+                        <Quote className="w-24 h-24 text-primary-200/20 absolute -top-4 -right-4 rotate-12" />
+                        <div className="relative z-10 space-y-8">
+                            <p className="text-xl md:text-3xl font-black text-slate-900 leading-tight italic tracking-tighter">
+                                "Digitalisasi bukan hanya soal aplikasi, tapi soal mengubah pola pikir untuk melayani desa dengan lebih cepat, transparan, dan berdaya."
+                            </p>
+                            <div className="flex items-center gap-5">
+                                <div className="w-16 h-16 rounded-2xl bg-white shadow-xl flex items-center justify-center border border-slate-100 group-hover:bg-slate-900 transition-colors group-hover:text-white">
+                                    <Landmark className="w-8 h-8" />
+                                </div>
+                                <div className="space-y-1">
+                                    <div className="font-black text-slate-900 text-lg uppercase tracking-tighter italic">Suara Perangkat Desa</div>
+                                    <div className="text-[10px] text-primary-600 font-black uppercase tracking-[0.3em]">Guardian of Digital Trust</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary-500/10 blur-3xl rounded-full" />
+                    </motion.div>
+                </div>
+            </div>
+        )
+    },
+    {
         id: "technology-partner",
         content: (
-            <div className="min-h-[70vh] py-12 flex flex-col justify-center items-center text-center space-y-10 md:space-y-14">
+            <div className="min-h-[70vh] py-12 flex flex-col justify-center items-center text-center space-y-10 md:space-y-16 relative">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative"
+                    transition={{ duration: 1 }}
+                    className="relative px-12 py-8 glass-premium rounded-[50px] border-white/40 shadow-3xl bg-white/20 backdrop-blur-3xl group"
                 >
-                    <div className="absolute inset-0 bg-violet-200 blur-3xl opacity-20 rounded-full" />
+                    <div className="absolute inset-0 bg-violet-600/5 blur-[80px] rounded-full group-hover:bg-violet-600/10 transition-colors" />
                     <Image 
                         src="/Logo_violet.png" 
                         alt="PT. VIOLET GLOBAL INDONESIA" 
-                        className="h-24 md:h-32 w-auto relative z-10 drop-shadow-2xl"
-                        width={200} height={100}
+                        className="h-28 md:h-36 w-auto relative z-10 drop-shadow-3xl group-hover:scale-105 transition-transform"
+                        width={300} height={150}
                     />
                 </motion.div>
 
-                <div className="space-y-6 max-w-4xl mx-auto">
+                <div className="space-y-8 max-w-4xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 border border-violet-100 text-violet-700 text-xs font-black tracking-[0.2em] uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-violet-950 text-white text-[10px] font-black tracking-[0.4em] uppercase shadow-2xl"
                     >
                         Technology & Strategy Partner
                     </motion.div>
                     
-                    <h2 className="text-4xl md:text-6xl font-display font-black text-slate-900 tracking-tighter leading-tight">
-                        PT. VIOLET <span className="text-violet-600">GLOBAL INDONESIA</span>
+                    <h2 className="text-4xl md:text-8xl font-display font-black text-slate-900 tracking-tighter leading-tight italic">
+                        VIOLET <span className="text-violet-600">GLOBAL</span>
                     </h2>
                     
-                    <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed italic">
+                    <p className="text-lg md:text-2xl text-slate-500 font-black leading-relaxed italic max-w-3xl mx-auto tracking-tighter">
                         "Mewujudkan Kedaulatan Digital melalui Tata Kelola Pemerintahan yang Strategis dan Keunggulan Teknologi."
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 w-full max-w-5xl">
+                <div className="grid md:grid-cols-2 gap-8 w-full max-w-6xl relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="p-6 md:p-8 rounded-[40px] bg-white border border-slate-100 shadow-xl text-left space-y-4 group hover:border-violet-200 transition-colors"
+                        className="p-10 rounded-[50px] glass-premium bg-white/40 border-white shadow-2xl text-left space-y-6 group hover:bg-slate-900 hover:text-white transition-all transform hover:-translate-y-2"
                     >
-                        <div className="w-12 h-12 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 mb-2">
-                            <Settings2 className="w-6 h-6" />
+                        <div className="w-16 h-16 rounded-2xl bg-violet-50 flex items-center justify-center text-violet-600 shadow-lg group-hover:rotate-12 group-hover:bg-violet-600 group-hover:text-white transition-all shrink-0">
+                            <Settings2 className="w-8 h-8" />
                         </div>
-                        <h4 className="text-xl font-bold text-slate-900 italic">Tata Kelola Strategis</h4>
-                        <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                            Berpengalaman dalam mendampingi pemerintah daerah menyusun Peta Jalan (*Roadmap*) Digitalisasi Sektor Publik, menjamin harmonisasi regulasi pusat dan daerah untuk efektivitas birokrasi.
-                        </p>
+                        <div className="space-y-3">
+                            <h4 className="text-2xl font-black italic tracking-tighter uppercase italic">Strategic Governance</h4>
+                            <p className="text-sm text-slate-500 leading-relaxed font-medium group-hover:text-slate-400 italic">
+                                Menyusun Peta Jalan Digitalisasi Sektor Publik, menjamin harmonisasi regulasi untuk efektivitas birokrasi daerah.
+                            </p>
+                        </div>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
+                        initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6 }}
-                        className="p-6 md:p-8 rounded-[40px] bg-slate-900 text-white shadow-xl text-left space-y-4 group hover:bg-slate-800 transition-colors"
+                        className="p-10 rounded-[50px] bg-slate-900 text-white border-white/10 shadow-3xl text-left space-y-6 group hover:bg-violet-900 transition-all transform hover:-translate-y-2"
                     >
-                        <div className="w-12 h-12 rounded-2xl bg-violet-600/20 flex items-center justify-center text-violet-400 mb-2">
-                            <Cpu className="w-6 h-6" />
+                        <div className="w-16 h-16 rounded-2xl bg-violet-600/20 flex items-center justify-center text-violet-400 shadow-lg group-hover:rotate-12 group-hover:bg-white group-hover:text-violet-600 transition-all shrink-0">
+                            <Cpu className="w-8 h-8" />
                         </div>
-                        <h4 className="text-xl font-bold italic">Akselerasi Implementasi</h4>
-                        <p className="text-sm text-slate-400 leading-relaxed font-medium">
-                            Bukan sekadar penyedia perangkat lunak, kami mengintegrasikan solusi teknologi yang adaptif dan komprehensif, sesuai dengan karakteristik unik struktur tata kelola wilayah di Indonesia.
-                        </p>
+                        <div className="space-y-3">
+                            <h4 className="text-2xl font-black italic tracking-tighter uppercase italic">Implementation Alpha</h4>
+                            <p className="text-sm text-slate-400 leading-relaxed font-medium group-hover:text-slate-100 italic">
+                                Mengintegrasikan solusi teknologi adaptif yang sesuai dengan karakteristik unik struktur tata kelola wilayah di Indonesia.
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 }}
-                    className="pt-8 border-t border-slate-100 w-full max-w-md flex flex-col items-center gap-2"
-                >
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Future-Proof Government</div>
-                    <div className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        <span className="text-xs font-bold text-slate-600">Terpercaya & Berpengalaman</span>
-                    </div>
-                </motion.div>
+                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-violet-500/5 blur-[150px] rounded-full pointer-events-none" />
             </div>
-        ),
+        )
+    },
+    {
+        id: "closing",
+        content: (
+            <div className="relative w-full h-[600px] rounded-[60px] overflow-hidden flex items-center justify-center group">
+                <Image 
+                    src="/future_village_closing_1773146060875.png" 
+                    alt="Future Village" 
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[3000ms]"
+                    width={1600} height={900}
+                />
+                <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[4px] group-hover:bg-slate-950/40 transition-colors duration-1000" />
+                <div className="relative z-10 text-center space-y-12 max-w-4xl px-8">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ type: "spring", stiffness: 100 }}
+                        className="w-32 h-32 bg-white/10 backdrop-blur-3xl border border-white/30 rounded-[40px] flex items-center justify-center mx-auto shadow-3xl animate-pulse"
+                    >
+                        <Network className="w-16 h-16 text-white" />
+                    </motion.div>
+                    <div className="space-y-6">
+                        <motion.h2 
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-5xl md:text-8xl font-display font-black text-white tracking-tighter leading-tight italic"
+                        >
+                            Membangun <br />
+                            <span className="text-primary-400 italic">Masa Depan</span>
+                        </motion.h2>
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                            className="text-xl md:text-3xl text-blue-100 font-black tracking-tighter italic uppercase"
+                        >
+                            Akselerasi Jawa Tengah Menuju <br/><span className="text-white">Kedaulatan Digital Nasional.</span>
+                        </motion.p>
+                    </div>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-10 pt-6">
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-12 py-5 bg-white rounded-full text-slate-950 font-black text-xl shadow-3xl hover:bg-primary-400 transition-colors uppercase italic"
+                        >
+                            Mari Berkolaborasi
+                        </motion.button>
+                        <div className="flex items-center gap-6">
+                            <Image src="/Bank_Jateng_logo.png" alt="Bank Jateng" className="h-10 w-auto brightness-0 invert opacity-80" width={150} height={60} />
+                            <div className="h-10 w-px bg-white/20" />
+                            <Image src="/Logo_violet.png" alt="Violet Global" className="h-8 w-auto brightness-0 invert opacity-80" width={100} height={40} />
+                        </div>
+                    </div>
+                </div>
+                {/* Tactical Overlays */}
+                <div className="absolute top-10 left-10 text-[10px] font-black text-white/20 tracking-[0.5em] uppercase pointer-events-none">Mission Collective: 2024</div>
+                <div className="absolute bottom-10 right-10 text-[10px] font-black text-white/20 tracking-[0.5em] uppercase pointer-events-none italic">Digital Sovereignty Validated</div>
+            </div>
+        )
     }
 ];

@@ -13,8 +13,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-    title: "Digitalisasi Desa - Masa Depan Desa Kita",
-    description: "Materi Presentasi Terkait Digitalisasi Desa dengan Pendekatan Teknologi Modern",
+    title: "Bank Jateng - Digitalisasi Desa",
+    description: "Materi Presentasi Strategis Digitalisasi Ekonomi Desa bersama Bank Jateng",
+    icons: {
+        icon: "/Bank_Jateng_logo.png",
+    }
 };
 
 export default function RootLayout({
