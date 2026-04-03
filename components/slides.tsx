@@ -1190,7 +1190,7 @@ export const slides: Slide[] = [
                     <p className="text-slate-500 max-w-2xl mx-auto text-base md:text-xl font-medium italic">Orkestrasi teknis dan regulasi yang terukur untuk menjamin keberlanjutan ekosistem.</p>
                 </div>
 
-                <div className="relative pt-12 relative z-10 w-full max-w-6xl mx-auto">
+                <div className="relative pt-12 z-10 w-full max-w-6xl mx-auto">
                     <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-100 -translate-y-1/2 hidden lg:block" />
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
@@ -1647,7 +1647,7 @@ export const slides: Slide[] = [
                         >
                             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform"><Trash2 className="w-32 h-32" /></div>
                             <div className="text-[10px] font-black text-primary-400 uppercase tracking-widest mb-2">Cost Efficiency Alpha</div>
-                            <h4 className="text-6xl font-black italic tracking-tighter mb-2 italic">80%</h4>
+                            <h4 className="text-6xl font-black italic tracking-tighter mb-2">80%</h4>
                             <p className="text-slate-300 text-base font-medium leading-tight italic">Pengurangan biaya operasional logistik melalui sistem paperless integrasi Siskeudes.</p>
                         </motion.div>
 
@@ -1658,7 +1658,7 @@ export const slides: Slide[] = [
                         >
                             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:-rotate-12 transition-transform"><Clock className="w-32 h-32" /></div>
                             <div className="text-[10px] font-black text-primary-600 uppercase tracking-widest mb-2">Service Acceleration</div>
-                            <h4 className="text-6xl font-black italic tracking-tighter text-slate-900 mb-2 italic">7x <span className="text-2xl">Lipat</span></h4>
+                            <h4 className="text-6xl font-black italic tracking-tighter text-slate-900 mb-2">7x <span className="text-2xl">Lipat</span></h4>
                             <p className="text-slate-500 text-base font-medium leading-tight italic">Dari 2 hari kerja menjadi real-time via Tanda Tangan Elektronik terintegrasi BSrE.</p>
                         </motion.div>
                     </div>
@@ -1728,7 +1728,7 @@ export const slides: Slide[] = [
                                     {item.icon}
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-black text-primary-600 uppercase tracking-widest mb-1 italic tracking-tighter">{item.title}</h4>
+                                    <h4 className="text-sm font-black text-primary-600 uppercase tracking-widest mb-1 italic">{item.title}</h4>
                                     <div className="text-2xl font-black italic tracking-tighter leading-none">{item.value}</div>
                                     <p className="text-[10px] text-slate-500 font-medium leading-tight group-hover:text-slate-400 italic">{item.desc}</p>
                                 </div>
@@ -1920,7 +1920,7 @@ export const slides: Slide[] = [
                             className="p-8 rounded-[40px] glass-premium border-white hover:bg-slate-900 hover:text-white group transition-all shadow-xl"
                         >
                             <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 shadow-lg group-hover:rotate-12 transition-transform">{item.icon}</div>
-                            <h4 className="text-xl font-black italic tracking-tighter mb-2 italic tracking-tighter uppercase">{item.title}</h4>
+                            <h4 className="text-xl font-black italic tracking-tighter mb-2 uppercase">{item.title}</h4>
                             <p className="text-[12px] text-slate-500 font-medium leading-relaxed group-hover:text-slate-400 italic">{item.desc}</p>
                         </motion.div>
                     ))}
@@ -2046,7 +2046,7 @@ export const slides: Slide[] = [
                             <Settings2 className="w-8 h-8" />
                         </div>
                         <div className="space-y-3">
-                            <h4 className="text-2xl font-black italic tracking-tighter uppercase italic">Strategic Governance</h4>
+                            <h4 className="text-2xl font-black italic tracking-tighter uppercase">Strategic Governance</h4>
                             <p className="text-sm text-slate-500 leading-relaxed font-medium group-hover:text-slate-400 italic">
                                 Menyusun Peta Jalan Digitalisasi Sektor Publik, menjamin harmonisasi regulasi untuk efektivitas birokrasi daerah.
                             </p>
@@ -2063,7 +2063,7 @@ export const slides: Slide[] = [
                             <Cpu className="w-8 h-8" />
                         </div>
                         <div className="space-y-3">
-                            <h4 className="text-2xl font-black italic tracking-tighter uppercase italic">Implementation Alpha</h4>
+                            <h4 className="text-2xl font-black italic tracking-tighter uppercase">Implementation Alpha</h4>
                             <p className="text-sm text-slate-400 leading-relaxed font-medium group-hover:text-slate-100 italic">
                                 Mengintegrasikan solusi teknologi adaptif yang sesuai dengan karakteristik unik struktur tata kelola wilayah di Indonesia.
                             </p>
